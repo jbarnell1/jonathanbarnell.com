@@ -2,6 +2,6 @@
 img/src/
 img/*.jpg
 # generated for local viewing and for the Claude artifact
-index.html
-portfolio.html
+/index.html
+/portfolio.html
 __pycache__/
