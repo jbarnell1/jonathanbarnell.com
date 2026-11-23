@@ -77,14 +77,6 @@ PROJECTS = [
   "A plan for beginner electronics kits built around Arduino, each with parts, a board and a tutorial that explains why as well as how. Nine kits are written up so far.",
   [("Status", "Concept"), ("Kits", "9, from a pet feeder to a solar tracker")],
   [("Notes", GH + "volt-and-tinker")], None, None),
- ("bot", "AI Twitter bot", "Early", "early", "2022",
-  "A GPT-3 bot on Firebase functions, adapted from a Fireship tutorial. I took it offline when it ran into OpenAI's terms of service and left the code up.",
-  [("Built with", "JavaScript, Firebase")],
-  [("Source", GH + "ai-twitter-bot")], None, None),
- ("odin", "The Odin Project", "Early", "early", "2021 to 2022",
-  "The exercises I worked through while teaching myself web development: a calculator, an Etch A Sketch, rock paper scissors and a landing page.",
-  [("Built with", "HTML, CSS, JavaScript")],
-  [("GitHub profile", "https://github.com/jbarnell1")], None, None),
 ]
 
 # extra pictures under a panel: key -> [(image, alt, caption)]
