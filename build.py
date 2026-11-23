@@ -73,10 +73,6 @@ PROJECTS = [
   [("AP story", "https://archive.salinapost.com/?p=340116"),
    ("Capital-Journal feature", "https://web.archive.org/web/20190508221648/https://www.cjonline.com/news/20181126/overcoming-ick-factor-topeka-start-up-focuses-on-cricket-based-food"),
    ("Washburn Review on Arbor", "https://washburnreview.org/648/features/foreman-the-cricket-guy/")], None, None),
- ("volt", "Volt and Tinker", "Idea", "hard", "2025",
-  "A plan for beginner electronics kits built around Arduino, each with parts, a board and a tutorial that explains why as well as how. Nine kits are written up so far.",
-  [("Status", "Concept"), ("Kits", "9, from a pet feeder to a solar tracker")],
-  [("Notes", GH + "volt-and-tinker")], None, None),
 ]
 
 # extra pictures under a panel: key -> [(image, alt, caption)]
