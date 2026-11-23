@@ -1,0 +1,7 @@
+# originals and working files that the site does not serve
+img/src/
+img/*.jpg
+# generated for local viewing and for the Claude artifact
+index.html
+portfolio.html
+__pycache__/
