@@ -151,26 +151,14 @@ video{display:block;width:100%;height:auto}
 .film.live video{height:100%;object-fit:cover}
 .film.live .cap{position:absolute;left:max(var(--m),env(safe-area-inset-left,0px));bottom:16px;margin:0;opacity:calc(1 - var(--q,0) * 1.6)}
 
-/* steps: the daily run, one step per stretch of scroll */
-.steps .k{margin-bottom:28px}
-.steps .list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px var(--gap)}
-.steps .list b{display:block;font-weight:500;font-size:var(--step-lead);line-height:1.25}
-.steps .list span{display:block;color:var(--soft);margin-top:4px;max-width:30rem}
-.steps .foot{display:none}
-.steps:not(.live){padding-bottom:clamp(72px,11vw,168px)}
-.steps.live .stage{display:grid;grid-template-rows:auto 1fr auto;padding-top:calc(var(--bar) + clamp(24px,4vw,56px));padding-bottom:clamp(24px,4vw,56px)}
-.steps.live .k{margin:0}
-.steps.live .list{grid-template-columns:minmax(0,1fr);align-content:center;gap:0}
-.steps.live .list li{grid-area:1/1;opacity:0;transform:translateY(48px);transition:opacity .4s var(--ease),transform .6s var(--ease)}
-.steps.live .list li.was{transform:translateY(-48px)}
-.steps.live .list li.on{opacity:1;transform:none}
-.steps.live .list b{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-0.035em;line-height:.9;font-size:clamp(2.5rem,6.6vw,6.75rem)}
-.steps.live .list span{font-size:var(--step-lead);line-height:1.36;color:var(--i);margin-top:clamp(16px,2vw,28px);max-width:34rem}
-.steps.live .foot{display:flex;align-items:center;gap:var(--gap)}
-.steps.live .count{white-space:nowrap;font-weight:500}
-.steps.live .segs{flex:1;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
-.steps.live .segs i{height:8px;background:var(--tone);transition:background-color .3s}
-.steps.live .segs i.on{background:var(--i)}
+/* steps: the whole daily run on one screen; each step takes ink as it scrolls into place */
+.steps{padding-left:max(var(--m),env(safe-area-inset-left,0px));padding-right:max(var(--m),env(safe-area-inset-right,0px));padding-bottom:clamp(72px,11vw,168px)}
+.steps .k{margin-bottom:clamp(24px,3vw,40px)}
+.steps .list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(36px,4.5vw,64px) var(--gap)}
+.steps .list b{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;line-height:.95;font-size:clamp(1.5rem,2.4vw,2.375rem)}
+.steps .list span{display:block;margin-top:12px;max-width:22rem}
+.steps.fill .list li{opacity:.26;transition:opacity .45s var(--ease)}
+.steps.fill .list li.on{opacity:1}
 
 /* string art: a real plan, drawn turn by turn */
 .strings .tell{grid-column:1/6}
@@ -296,7 +284,7 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   .strings .board{margin-top:48px}
   .buoy .ph{grid-row:auto;max-width:300px}
   .buoy .body{margin-top:40px}
-  .steps .list{grid-template-columns:minmax(0,1fr)}
+  .steps .list{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pipe .schema{grid-row:auto}
   .nums{grid-column:1/13}
   .schema img{max-width:240px}
@@ -327,6 +315,7 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   .poster .w{font-size:12vw;display:block}
   .poster .d{display:block;text-align:left;white-space:normal;margin:6px 0 22px;font-size:1rem}
   .panel .more{grid-template-columns:1fr}
+  .steps .list{grid-template-columns:minmax(0,1fr);row-gap:28px}
   .buoy .bf.kv2{grid-template-columns:1fr 1fr}
   .buoy .ph{max-width:62%}
   .house .phones{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
@@ -442,8 +431,7 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
       <div class="rv" style="--d:3"><dt>MIT</dt><dd>licence, open to any state lab</dd></div>
     </dl>
   </div>
-  <div class="scene steps" data-scene="steps" style="--hold:3" aria-label="The daily run, step by step">
-    <div class="stage">
+  <div class="steps">
       <p class="k soft">The daily run, start to finish</p>
       <ol class="list">
         <li><b>Import demographics</b><span>Patient details for each sample come out of the lab's Oracle records system.</span></li>
@@ -455,11 +443,6 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
         <li><b>Send the report</b><span>The report goes to the epidemiologists over SFTP.</span></li>
         <li><b>Build the Nextstrain report</b><span>A second file is prepared for the state's Nextstrain build.</span></li>
       </ol>
-      <div class="foot" aria-hidden="true">
-        <p class="count tnum"><span class="n">1</span> of 8</p>
-        <div class="segs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -659,16 +642,21 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
       if(s.getAttribute('data-scene')==='open'){
         /* opens over the first 60% of the hold, then stays open */
         var t=Math.min(1,p/0.6); s.style.setProperty('--q',(t*t*(3-2*t)).toFixed(4));
-      }else if(s.getAttribute('data-scene')==='steps'){
-        var items=s.querySelectorAll('.list li'), segs=s.querySelectorAll('.segs i');
-        var i=Math.min(items.length-1,Math.floor(p*items.length));
-        if(s._i===i)return; s._i=i;
-        [].forEach.call(items,function(li,k){li.classList.toggle('on',k===i);li.classList.toggle('was',k<i)});
-        [].forEach.call(segs,function(el,k){el.classList.toggle('on',k<=i)});
-        var n=s.querySelector('.count .n'); if(n)n.textContent=i+1;
       }
     });
+    /* the daily run: each step takes ink as it rises past the lower part of the screen, and
+       steps in the same row follow one another left to right */
+    if(run){
+      var vh=window.innerHeight, rowTop=null, col=0;
+      for(var k=0;k<runItems.length;k++){
+        var b=runItems[k].getBoundingClientRect();
+        if(rowTop===null||Math.abs(b.top-rowTop)>4){rowTop=b.top;col=0}else col++;
+        runItems[k].classList.toggle('on',b.top<vh*(0.84-col*0.07));
+      }
+    }
   }
+  var run=document.querySelector('.steps'), runItems=run?run.querySelectorAll('.list li'):[];
+  if(run&&root.classList.contains('js')&&!reduce)run.classList.add('fill'); else run=null;
   var tick=false;
   function onScroll(){ if(tick)return; tick=true; requestAnimationFrame(function(){tick=false;paintBar();playScenes()}) }
   addEventListener('scroll',onScroll,{passive:true});
