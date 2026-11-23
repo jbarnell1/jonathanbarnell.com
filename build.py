@@ -97,6 +97,18 @@ MORE = {
  ],
 }
 
+# a film in a panel's picture slot: key -> (media stem, width, height, spoken label, caption)
+FILMS = {
+ "scripture": ("scripture", 540, 960, "A Scripture Solace short: a psalm narrated over footage, with subtitles that follow each word",
+               "One of the shorts, as uploaded. Muted here."),
+}
+
+# a live frame that loads only when asked: key -> (url, poster image, frame title, button, caption)
+EMBEDS = {
+ "goingdown": ("https://jbarnell1.github.io/going-down/", "gd-lineup", "Going Down, the first browser version", "Play it here",
+               "The first browser version. It loads from GitHub Pages when you press the button, and it is a large download."),
+}
+
 e = html.escape
 
 
@@ -110,15 +122,28 @@ def spines():
 def panels():
     out = []
     for k, name, label, group, years, blurb, facts, links, img, alt in PROJECTS:
-        cls = "panel" if img else "panel nopic"
+        film = FILMS.get(k)
+        cls = "panel" if (img or film) else "panel nopic"
         fl = "".join(f"<div><dt>{e(a)}</dt><dd>{e(b)}</dd></div>" for a, b in [("When", years)] + facts)
         ll = "".join(f'<a class="link" href="{e(u)}">{e(t)}</a>' for t, u in links)
         ll = f'<p class="links">{ll}</p>' if ll else ""
         pic = (f'<figure class="pic"><img src="img/{img}.webp" loading="lazy" alt="{e(alt)}"></figure>' if img else "")
+        if film:
+            stem, w, h, say, cap = film
+            pic = (f'<figure class="pic tall"><video class="lazy" muted loop playsinline preload="none" '
+                   f'poster="media/{stem}.webp" width="{w}" height="{h}" aria-label="{e(say)}">'
+                   f'<source data-src="media/{stem}.webm" type="video/webm"><source data-src="media/{stem}.mp4" type="video/mp4">'
+                   f'</video><figcaption>{e(cap)}</figcaption></figure>')
         more = MORE.get(k, [])
         grid = ('<div class="more">' + "".join(
             f'<figure><img src="img/{i}.webp" loading="lazy" alt="{e(a)}"><figcaption>{e(c)}</figcaption></figure>'
             for i, a, c in more) + '</div>') if more else ""
+        if k in EMBEDS:
+            url, poster, title, button, cap = EMBEDS[k]
+            grid += (f'<div class="more one"><figure class="embed" data-src="{e(url)}" data-title="{e(title)}">'
+                     f'<div class="frame"><img src="img/{poster}.webp" loading="lazy" alt="">'
+                     f'<button class="btn" type="button">{e(button)}</button></div>'
+                     f'<figcaption>{e(cap)}</figcaption></figure></div>')
         out.append(
             f'      <article class="{cls}" id="p-{k}">\n'
             f'        <h3>{e(name)}</h3>\n'
@@ -170,8 +195,9 @@ SKELETON = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n
 
 def main():
     t = (HERE / "template.html").read_text(encoding="utf-8")
-    page = t.replace("{{SPINES}}", spines()).replace("{{PANELS}}", panels())
-    local = SKELETON + "</head>\n<body>\n" + page + "\n</body>\n</html>\n"
+    strings = (HERE / "data" / "strings.json").read_text(encoding="utf-8").strip()
+    page = t.replace("{{SPINES}}", spines()).replace("{{PANELS}}", panels()).replace("{{STRINGS}}", strings)
+    local =SKELETON + "</head>\n<body>\n" + page + "\n</body>\n</html>\n"
     (HERE / "index.html").write_text(local, encoding="utf-8")
     single = inline_images(page)
     (HERE / "portfolio.html").write_text(single, encoding="utf-8")
@@ -187,6 +213,14 @@ def main():
             old.unlink()
     for name in used:
         shutil.copyfile(HERE / "img" / name, docs / "img" / name)
+    # films and their posters
+    (docs / "media").mkdir(exist_ok=True)
+    clips = sorted(set(re.findall(r'"media/([\w.-]+\.(?:webm|mp4|webp))"', page)))
+    for old in (docs / "media").iterdir():
+        if old.name not in clips:
+            old.unlink()
+    for name in clips:
+        shutil.copyfile(HERE / "media" / name, docs / "media" / name)
     print(f"index.html {len(local):,} bytes; portfolio.html {len(single):,} bytes; "
           f"docs/ with {len(used)} images; {len(PROJECTS)} projects")
 

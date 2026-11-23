@@ -97,14 +97,9 @@ dl{margin:0}
 
 /* pipeline */
 .pipe h2{grid-column:1/13}
-.pipe .tell{grid-column:1/6}
-.pipe .flows{grid-column:6/10}
+.pipe .tell{grid-column:1/8}
 .pipe .schema{grid-column:10/13;grid-row:2/4}
 .pipe h2{margin-bottom:clamp(24px,3vw,44px)}
-.flows ol{margin:0;padding:0 0 0 1.4em;font-size:var(--step-lead);line-height:1.3;font-weight:500}
-.flows li{padding:7px 0 7px 6px}
-.flows li::marker{font-weight:400;color:var(--soft);font-variant-numeric:tabular-nums}
-.flows p{margin-bottom:14px}
 .schema img{width:100%;max-width:300px}
 .nums{grid-column:1/10;align-self:end;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin-top:clamp(48px,6vw,88px)}
 .nums dt{font-family:var(--display);font-weight:900;font-size:var(--step-head);letter-spacing:-0.03em;line-height:0.92}
@@ -135,18 +130,93 @@ dl{margin:0}
 .panel .links{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:20px}
 .panel .more{grid-column:1/13;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,40px) var(--gap);margin-top:12px}
 .panel .more img{width:100%;aspect-ratio:141/100;object-fit:cover;object-position:left top}
+.panel .more.one{grid-template-columns:minmax(0,1fr)}
+.panel .pic.tall{max-width:290px}
 .panel.swap{animation:swap .35s var(--ease)}
 @keyframes swap{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* moving pictures */
+video{display:block;width:100%;height:auto}
+
+/* scenes: a tall section whose stage holds still while the page scrolls past it.
+   Without script, on reduced motion, and where a scene rests on phones, it is an ordinary block. */
+.scene .stage{padding-left:max(var(--m),env(safe-area-inset-left,0px));padding-right:max(var(--m),env(safe-area-inset-right,0px))}
+.scene.live{height:calc((var(--hold,1) + 1) * 100svh)}
+.scene.live .stage{position:sticky;top:0;height:100svh;overflow:hidden}
+
+/* film: a window that grows to the whole screen */
+.film .cap{margin-top:10px;color:var(--soft)}
+.film.live .stage{display:grid;place-items:center;padding-inline:0}
+.film.live .win{width:min(100%,calc(100svh * 16 / 9));aspect-ratio:16/9;transform:scale(calc(.58 + var(--q,0) * .42));will-change:transform}
+.film.live video{height:100%;object-fit:cover}
+.film.live .cap{position:absolute;left:max(var(--m),env(safe-area-inset-left,0px));bottom:16px;margin:0;opacity:calc(1 - var(--q,0) * 1.6)}
+
+/* steps: the daily run, one step per stretch of scroll */
+.steps .k{margin-bottom:28px}
+.steps .list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px var(--gap)}
+.steps .list b{display:block;font-weight:500;font-size:var(--step-lead);line-height:1.25}
+.steps .list span{display:block;color:var(--soft);margin-top:4px;max-width:30rem}
+.steps .foot{display:none}
+.steps:not(.live){padding-bottom:clamp(72px,11vw,168px)}
+.steps.live .stage{display:grid;grid-template-rows:auto 1fr auto;padding-top:calc(var(--bar) + clamp(24px,4vw,56px));padding-bottom:clamp(24px,4vw,56px)}
+.steps.live .k{margin:0}
+.steps.live .list{grid-template-columns:minmax(0,1fr);align-content:center;gap:0}
+.steps.live .list li{grid-area:1/1;opacity:0;transform:translateY(48px);transition:opacity .4s var(--ease),transform .6s var(--ease)}
+.steps.live .list li.was{transform:translateY(-48px)}
+.steps.live .list li.on{opacity:1;transform:none}
+.steps.live .list b{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-0.035em;line-height:.9;font-size:clamp(2.5rem,6.6vw,6.75rem)}
+.steps.live .list span{font-size:var(--step-lead);line-height:1.36;color:var(--i);margin-top:clamp(16px,2vw,28px);max-width:34rem}
+.steps.live .foot{display:flex;align-items:center;gap:var(--gap)}
+.steps.live .count{white-space:nowrap;font-weight:500}
+.steps.live .segs{flex:1;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.steps.live .segs i{height:8px;background:var(--tone);transition:background-color .3s}
+.steps.live .segs i.on{background:var(--i)}
+
+/* string art: a real plan, drawn turn by turn */
+.strings .tell{grid-column:1/6}
+.strings .board{grid-column:7/13}
+.strings h2{margin-bottom:clamp(24px,3vw,44px)}
+.strings canvas{display:block;width:100%;height:auto;aspect-ratio:1}
+.strings .ctl{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:32px}
+.strings .ctl .btn{min-width:6.5rem;justify-content:center;border:0;cursor:pointer;font-family:inherit}
+.strings input[type=range]{flex:1 1 180px;min-height:44px;margin:0;accent-color:var(--ink)}
+.strings .now{flex-basis:100%;font-weight:500}
+.strings .src{display:flex;gap:16px;align-items:end;margin-top:40px}
+.strings .src img{width:112px;aspect-ratio:1;object-fit:cover}
+.strings .src figcaption{margin:0;max-width:18rem}
+
+/* a frame that loads something live when asked */
+.embed .frame{position:relative;aspect-ratio:16/9;background:var(--black);overflow:hidden}
+.embed .frame img,.embed .frame iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.embed .frame .btn{position:absolute;left:20px;bottom:20px;border:0;cursor:pointer;font-family:inherit;background:var(--white);color:var(--ink)}
+.embed .frame .btn:hover{background:var(--surface)}
 
 /* buoy */
 .buoy .h{grid-column:1/7}
 .buoy .l{grid-column:7/13;align-self:end}
-.buoy .shots{grid-column:1/13;display:grid;grid-template-columns:minmax(0,3.55fr) minmax(0,1fr);gap:var(--gap);margin-block:clamp(40px,5vw,72px);align-items:start}
-.drift{overflow:hidden}
-.drift img{width:100%;transform:scale(var(--z,1));transform-origin:50% 30%;will-change:transform}
-.buoy .body{grid-column:1/7}
-.buoy .bf{grid-column:8/13}
+.buoy .top{padding-bottom:clamp(40px,5vw,72px)}
+.buoy .rest{padding-top:clamp(48px,6vw,88px)}
+.buoy .ph{grid-column:1/4;grid-row:1/3}
+.buoy .body{grid-column:5/11}
+.buoy .bf{grid-column:5/13;margin-top:clamp(40px,5vw,64px)}
+.buoy .bf.kv2{grid-template-columns:repeat(3,minmax(0,1fr))}
 .kv2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px var(--gap)}
+
+/* quiet depth: scroll-linked drift where the browser can do it without script */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .hero h1{animation:recede linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+    .phones figure img{animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    .phones figure:nth-child(odd) img{--dy:26px}
+    .phones figure:nth-child(even) img{--dy:-26px}
+    .phones figcaption{margin-top:38px}
+    .poster li:nth-child(odd) .w{animation:slide linear both;animation-timeline:view();animation-range:entry 0% cover 45%;--dx:-3%}
+    .poster li:nth-child(even) .w{animation:slide linear both;animation-timeline:view();animation-range:entry 0% cover 45%;--dx:3%}
+  }
+}
+@keyframes recede{to{transform:translateY(-10%) scale(.95);opacity:.25}}
+@keyframes drift{from{transform:translateY(var(--dy,0))}to{transform:translateY(calc(var(--dy,0) * -1))}}
+@keyframes slide{from{transform:translateX(var(--dx,0))}to{transform:none}}
 .kv2 dt{font-size:var(--step-small);color:var(--soft)}
 .kv2 dd{margin:2px 0 0;font-weight:500;line-height:1.35}
 
@@ -201,19 +271,22 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   html{scroll-behavior:auto}
   .js .rv{opacity:1;transform:none}
   .js .rv.in{transition:none}
-  .drift img{transform:none}
   .panel.swap{animation:none}
   .spine,.phones figure,.btn{transition:none}
 }
 
 @media (max-width:900px){
-  .about .facts,.about .say,.about .rec-word,.about .recs,.pipe .tell,.pipe .flows,.pipe .schema,.buoy .h,.buoy .l,.buoy .body,.buoy .bf,.house .tell,.house .phones,.job .figs,.job .say,.record .h,.record .ph{grid-column:1/13}
+  .about .facts,.about .say,.about .rec-word,.about .recs,.pipe .tell,.pipe .schema,.buoy .h,.buoy .l,.buoy .body,.buoy .bf,.buoy .ph,.strings .tell,.strings .board,.house .tell,.house .phones,.job .figs,.job .say,.record .h,.record .ph{grid-column:1/13}
   .about .say{grid-row:1}
   .about .facts{margin-top:40px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
   .headshot{margin:0}
   .about .rec-word{margin-top:56px}
   .about .recs{margin-top:16px}
-  .pipe .flows,.pipe .schema{margin-top:44px}
+  .pipe .schema{margin-top:44px}
+  .strings .board{margin-top:48px}
+  .buoy .ph{grid-row:auto;max-width:300px}
+  .buoy .body{margin-top:40px}
+  .steps .list{grid-template-columns:minmax(0,1fr)}
   .pipe .schema{grid-row:auto}
   .nums{grid-column:1/13}
   .schema img{max-width:240px}
@@ -244,8 +317,8 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   .poster .w{font-size:12vw;display:block}
   .poster .d{display:block;text-align:left;white-space:normal;margin:6px 0 22px;font-size:1rem}
   .panel .more{grid-template-columns:1fr}
-  .buoy .shots{grid-template-columns:1fr}
-  .buoy .shots figure:last-child{max-width:60%}
+  .buoy .bf.kv2{grid-template-columns:1fr 1fr}
+  .buoy .ph{max-width:62%}
   .house .phones{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
   .kv2{grid-template-columns:1fr 1fr}
   /* record table becomes two-line blocks */
@@ -348,19 +421,6 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
         <p class="rv" style="--d:4"><a class="link" href="https://github.com/jbarnell1/KHEL_WGS_SARS_CoV_2">Read the code on GitHub</a></p>
       </div>
     </div>
-    <div class="flows rv" style="--d:2">
-      <p class="soft">The daily run, start to finish</p>
-      <ol>
-        <li>Import demographics</li>
-        <li>Parse run statistics</li>
-        <li>Compile the FASTA files</li>
-        <li>Parse Nextclade results</li>
-        <li>Parse Pangolin results</li>
-        <li>Build the epidemiology report</li>
-        <li>Send the report</li>
-        <li>Build the Nextstrain report</li>
-      </ol>
-    </div>
     <figure class="schema rv" style="--d:3">
       <img src="img/khel-schema.webp" width="298" height="758" loading="lazy" alt="Column list of the pipeline's results table in SQL Server, from sample number and lineage to coverage and run dates">
       <figcaption>The results table, from the repository's own documentation.</figcaption>
@@ -371,6 +431,25 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
       <div class="rv" style="--d:2"><dt class="tnum">3+</dt><dd>hours of hand work saved on every run</dd></div>
       <div class="rv" style="--d:3"><dt>MIT</dt><dd>licence, open to any state lab</dd></div>
     </dl>
+  </div>
+  <div class="scene steps" data-scene="steps" style="--hold:3" aria-label="The daily run, step by step">
+    <div class="stage">
+      <p class="k soft">The daily run, start to finish</p>
+      <ol class="list">
+        <li><b>Import demographics</b><span>Patient details for each sample come out of the lab's Oracle records system.</span></li>
+        <li><b>Parse run statistics</b><span>Quality figures are read from each sequencer run.</span></li>
+        <li><b>Compile the FASTA files</b><span>The sequences from a run are gathered into one file.</span></li>
+        <li><b>Parse Nextclade results</b><span>Clade calls are read from Nextclade.</span></li>
+        <li><b>Parse Pangolin results</b><span>Lineage calls are read from Pangolin.</span></li>
+        <li><b>Build the epidemiology report</b><span>Everything is joined into the report the state epidemiologists need.</span></li>
+        <li><b>Send the report</b><span>The report goes to the epidemiologists over SFTP.</span></li>
+        <li><b>Build the Nextstrain report</b><span>A second file is prepared for the state's Nextstrain build.</span></li>
+      </ol>
+      <div class="foot" aria-hidden="true">
+        <p class="count tnum"><span class="n">1</span> of 8</p>
+        <div class="segs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -415,20 +494,52 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   </div>
 </section>
 
-<section class="band f-navy buoy" id="buoy">
+<section class="band strings" id="strings">
   <div class="wrap grid">
-    <h2 class="h rv">Buoy Money counts up</h2>
-    <p class="l lead rv" style="--d:1">Most budgets start full and drain. In Buoy Money each category earns a daily allowance, so the number you see is what you have earned minus what you have spent.</p>
-    <div class="shots">
-      <figure class="rv">
-        <div class="drift"><img src="img/buoy-dashboard.webp" width="1800" height="1125" loading="lazy" alt="Buoy Money dashboard on desktop showing net worth, cash flow, upcoming bills, savings and a household budget"></div>
-        <figcaption>The dashboard, with an invented household.</figcaption>
-      </figure>
-      <figure class="rv" style="--d:1">
-        <img src="img/buoy-phone.webp" width="520" height="1125" loading="lazy" alt="Buoy Money on a phone: the count-up view, where Groceries has earned $289.33 by day 14 of 30">
-        <figcaption>Count-up on a phone.</figcaption>
+    <div class="tell">
+      <h2 class="rv">One long thread</h2>
+      <p class="lead rv" style="--d:1">String Art Studio turns a photo into a build plan: one continuous thread wound between 240 pins. This is a real plan from its solver, drawn here turn by turn.</p>
+      <div class="ctl rv" style="--d:2">
+        <button class="btn" type="button" id="st-play" aria-pressed="false">Play</button>
+        <input type="range" id="st-seek" min="0" max="3000" value="0" step="1" aria-label="Turns drawn">
+        <p class="now tnum"><span id="st-n">0</span> of <span id="st-total">3,000</span> turns. Next pin: <span id="st-pin">0</span></p>
+      </div>
+      <figure class="src rv" style="--d:3">
+        <img src="img/strings-source.webp" width="336" height="336" loading="lazy" alt="The sample portrait the plan was made from">
+        <figcaption>The photo it started from, a sample that ships with the project. The face is AI-generated, not a real person. The finished piece would take <span id="st-m">1,559</span> metres of thread.</figcaption>
       </figure>
     </div>
+    <div class="board rv" style="--d:1">
+      <canvas id="st-canvas" width="1400" height="1400" role="img" aria-label="A round board of 240 pins with a portrait building up from straight lines of thread"></canvas>
+    </div>
+  </div>
+</section>
+<script type="application/json" id="st-data">{{STRINGS}}</script>
+
+<section class="band f-navy buoy" id="buoy">
+  <div class="wrap grid top">
+    <h2 class="h rv">Buoy Money counts up</h2>
+    <p class="l lead rv" style="--d:1">Most budgets start full and drain. In Buoy Money each category earns a daily allowance, so the number you see is what you have earned minus what you have spent.</p>
+  </div>
+  <div class="scene film" data-scene="open" data-phone="rest" style="--hold:1.5" aria-label="Buoy Money on film">
+    <div class="stage">
+      <figure class="win">
+        <video class="lazy" muted loop playsinline preload="none" poster="media/buoy-film.webp" width="1280" height="720" aria-label="A short film of Buoy Money on a phone: transactions sorted in one tap, a budget that counts up, and a question asked about subscriptions">
+          <source data-src="media/buoy-film.webm" type="video/webm">
+          <source data-src="media/buoy-film.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <p class="cap small">Filmed in the app on a demo account.</p>
+    </div>
+  </div>
+  <div class="wrap grid rest">
+    <figure class="ph rv">
+      <video class="lazy" muted loop playsinline preload="none" poster="media/buoy-phone.webp" width="540" height="960" aria-label="Buoy Money on a phone: the assistant lowers a dining budget and moves a savings goal's date forward">
+        <source data-src="media/buoy-phone.webm" type="video/webm">
+        <source data-src="media/buoy-phone.mp4" type="video/mp4">
+      </video>
+      <figcaption>Asking the assistant to change a budget.</figcaption>
+    </figure>
     <div class="body stack">
       <p class="rv">One Flutter app covers web, Android and iOS, on a .NET 10 and PostgreSQL backend. It connects to banks through Plaid, takes payment through Stripe, and has an MCP server so an AI assistant can read a budget without being able to move money.</p>
       <p class="rv" style="--d:1">The hosted edition is live on the web and Google Play. The same codebase ships as a free self-hosted Docker image, with bank data sealed to the user's own server using HPKE, checked against the test vectors in RFC 9180.</p>
@@ -519,17 +630,115 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
     bar.style.setProperty('--hg',cs.backgroundColor);
     bar.style.setProperty('--hi',cs.color);
   }
-  /* the Buoy dashboard settles from a slight zoom as it scrolls through */
-  var drift=document.querySelector('.drift');
-  function zoom(){
-    if(!drift||reduce)return;
-    var r=drift.getBoundingClientRect(), vh=window.innerHeight;
-    var t=Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height)));
-    drift.firstElementChild.style.setProperty('--z',(1.08-0.08*t).toFixed(4));
+  /* scenes: the stage holds while the scroll plays it. A scene is live only with script, without
+     reduced motion, and (for scenes marked data-phone="rest") on a wide screen. */
+  var scenes=[].slice.call(document.querySelectorAll('.scene'));
+  function planScenes(){
+    var wide=window.innerWidth>=900;
+    scenes.forEach(function(s){
+      var live=root.classList.contains('js')&&!reduce&&(wide||s.getAttribute('data-phone')!=='rest');
+      s.classList.toggle('live',live);
+      if(!live){s.style.removeProperty('--q'); [].forEach.call(s.querySelectorAll('.on,.was'),function(x){x.classList.remove('on','was')})}
+    });
+  }
+  function playScenes(){
+    scenes.forEach(function(s){
+      if(!s.classList.contains('live'))return;
+      var r=s.getBoundingClientRect(), span=r.height-window.innerHeight;
+      var p=span>0?Math.min(1,Math.max(0,-r.top/span)):0;
+      if(s.getAttribute('data-scene')==='open'){
+        /* opens over the first 60% of the hold, then stays open */
+        var t=Math.min(1,p/0.6); s.style.setProperty('--q',(t*t*(3-2*t)).toFixed(4));
+      }else if(s.getAttribute('data-scene')==='steps'){
+        var items=s.querySelectorAll('.list li'), segs=s.querySelectorAll('.segs i');
+        var i=Math.min(items.length-1,Math.floor(p*items.length));
+        if(s._i===i)return; s._i=i;
+        [].forEach.call(items,function(li,k){li.classList.toggle('on',k===i);li.classList.toggle('was',k<i)});
+        [].forEach.call(segs,function(el,k){el.classList.toggle('on',k<=i)});
+        var n=s.querySelector('.count .n'); if(n)n.textContent=i+1;
+      }
+    });
   }
   var tick=false;
-  function onScroll(){ if(tick)return; tick=true; requestAnimationFrame(function(){tick=false;paintBar();zoom()}) }
-  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); paintBar(); zoom();
+  function onScroll(){ if(tick)return; tick=true; requestAnimationFrame(function(){tick=false;paintBar();playScenes()}) }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',function(){planScenes();scenes.forEach(function(s){s._i=-1});onScroll()});
+  planScenes(); paintBar(); playScenes();
+
+  /* films: sources load as a film nears the screen; it plays while visible and pauses when it leaves */
+  var films=[].slice.call(document.querySelectorAll('video.lazy'));
+  function arm(v){
+    if(v._armed)return; v._armed=true;
+    [].forEach.call(v.querySelectorAll('source[data-src]'),function(s){s.src=s.getAttribute('data-src')});
+    v.load();
+  }
+  if(reduce||!('IntersectionObserver' in window)){
+    films.forEach(function(v){v.controls=true;v.preload='metadata';arm(v)});
+  }else{
+    var fio=new IntersectionObserver(function(es){es.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){arm(v);var pr=v.play();if(pr&&pr.catch)pr.catch(function(){v.controls=true})}
+      else if(v._armed)v.pause();
+    })},{rootMargin:'160px 0px',threshold:0.01});
+    films.forEach(function(v){fio.observe(v)});
+  }
+
+  /* frames that load something live only when asked */
+  [].forEach.call(document.querySelectorAll('.embed'),function(box){
+    var btn=box.querySelector('button'); if(!btn)return;
+    btn.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=box.getAttribute('data-src'); f.title=box.getAttribute('data-title')||'Live demo';
+      f.allow='fullscreen; gamepad; autoplay'; f.setAttribute('allowfullscreen','');
+      var frame=box.querySelector('.frame'); frame.innerHTML=''; frame.appendChild(f); f.focus();
+    });
+  });
+
+  /* string art: a real plan from the solver, drawn one turn at a time */
+  (function(){
+    var cv=document.getElementById('st-canvas'), src=document.getElementById('st-data'); if(!cv||!src)return;
+    var data; try{data=JSON.parse(src.textContent)}catch(e){return}
+    var pins=data.pins, seq=data.sequence, total=seq.length-1;
+    var ctx=cv.getContext('2d'), S=cv.width, drawn=0, playing=false, raf=0;
+    var seek=document.getElementById('st-seek'), btn=document.getElementById('st-play');
+    var nEl=document.getElementById('st-n'), pinEl=document.getElementById('st-pin');
+    var fmt=function(n){return n.toLocaleString('en-US')};
+    document.getElementById('st-total').textContent=fmt(total); seek.max=total;
+    if(data.thread_m)document.getElementById('st-m').textContent=fmt(data.thread_m);
+    /* the thread is far thinner than a pixel at this size, so its width becomes opacity */
+    var w=data.thread_mm/data.board_mm*S, alpha=Math.min(1,Math.max(0.12,w*1.15)), lw=Math.max(1,w);
+    function base(){
+      ctx.setTransform(1,0,0,1,0,0); ctx.globalAlpha=1; ctx.clearRect(0,0,S,S);
+      ctx.fillStyle='#f3f3f3'; ctx.beginPath(); ctx.arc(S/2,S/2,S/2-2,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#0a0a0a';
+      for(var i=0;i<pins.length;i++){ctx.beginPath();ctx.arc(pins[i][0]*S,pins[i][1]*S,S/560,0,Math.PI*2);ctx.fill()}
+      ctx.strokeStyle='#0a0a0a'; ctx.lineWidth=lw; ctx.globalAlpha=alpha;
+    }
+    function lines(from,to){
+      ctx.beginPath();
+      for(var i=from;i<to;i++){var a=pins[seq[i]],b=pins[seq[i+1]];ctx.moveTo(a[0]*S,a[1]*S);ctx.lineTo(b[0]*S,b[1]*S)}
+      ctx.stroke();
+    }
+    function show(){nEl.textContent=fmt(drawn);pinEl.textContent=seq[Math.min(drawn+1,total)];seek.value=drawn}
+    function to(n){n=Math.max(0,Math.min(total,n)); if(n<drawn){base();drawn=0} lines(drawn,n); drawn=n; show()}
+    function label(){btn.textContent=playing?'Pause':(drawn>=total?'Replay':'Play');btn.setAttribute('aria-pressed',playing?'true':'false')}
+    function step(){
+      if(!playing)return;
+      /* slow enough at first to see single turns, then quicker as the picture fills in */
+      to(drawn+(drawn<120?1:drawn<600?3:6));
+      if(drawn>=total){playing=false;label();return}
+      raf=requestAnimationFrame(step);
+    }
+    function play(){if(playing)return; if(drawn>=total)to(0); playing=true;label();raf=requestAnimationFrame(step)}
+    function pause(){playing=false;cancelAnimationFrame(raf);label()}
+    btn.addEventListener('click',function(){cv._user=true; playing?pause():play()});
+    seek.addEventListener('input',function(){cv._user=true;pause();to(+seek.value)});
+    base(); show(); label();
+    if(reduce||!('IntersectionObserver' in window)){to(total);label();return}
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){if(!cv._user&&drawn<total)play()}else if(playing){pause()}
+    })},{threshold:0.35}).observe(cv);
+  })();
 
   /* entrances */
   var rvs=[].slice.call(document.querySelectorAll('.rv'));

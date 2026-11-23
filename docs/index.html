@@ -111,14 +111,9 @@ dl{margin:0}
 
 /* pipeline */
 .pipe h2{grid-column:1/13}
-.pipe .tell{grid-column:1/6}
-.pipe .flows{grid-column:6/10}
+.pipe .tell{grid-column:1/8}
 .pipe .schema{grid-column:10/13;grid-row:2/4}
 .pipe h2{margin-bottom:clamp(24px,3vw,44px)}
-.flows ol{margin:0;padding:0 0 0 1.4em;font-size:var(--step-lead);line-height:1.3;font-weight:500}
-.flows li{padding:7px 0 7px 6px}
-.flows li::marker{font-weight:400;color:var(--soft);font-variant-numeric:tabular-nums}
-.flows p{margin-bottom:14px}
 .schema img{width:100%;max-width:300px}
 .nums{grid-column:1/10;align-self:end;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin-top:clamp(48px,6vw,88px)}
 .nums dt{font-family:var(--display);font-weight:900;font-size:var(--step-head);letter-spacing:-0.03em;line-height:0.92}
@@ -149,18 +144,93 @@ dl{margin:0}
 .panel .links{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:20px}
 .panel .more{grid-column:1/13;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,40px) var(--gap);margin-top:12px}
 .panel .more img{width:100%;aspect-ratio:141/100;object-fit:cover;object-position:left top}
+.panel .more.one{grid-template-columns:minmax(0,1fr)}
+.panel .pic.tall{max-width:290px}
 .panel.swap{animation:swap .35s var(--ease)}
 @keyframes swap{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* moving pictures */
+video{display:block;width:100%;height:auto}
+
+/* scenes: a tall section whose stage holds still while the page scrolls past it.
+   Without script, on reduced motion, and where a scene rests on phones, it is an ordinary block. */
+.scene .stage{padding-left:max(var(--m),env(safe-area-inset-left,0px));padding-right:max(var(--m),env(safe-area-inset-right,0px))}
+.scene.live{height:calc((var(--hold,1) + 1) * 100svh)}
+.scene.live .stage{position:sticky;top:0;height:100svh;overflow:hidden}
+
+/* film: a window that grows to the whole screen */
+.film .cap{margin-top:10px;color:var(--soft)}
+.film.live .stage{display:grid;place-items:center;padding-inline:0}
+.film.live .win{width:min(100%,calc(100svh * 16 / 9));aspect-ratio:16/9;transform:scale(calc(.58 + var(--q,0) * .42));will-change:transform}
+.film.live video{height:100%;object-fit:cover}
+.film.live .cap{position:absolute;left:max(var(--m),env(safe-area-inset-left,0px));bottom:16px;margin:0;opacity:calc(1 - var(--q,0) * 1.6)}
+
+/* steps: the daily run, one step per stretch of scroll */
+.steps .k{margin-bottom:28px}
+.steps .list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px var(--gap)}
+.steps .list b{display:block;font-weight:500;font-size:var(--step-lead);line-height:1.25}
+.steps .list span{display:block;color:var(--soft);margin-top:4px;max-width:30rem}
+.steps .foot{display:none}
+.steps:not(.live){padding-bottom:clamp(72px,11vw,168px)}
+.steps.live .stage{display:grid;grid-template-rows:auto 1fr auto;padding-top:calc(var(--bar) + clamp(24px,4vw,56px));padding-bottom:clamp(24px,4vw,56px)}
+.steps.live .k{margin:0}
+.steps.live .list{grid-template-columns:minmax(0,1fr);align-content:center;gap:0}
+.steps.live .list li{grid-area:1/1;opacity:0;transform:translateY(48px);transition:opacity .4s var(--ease),transform .6s var(--ease)}
+.steps.live .list li.was{transform:translateY(-48px)}
+.steps.live .list li.on{opacity:1;transform:none}
+.steps.live .list b{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-0.035em;line-height:.9;font-size:clamp(2.5rem,6.6vw,6.75rem)}
+.steps.live .list span{font-size:var(--step-lead);line-height:1.36;color:var(--i);margin-top:clamp(16px,2vw,28px);max-width:34rem}
+.steps.live .foot{display:flex;align-items:center;gap:var(--gap)}
+.steps.live .count{white-space:nowrap;font-weight:500}
+.steps.live .segs{flex:1;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.steps.live .segs i{height:8px;background:var(--tone);transition:background-color .3s}
+.steps.live .segs i.on{background:var(--i)}
+
+/* string art: a real plan, drawn turn by turn */
+.strings .tell{grid-column:1/6}
+.strings .board{grid-column:7/13}
+.strings h2{margin-bottom:clamp(24px,3vw,44px)}
+.strings canvas{display:block;width:100%;height:auto;aspect-ratio:1}
+.strings .ctl{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:32px}
+.strings .ctl .btn{min-width:6.5rem;justify-content:center;border:0;cursor:pointer;font-family:inherit}
+.strings input[type=range]{flex:1 1 180px;min-height:44px;margin:0;accent-color:var(--ink)}
+.strings .now{flex-basis:100%;font-weight:500}
+.strings .src{display:flex;gap:16px;align-items:end;margin-top:40px}
+.strings .src img{width:112px;aspect-ratio:1;object-fit:cover}
+.strings .src figcaption{margin:0;max-width:18rem}
+
+/* a frame that loads something live when asked */
+.embed .frame{position:relative;aspect-ratio:16/9;background:var(--black);overflow:hidden}
+.embed .frame img,.embed .frame iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.embed .frame .btn{position:absolute;left:20px;bottom:20px;border:0;cursor:pointer;font-family:inherit;background:var(--white);color:var(--ink)}
+.embed .frame .btn:hover{background:var(--surface)}
 
 /* buoy */
 .buoy .h{grid-column:1/7}
 .buoy .l{grid-column:7/13;align-self:end}
-.buoy .shots{grid-column:1/13;display:grid;grid-template-columns:minmax(0,3.55fr) minmax(0,1fr);gap:var(--gap);margin-block:clamp(40px,5vw,72px);align-items:start}
-.drift{overflow:hidden}
-.drift img{width:100%;transform:scale(var(--z,1));transform-origin:50% 30%;will-change:transform}
-.buoy .body{grid-column:1/7}
-.buoy .bf{grid-column:8/13}
+.buoy .top{padding-bottom:clamp(40px,5vw,72px)}
+.buoy .rest{padding-top:clamp(48px,6vw,88px)}
+.buoy .ph{grid-column:1/4;grid-row:1/3}
+.buoy .body{grid-column:5/11}
+.buoy .bf{grid-column:5/13;margin-top:clamp(40px,5vw,64px)}
+.buoy .bf.kv2{grid-template-columns:repeat(3,minmax(0,1fr))}
 .kv2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px var(--gap)}
+
+/* quiet depth: scroll-linked drift where the browser can do it without script */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .hero h1{animation:recede linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+    .phones figure img{animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    .phones figure:nth-child(odd) img{--dy:26px}
+    .phones figure:nth-child(even) img{--dy:-26px}
+    .phones figcaption{margin-top:38px}
+    .poster li:nth-child(odd) .w{animation:slide linear both;animation-timeline:view();animation-range:entry 0% cover 45%;--dx:-3%}
+    .poster li:nth-child(even) .w{animation:slide linear both;animation-timeline:view();animation-range:entry 0% cover 45%;--dx:3%}
+  }
+}
+@keyframes recede{to{transform:translateY(-10%) scale(.95);opacity:.25}}
+@keyframes drift{from{transform:translateY(var(--dy,0))}to{transform:translateY(calc(var(--dy,0) * -1))}}
+@keyframes slide{from{transform:translateX(var(--dx,0))}to{transform:none}}
 .kv2 dt{font-size:var(--step-small);color:var(--soft)}
 .kv2 dd{margin:2px 0 0;font-weight:500;line-height:1.35}
 
@@ -215,19 +285,22 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   html{scroll-behavior:auto}
   .js .rv{opacity:1;transform:none}
   .js .rv.in{transition:none}
-  .drift img{transform:none}
   .panel.swap{animation:none}
   .spine,.phones figure,.btn{transition:none}
 }
 
 @media (max-width:900px){
-  .about .facts,.about .say,.about .rec-word,.about .recs,.pipe .tell,.pipe .flows,.pipe .schema,.buoy .h,.buoy .l,.buoy .body,.buoy .bf,.house .tell,.house .phones,.job .figs,.job .say,.record .h,.record .ph{grid-column:1/13}
+  .about .facts,.about .say,.about .rec-word,.about .recs,.pipe .tell,.pipe .schema,.buoy .h,.buoy .l,.buoy .body,.buoy .bf,.buoy .ph,.strings .tell,.strings .board,.house .tell,.house .phones,.job .figs,.job .say,.record .h,.record .ph{grid-column:1/13}
   .about .say{grid-row:1}
   .about .facts{margin-top:40px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
   .headshot{margin:0}
   .about .rec-word{margin-top:56px}
   .about .recs{margin-top:16px}
-  .pipe .flows,.pipe .schema{margin-top:44px}
+  .pipe .schema{margin-top:44px}
+  .strings .board{margin-top:48px}
+  .buoy .ph{grid-row:auto;max-width:300px}
+  .buoy .body{margin-top:40px}
+  .steps .list{grid-template-columns:minmax(0,1fr)}
   .pipe .schema{grid-row:auto}
   .nums{grid-column:1/13}
   .schema img{max-width:240px}
@@ -258,8 +331,8 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   .poster .w{font-size:12vw;display:block}
   .poster .d{display:block;text-align:left;white-space:normal;margin:6px 0 22px;font-size:1rem}
   .panel .more{grid-template-columns:1fr}
-  .buoy .shots{grid-template-columns:1fr}
-  .buoy .shots figure:last-child{max-width:60%}
+  .buoy .bf.kv2{grid-template-columns:1fr 1fr}
+  .buoy .ph{max-width:62%}
   .house .phones{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
   .kv2{grid-template-columns:1fr 1fr}
   /* record table becomes two-line blocks */
@@ -364,19 +437,6 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
         <p class="rv" style="--d:4"><a class="link" href="https://github.com/jbarnell1/KHEL_WGS_SARS_CoV_2">Read the code on GitHub</a></p>
       </div>
     </div>
-    <div class="flows rv" style="--d:2">
-      <p class="soft">The daily run, start to finish</p>
-      <ol>
-        <li>Import demographics</li>
-        <li>Parse run statistics</li>
-        <li>Compile the FASTA files</li>
-        <li>Parse Nextclade results</li>
-        <li>Parse Pangolin results</li>
-        <li>Build the epidemiology report</li>
-        <li>Send the report</li>
-        <li>Build the Nextstrain report</li>
-      </ol>
-    </div>
     <figure class="schema rv" style="--d:3">
       <img src="img/khel-schema.webp" width="298" height="758" loading="lazy" alt="Column list of the pipeline's results table in SQL Server, from sample number and lineage to coverage and run dates">
       <figcaption>The results table, from the repository's own documentation.</figcaption>
@@ -387,6 +447,25 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
       <div class="rv" style="--d:2"><dt class="tnum">3+</dt><dd>hours of hand work saved on every run</dd></div>
       <div class="rv" style="--d:3"><dt>MIT</dt><dd>licence, open to any state lab</dd></div>
     </dl>
+  </div>
+  <div class="scene steps" data-scene="steps" style="--hold:3" aria-label="The daily run, step by step">
+    <div class="stage">
+      <p class="k soft">The daily run, start to finish</p>
+      <ol class="list">
+        <li><b>Import demographics</b><span>Patient details for each sample come out of the lab's Oracle records system.</span></li>
+        <li><b>Parse run statistics</b><span>Quality figures are read from each sequencer run.</span></li>
+        <li><b>Compile the FASTA files</b><span>The sequences from a run are gathered into one file.</span></li>
+        <li><b>Parse Nextclade results</b><span>Clade calls are read from Nextclade.</span></li>
+        <li><b>Parse Pangolin results</b><span>Lineage calls are read from Pangolin.</span></li>
+        <li><b>Build the epidemiology report</b><span>Everything is joined into the report the state epidemiologists need.</span></li>
+        <li><b>Send the report</b><span>The report goes to the epidemiologists over SFTP.</span></li>
+        <li><b>Build the Nextstrain report</b><span>A second file is prepared for the state's Nextstrain build.</span></li>
+      </ol>
+      <div class="foot" aria-hidden="true">
+        <p class="count tnum"><span class="n">1</span> of 8</p>
+        <div class="segs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -431,20 +510,52 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   </div>
 </section>
 
-<section class="band f-navy buoy" id="buoy">
+<section class="band strings" id="strings">
   <div class="wrap grid">
-    <h2 class="h rv">Buoy Money counts up</h2>
-    <p class="l lead rv" style="--d:1">Most budgets start full and drain. In Buoy Money each category earns a daily allowance, so the number you see is what you have earned minus what you have spent.</p>
-    <div class="shots">
-      <figure class="rv">
-        <div class="drift"><img src="img/buoy-dashboard.webp" width="1800" height="1125" loading="lazy" alt="Buoy Money dashboard on desktop showing net worth, cash flow, upcoming bills, savings and a household budget"></div>
-        <figcaption>The dashboard, with an invented household.</figcaption>
-      </figure>
-      <figure class="rv" style="--d:1">
-        <img src="img/buoy-phone.webp" width="520" height="1125" loading="lazy" alt="Buoy Money on a phone: the count-up view, where Groceries has earned $289.33 by day 14 of 30">
-        <figcaption>Count-up on a phone.</figcaption>
+    <div class="tell">
+      <h2 class="rv">One long thread</h2>
+      <p class="lead rv" style="--d:1">String Art Studio turns a photo into a build plan: one continuous thread wound between 240 pins. This is a real plan from its solver, drawn here turn by turn.</p>
+      <div class="ctl rv" style="--d:2">
+        <button class="btn" type="button" id="st-play" aria-pressed="false">Play</button>
+        <input type="range" id="st-seek" min="0" max="3000" value="0" step="1" aria-label="Turns drawn">
+        <p class="now tnum"><span id="st-n">0</span> of <span id="st-total">3,000</span> turns. Next pin: <span id="st-pin">0</span></p>
+      </div>
+      <figure class="src rv" style="--d:3">
+        <img src="img/strings-source.webp" width="336" height="336" loading="lazy" alt="The sample portrait the plan was made from">
+        <figcaption>The photo it started from, a sample that ships with the project. The face is AI-generated, not a real person. The finished piece would take <span id="st-m">1,559</span> metres of thread.</figcaption>
       </figure>
     </div>
+    <div class="board rv" style="--d:1">
+      <canvas id="st-canvas" width="1400" height="1400" role="img" aria-label="A round board of 240 pins with a portrait building up from straight lines of thread"></canvas>
+    </div>
+  </div>
+</section>
+<script type="application/json" id="st-data">{"pins":[[0.5008,0.0164],[0.5108,0.0165],[0.5218,0.0169],[0.5353,0.0177],[0.5469,0.0187],[0.5647,0.0207],[0.5754,0.0223],[0.5895,0.0248],[0.6012,0.0271],[0.6123,0.0296],[0.6272,0.0334],[0.6406,0.0373],[0.6484,0.0397],[0.6622,0.0444],[0.6751,0.0492],[0.6883,0.0545],[0.6966,0.0582],[0.7053,0.0621],[0.7208,0.0697],[0.7307,0.075],[0.7443,0.0826],[0.753,0.0879],[0.7602,0.0924],[0.777,0.1036],[0.7852,0.1095],[0.7969,0.1183],[0.8042,0.124],[0.8165,0.1344],[0.8246,0.1415],[0.8352,0.1514],[0.8412,0.1572],[0.8519,0.1683],[0.8619,0.1792],[0.8653,0.1831],[0.8772,0.1973],[0.8826,0.2041],[0.8914,0.2159],[0.8977,0.2249],[0.9053,0.2362],[0.9143,0.2505],[0.9183,0.2572],[0.9243,0.268],[0.9292,0.2772],[0.9376,0.2941],[0.9416,0.3029],[0.9477,0.3171],[0.9524,0.3291],[0.9557,0.3382],[0.9596,0.3496],[0.9632,0.3611],[0.9662,0.3715],[0.9701,0.3864],[0.9737,0.4026],[0.975,0.4093],[0.9782,0.428],[0.9794,0.4364],[0.9806,0.446],[0.9821,0.4621],[0.9831,0.4779],[0.9834,0.4871],[0.9836,0.4964],[0.9834,0.5135],[0.983,0.5237],[0.9822,0.5362],[0.9807,0.5532],[0.9791,0.5657],[0.9779,0.5738],[0.9749,0.5911],[0.9732,0.6],[0.9694,0.6163],[0.9678,0.6228],[0.9629,0.6399],[0.9589,0.6527],[0.9554,0.6628],[0.9517,0.6727],[0.9459,0.6873],[0.9412,0.6979],[0.9378,0.7054],[0.9315,0.7183],[0.924,0.7327],[0.9189,0.7416],[0.9142,0.7497],[0.9068,0.7615],[0.8987,0.7737],[0.8924,0.7826],[0.8845,0.7934],[0.8774,0.8024],[0.8667,0.8153],[0.8602,0.8227],[0.8529,0.8306],[0.8427,0.8412],[0.8336,0.8501],[0.8234,0.8596],[0.8151,0.8669],[0.8072,0.8735],[0.796,0.8824],[0.7817,0.8931],[0.7757,0.8973],[0.7642,0.9051],[0.7512,0.9132],[0.7409,0.9193],[0.7331,0.9237],[0.7206,0.9304],[0.7072,0.937],[0.6967,0.9418],[0.6827,0.9478],[0.6732,0.9515],[0.6597,0.9565],[0.6505,0.9596],[0.6369,0.9638],[0.6223,0.9679],[0.6092,0.9711],[0.6014,0.9729],[0.5854,0.976],[0.5776,0.9773],[0.561,0.9797],[0.5483,0.9812],[0.5409,0.9819],[0.5269,0.9829],[0.5099,0.9835],[0.4997,0.9836],[0.4879,0.9835],[0.4777,0.9831],[0.4607,0.982],[0.4491,0.9809],[0.4357,0.9793],[0.4274,0.9781],[0.4142,0.9759],[0.3961,0.9723],[0.3869,0.9702],[0.3721,0.9664],[0.3609,0.9632],[0.3493,0.9595],[0.3397,0.9563],[0.3257,0.9511],[0.3178,0.948],[0.3065,0.9432],[0.2891,0.9352],[0.2814,0.9314],[0.271,0.926],[0.259,0.9193],[0.249,0.9134],[0.2358,0.9051],[0.224,0.8971],[0.2152,0.8908],[0.2066,0.8844],[0.1982,0.8779],[0.1875,0.8691],[0.174,0.8572],[0.1683,0.8519],[0.1558,0.8397],[0.1474,0.831],[0.1428,0.826],[0.1309,0.8124],[0.1245,0.8047],[0.115,0.7926],[0.1068,0.7815],[0.103,0.7761],[0.0942,0.763],[0.0886,0.7542],[0.0798,0.7395],[0.0743,0.7295],[0.0697,0.7208],[0.0635,0.7082],[0.0578,0.6959],[0.0537,0.6862],[0.0495,0.6759],[0.0448,0.6634],[0.0394,0.6473],[0.0371,0.64],[0.0335,0.6273],[0.0298,0.6132],[0.0268,0.5998],[0.0252,0.5916],[0.0223,0.5755],[0.0206,0.5639],[0.0187,0.5471],[0.0178,0.5372],[0.017,0.5241],[0.0165,0.51],[0.0164,0.5002],[0.0167,0.4839],[0.0172,0.4713],[0.0177,0.4641],[0.019,0.4494],[0.0203,0.439],[0.0219,0.4276],[0.0249,0.4098],[0.027,0.3995],[0.0294,0.3888],[0.0331,0.3741],[0.0358,0.3645],[0.0407,0.3485],[0.0452,0.3355],[0.0488,0.3259],[0.0522,0.3173],[0.0589,0.3017],[0.0646,0.2895],[0.0696,0.2796],[0.0735,0.2721],[0.0818,0.2572],[0.0877,0.2472],[0.0936,0.2379],[0.1019,0.2254],[0.1091,0.2152],[0.1168,0.205],[0.1236,0.1963],[0.1328,0.1853],[0.1427,0.1741],[0.1471,0.1693],[0.1599,0.1562],[0.168,0.1484],[0.1791,0.1382],[0.1872,0.1312],[0.1962,0.1237],[0.2074,0.115],[0.2155,0.1089],[0.2273,0.1006],[0.2346,0.0957],[0.2476,0.0875],[0.2577,0.0815],[0.2666,0.0765],[0.2777,0.0705],[0.2904,0.0642],[0.3036,0.0581],[0.3125,0.0542],[0.3248,0.0492],[0.3386,0.0441],[0.351,0.0399],[0.3607,0.0369],[0.3713,0.0338],[0.3889,0.0293],[0.3985,0.0272],[0.4092,0.025],[0.4233,0.0225],[0.4348,0.0208],[0.4526,0.0187],[0.4627,0.0178],[0.4774,0.0169],[0.4883,0.0165]],"sequence":[0,138,238,136,235,134,232,133,233,131,228,126,227,127,224,122,229,125,228,130,227,128,228,124,229,123,230,122,231,110,234,114,238,118,222,126,224,128,226,126,229,119,1,117,239,119,221,99,222,119,230,124,227,131,232,122,3,121,229,127,228,102,227,125,230,102,229,131,235,130,236,117,238,119,232,121,230,104,229,132,227,129,226,127,223,126,6,141,5,123,228,122,221,100,219,99,223,128,7,109,234,119,3,124,232,111,234,117,0,115,233,121,231,134,233,119,0,137,238,115,234,131,237,119,231,123,224,125,226,130,229,128,19,113,16,112,19,110,9,109,235,110,233,117,237,115,1,136,236,119,235,128,225,134,224,124,231,125,223,129,228,103,231,117,2,119,224,99,220,119,12,112,17,113,239,115,7,141,22,142,7,108,5,109,8,128,230,120,232,123,227,122,15,113,18,112,20,113,234,121,221,125,222,116,3,140,232,117,235,115,16,114,233,123,226,124,223,130,9,108,2,122,226,131,223,98,221,117,7,114,237,138,25,146,28,147,25,149,30,152,32,150,30,148,28,150,27,146,29,145,28,149,86,159,84,160,83,161,84,158,86,157,93,158,85,160,86,154,90,158,87,155,39,154,91,200,92,202,93,200,94,205,96,216,111,19,109,6,124,225,136,237,118,233,139,232,132,231,128,237,113,238,128,232,141,8,108,235,111,17,124,15,119,4,109,2,137,1,139,230,127,222,115,18,114,12,120,229,129,224,121,228,140,7,125,232,115,236,121,226,133,225,135,18,110,237,137,4,106,239,116,9,107,17,114,0,122,233,120,13,112,234,118,230,141,227,119,9,114,15,112,4,107,18,109,211,110,17,108,18,129,225,132,230,126,231,130,232,118,0,116,237,112,14,114,10,128,6,115,3,109,17,106,9,115,230,140,233,124,221,126,5,137,230,133,228,142,230,130,237,133,231,138,235,121,227,140,235,113,0,121,12,109,10,130,234,123,235,118,236,139,228,141,231,131,230,138,239,118,3,110,7,105,10,112,7,118,229,133,234,143,237,124,234,128,1,116,2,118,9,112,3,107,12,104,17,105,13,114,6,106,5,115,4,110,15,109,14,100,207,105,18,106,1,120,231,127,225,123,223,122,222,124,235,120,238,123,221,118,1,140,231,142,227,134,228,138,3,113,21,134,234,132,233,125,235,122,234,136,233,138,232,144,230,143,8,115,2,120,236,116,238,122,225,121,16,108,10,110,12,115,10,104,15,102,10,106,12,135,3,106,15,101,14,115,15,100,218,96,160,82,161,85,159,83,162,82,163,83,158,89,157,87,154,89,152,90,153,34,154,36,153,91,152,87,160,89,155,86,161,81,162,84,157,85,155,42,156,44,155,90,157,94,153,41,155,91,150,87,159,82,164,85,163,84,155,38,150,31,146,230,129,231,139,227,120,0,136,2,114,236,123,3,108,209,107,7,119,6,118,12,130,233,128,239,137,232,127,234,125,225,130,5,112,212,110,6,108,14,110,236,138,226,140,5,128,9,127,233,142,235,116,5,136,239,120,5,114,20,111,15,107,10,118,8,110,210,111,14,105,15,99,217,113,10,131,225,120,3,136,232,143,235,133,224,135,1,121,238,125,15,103,17,133,9,143,228,132,236,128,3,137,228,144,231,143,233,129,234,126,236,122,237,142,236,134,230,145,83,164,84,170,85,162,96,157,91,149,87,153,89,149,92,203,93,11,105,6,112,1,108,12,103,10,117,12,126,232,129,235,137,234,141,233,135,15,108,13,109,210,107,14,99,207,107,8,112,236,124,0,128,12,111,18,104,14,98,219,122,5,119,8,130,238,134,5,121,222,123,2,138,229,139,226,136,230,147,87,161,96,158,88,157,52,155,45,156,43,155,94,152,92,157,51,155,92,153,86,172,85,167,86,150,89,195,90,197,91,158,92,150,25,134,0,123,1,122,4,120,228,145,231,135,236,137,6,113,12,116,7,106,13,110,5,117,3,131,238,124,220,120,10,111,9,132,235,127,5,131,236,140,234,138,227,136,4,124,12,101,16,103,13,115,217,98,15,117,8,104,13,113,8,106,14,102,17,115,224,98,157,50,155,47,156,86,169,85,173,84,145,235,135,228,117,6,122,239,114,235,141,226,119,215,118,226,120,6,107,1,138,28,151,94,149,90,159,88,160,90,198,91,201,92,154,53,155,98,13,97,14,113,1,131,0,140,238,126,225,137,229,144,235,112,210,105,9,131,12,133,236,125,1,124,5,118,13,99,157,95,149,93,153,96,14,117,230,103,223,120,221,96,155,55,154,85,166,86,163,87,166,84,169,87,145,232,142,234,135,232,147,235,126,3,134,237,132,239,124,7,80,4,128,2,110,20,115,213,112,215,96,149,232,146,234,139,2,130,15,123,220,121,4,117,11,110,16,106,209,110,216,97,206,99,155,40,153,88,161,98,158,94,11,95,158,76,157,46,155,48,189,49,155,37,150,90,196,91,11,107,5,125,4,134,239,141,236,144,234,143,238,139,3,132,1,134,8,105,12,123,4,108,234,116,217,95,155,54,157,78,160,81,164,86,175,85,171,86,152,93,150,95,14,103,11,114,19,115,219,96,148,234,145,89,159,92,11,134,2,121,6,123,223,124,2,141,229,143,236,113,22,131,4,138,5,113,9,104,3,141,237,135,239,139,235,146,229,142,239,127,237,140,85,156,92,204,97,148,33,149,88,154,50,191,51,154,93,155,57,157,43,183,87,181,86,162,87,143,25,199,94,148,98,153,95,148,232,150,94,202,27,152,31,149,234,147,236,129,8,120,222,117,9,102,16,109,11,119,13,101,163,100,153,99,148,230,135,238,132,4,127,7,121,10,119,223,118,4,130,0,139,237,143,84,171,87,156,88,155,58,157,48,191,88,150,96,225,117,13,111,11,90,151,234,150,34,144,233,145,236,109,213,114,8,137,7,85,174,87,167,9,125,6,127,0,133,2,107,13,102,231,136,229,140,88,179,86,168,85,165,86,177,87,164,6,104,16,111,6,116,10,92,145,90,142,0,135,2,132,5,129,1,142,238,141,0,144,237,146,233,148,236,146,89,151,88,9,121,223,102,7,130,11,112,211,108,207,31,206,30,207,98,147,101,15,131,6,78,158,72,4,140,89,156,93,144,238,145,86,178,88,162,98,215,117,226,137,233,126,7,123,8,86,170,10,91,159,79,7,103,4,129,239,133,4,135,229,117,219,118,25,117,22,114,4,105,16,116,13,124,10,122,220,118,227,135,5,139,26,202,91,148,37,153,49,188,87,168,9,126,0,132,226,96,152,88,163,3,69,154,94,143,239,140,84,156,46,186,45,157,56,153,53,157,83,8,101,157,49,231,147,99,150,98,160,1,105,5,161,89,143,3,129,9,122,218,97,221,115,214,118,225,43,184,87,180,86,173,87,165,88,144,239,64,1,143,90,139,4,126,8,87,175,9,124,20,194,52,193,21,114,227,137,231,148,100,13,95,152,98,149,85,8,127,2,131,8,82,157,73,158,81,166,9,177,88,145,85,153,54,233,147,238,146,99,227,133,1,141,94,156,96,13,121,219,119,14,186,87,170,88,143,92,197,21,194,19,116,233,52,156,91,160,92,188,46,189,15,185,87,179,9,82,158,79,157,44,183,91,151,96,154,98,156,90,140,2,106,206,26,203,29,204,100,146,85,147,100,145,237,148,87,146,231,132,7,139,91,185,45,228,47,157,59,153,51,156,48,228,136,224,120,218,94,159,96,143,95,156,237,147,86,176,87,187,47,231,104,4,74,5,165,81,3,142,8,84,154,95,159,98,151,99,149,26,201,27,138,6,133,238,127,236,150,29,207,25,140,87,144,100,217,97,219,114,216,37,219,102,12,125,17,191,49,156,60,152,85,141,89,139,92,216,120,27,200,95,151,65,0,160,93,151,102,148,235,57,237,59,154,99,16,123,10,126,2,143,5,71,158,75,157,2,159,97,215,111,236,152,99,156,58,124,16,100,143,0,147,88,167,6,129,7,111,211,33,151,85,144,89,164,88,168,10,129,2,142,24,198,56,155,61,153,84,146,86,174,9,170,3,105,229,134,6,76,5,103,220,117,214,113,223,117,227,100,150,233,108,19,195,53,192,21,111,212,113,232,132,224,43,228,49,187,14,121,217,94,138,91,161,90,182,87,172,9,178,87,189,50,153,67,131,224,118,228,44,184,92,138,90,10,93,159,99,145,239,131,231,114,218,39,220,116,225,119,228,46,187,93,219,120,11,96,145,101,155,97,156,54,237,61,239,130,3,79,156,77,5,73,153,97,158,99,229,131,7,122,12,129,228,50,156,104,148,238,111,4,141,88,171,11,108,208,25,203,94,201,23,199,91,144,86,140,6,163,96,140,23,143,4,71,154,32,207,26,138,89,162,97,150,237,155,65,131,70,153,102,156,53,151,86,143,101,227,97,12,94,160,2,144,101,229,132,230,46,231,130,228,51,193,94,222,40,220,113,210,34,152,84,147,89,142,101,148,86,142,87,151,63,156,57,154,83,167,10,89,134,226,135,87,141,23,200,21,196,18,116,218,117,216,36,147,29,140,8,103,150,84,149,100,156,41,180,8,125,3,164,96,222,111,185,89,176,9,163,89,148,85,150,238,149,35,219,107,155,70,4,159,75,156,83,155,102,150,64,153,101,158,1,145,98,220,97,157,55,197,24,199,18,189,71,134,88,139,86,7,82,156,56,237,153,62,155,106,156,101,141,86,135,235,136,6,173,88,166,10,169,88,174,5,142,26,144,90,133,233,132,11,104,232,109,7,100,159,61,156,80,157,69,186,44,224,39,225,95,160,99,161,97,151,84,144,102,143,103,229,127,227,130,230,129,237,58,153,42,225,38,154,97,163,90,134,233,152,68,4,171,9,180,89,167,82,145,23,203,98,216,122,13,186,9,181,42,228,131,73,130,1,104,158,52,154,48,190,14,170,12,95,138,88,148,63,239,147,102,149,66,153,106,158,100,155,108,152,62,128,232,130,229,113,216,38,226,115,22,204,21,195,52,237,151,100,157,77,155,104,221,116,21,198,92,140,91,133,231,108,154,44,223,126,227,128,230,48,227,131,232,102,158,74,160,97,138,93,222,98,163,5,172,88,190,50,151,92,12,93,186,91,141,84,142,85,9,183,93,204,26,200,24,196,121,218,99,225,41,220,115,228,128,231,105,221,111,157,71,3,127,224,123,13,128,226,129,21,112,231,45,187,15,190,51,158,54,120,188,72,133,89,165,84,167,2,161,92,147,90,162,99,165,9,100,160,3,119,218,113,226,116,24,140,78,156,105,148,90,141,82,143,6,139,22,203,18,130,233,149,237,136,86,138,96,141,234,133,88,175,5,75,239,148,93,139,87,134,232,103,155,109,8,79,162,80,142,10,110,155,82,144,83,153,60,157,102,154,46,185,94,147,2,67,155,112,180,109,231,51,234,134,19,192,89,168,11,183,88,181,8,81,156,107,16,103,156,108,210,33,212,114,220,42,224,125,223,127,230,131,89,171,106,232,140,27,203,30,147,91,132,69,4,82,152,83,143,85,139,84,135,89,174,65,152,38,227,37,154,237,125,226,102,160,101,5,176,88,142,102,145,2,103,158,58,238,137,1,119,221,38,222,114,226,100,205,24,207,21,123,62,147,95,163,99,14,111,209,109,153,108,7,84,136,236,134,91,131,235,144,81,157,72,134,235,133,68,153,104,172,13,187,9,173,3,121,191,15,195,54,232,141,102,159,101,168,84,130,74,157,104,220,34,219,116,213,117,0,146,83,141,231,129,229,128,14,171,105,155,111,19,113,154,82,142,91,145,26,198,23,202,22,124,225,123,3,177,109,158,57,153,39,221,95,140,233,131,92,154,43,182,111,154,56,126,224,134,86,137,229,41,228,99,166,101,162,95,188,88,136,87,133,232,107,4,102,8,183,42,154,106,0,62,126,226,112,154,47,230,124,224,117,239,158,80,141,9,108,159,103,153,82,147,27,212,32,227,129,234,142,83,140,102,170,91,155,78,5,170,109,151,51,192,49,152,63,121,221,40,154,35,223,122,221,32,210,29,222,30,205,21,138,84,133,92,148,84,134,231,142,230,133,93,147,83,139,2,105,159,106,230,141,103,160,104,233,136,89,178,8,190,47,152,80,155,92,142,235,59,158,77,135,225,105,153,45,232,127,228,52,144,92,134,13,98,164,97,147,105,158,69,133,86,129,225,37,218,118,238,106,5,126,60,158,53,234,146,88,184,119,216,35,227,36,215,114,214,98,218,107,153,91,172,89,166,98,228,100,161,101,154,91,181,11,189,94,132,89,155,113,20,114,229,49,225,101,14,100,162,9,87,137,0,138,226,136,234,131,66,1,117,236,130,235,143,27,205,104,159,111,158,107,148,103,140,80,145,95,142,233,135,234,132,236,135,90,154,100,209,33,228,140,82,146,90,132,88,180,12,167,90,179,114,153,75,6,109,156,55,198,25,206,21,209,24,115,0,118,217,34,227,125,222,126,231,48,187,8,176,91,129,88,156,93,155,87,138,85,136,91,130,86,155,74,6,126,58,236,133,237,134,80,160,106,152,109,10,175,106,169,104,17,111,15,192,12,185,43,156,44,232,129,92,132,95,159,107,160,73,190,21,139,231,140,230,138,83,136,90,155,81,146,94,154,109,150,87,149,88,186,12,197,56,119,222,120,221,112,18,110,152,97,159,78,139,96],"thread_m":1559,"thread_mm":0.25,"board_mm":610.0}</script>
+
+<section class="band f-navy buoy" id="buoy">
+  <div class="wrap grid top">
+    <h2 class="h rv">Buoy Money counts up</h2>
+    <p class="l lead rv" style="--d:1">Most budgets start full and drain. In Buoy Money each category earns a daily allowance, so the number you see is what you have earned minus what you have spent.</p>
+  </div>
+  <div class="scene film" data-scene="open" data-phone="rest" style="--hold:1.5" aria-label="Buoy Money on film">
+    <div class="stage">
+      <figure class="win">
+        <video class="lazy" muted loop playsinline preload="none" poster="media/buoy-film.webp" width="1280" height="720" aria-label="A short film of Buoy Money on a phone: transactions sorted in one tap, a budget that counts up, and a question asked about subscriptions">
+          <source data-src="media/buoy-film.webm" type="video/webm">
+          <source data-src="media/buoy-film.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <p class="cap small">Filmed in the app on a demo account.</p>
+    </div>
+  </div>
+  <div class="wrap grid rest">
+    <figure class="ph rv">
+      <video class="lazy" muted loop playsinline preload="none" poster="media/buoy-phone.webp" width="540" height="960" aria-label="Buoy Money on a phone: the assistant lowers a dining budget and moves a savings goal's date forward">
+        <source data-src="media/buoy-phone.webm" type="video/webm">
+        <source data-src="media/buoy-phone.mp4" type="video/mp4">
+      </video>
+      <figcaption>Asking the assistant to change a budget.</figcaption>
+    </figure>
     <div class="body stack">
       <p class="rv">One Flutter app covers web, Android and iOS, on a .NET 10 and PostgreSQL backend. It connects to banks through Plaid, takes payment through Stripe, and has an MCP server so an AI assistant can read a budget without being able to move money.</p>
       <p class="rv" style="--d:1">The hosted edition is live on the web and Google Play. The same codebase ships as a free self-hosted Docker image, with bank data sealed to the user's own server using HPKE, checked against the test vectors in RFC 9180.</p>
@@ -533,13 +644,13 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
         <h3>Going Down</h3>
         <div class="blurb"><p class="lead">A co-op suspense game for up to eight players. Convicts ride a lift down through a buried city and are paid for instrument readings taken close to things that each obey one unbreakable rule. There are no weapons.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/going-down">Source</a><a class="link" href="https://jbarnell1.github.io/going-down/">Play the first browser version</a></p></div>
         <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Built with</dt><dd>Godot 4, typed GDScript</dd></div><div><dt>Characters</dt><dd>Built and rigged by Blender scripts</dd></div><div><dt>First week</dt><dd>322 commits</dd></div></dl>
-        <figure class="pic"><img src="img/gd-tape.webp" loading="lazy" alt="In-game view with a tape filter: a gaunt figure in a clinic corridor"></figure>
+        <figure class="pic"><img src="img/gd-tape.webp" loading="lazy" alt="In-game view with a tape filter: a gaunt figure in a clinic corridor"></figure><div class="more one"><figure class="embed" data-src="https://jbarnell1.github.io/going-down/" data-title="Going Down, the first browser version"><div class="frame"><img src="img/gd-lineup.webp" loading="lazy" alt=""><button class="btn" type="button">Play it here</button></div><figcaption>The first browser version. It loads from GitHub Pages when you press the button, and it is a large download.</figcaption></figure></div>
       </article>
-      <article class="panel nopic" id="p-scripture">
+      <article class="panel" id="p-scripture">
         <h3>Scripture Solace</h3>
         <div class="blurb"><p class="lead">A pipeline that picks a passage, narrates it, matches music and footage, burns in word-synced subtitles and uploads to YouTube three mornings a week. Passages come only from a hand-curated table, so a verse is never lifted out of its context.</p><p class="links"><a class="link" href="https://www.youtube.com/@scriptureSolace-13354">Watch the channel</a></p></div>
         <dl class="pf kv"><div><dt>When</dt><dd>2024 to now</dd></div><div><dt>Built with</dt><dd>Python, Gemini, ElevenLabs, ffmpeg</dd></div><div><dt>Uploads</dt><dd>417</dd></div><div><dt>Views</dt><dd>About 60,000</dd></div></dl>
-        
+        <figure class="pic tall"><video class="lazy" muted loop playsinline preload="none" poster="media/scripture.webp" width="540" height="960" aria-label="A Scripture Solace short: a psalm narrated over footage, with subtitles that follow each word"><source data-src="media/scripture.webm" type="video/webm"><source data-src="media/scripture.mp4" type="video/mp4"></video><figcaption>One of the shorts, as uploaded. Muted here.</figcaption></figure>
       </article>
       <article class="panel nopic" id="p-homelab">
         <h3>The homelab</h3>
@@ -652,17 +763,115 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
     bar.style.setProperty('--hg',cs.backgroundColor);
     bar.style.setProperty('--hi',cs.color);
   }
-  /* the Buoy dashboard settles from a slight zoom as it scrolls through */
-  var drift=document.querySelector('.drift');
-  function zoom(){
-    if(!drift||reduce)return;
-    var r=drift.getBoundingClientRect(), vh=window.innerHeight;
-    var t=Math.min(1,Math.max(0,(vh-r.top)/(vh+r.height)));
-    drift.firstElementChild.style.setProperty('--z',(1.08-0.08*t).toFixed(4));
+  /* scenes: the stage holds while the scroll plays it. A scene is live only with script, without
+     reduced motion, and (for scenes marked data-phone="rest") on a wide screen. */
+  var scenes=[].slice.call(document.querySelectorAll('.scene'));
+  function planScenes(){
+    var wide=window.innerWidth>=900;
+    scenes.forEach(function(s){
+      var live=root.classList.contains('js')&&!reduce&&(wide||s.getAttribute('data-phone')!=='rest');
+      s.classList.toggle('live',live);
+      if(!live){s.style.removeProperty('--q'); [].forEach.call(s.querySelectorAll('.on,.was'),function(x){x.classList.remove('on','was')})}
+    });
+  }
+  function playScenes(){
+    scenes.forEach(function(s){
+      if(!s.classList.contains('live'))return;
+      var r=s.getBoundingClientRect(), span=r.height-window.innerHeight;
+      var p=span>0?Math.min(1,Math.max(0,-r.top/span)):0;
+      if(s.getAttribute('data-scene')==='open'){
+        /* opens over the first 60% of the hold, then stays open */
+        var t=Math.min(1,p/0.6); s.style.setProperty('--q',(t*t*(3-2*t)).toFixed(4));
+      }else if(s.getAttribute('data-scene')==='steps'){
+        var items=s.querySelectorAll('.list li'), segs=s.querySelectorAll('.segs i');
+        var i=Math.min(items.length-1,Math.floor(p*items.length));
+        if(s._i===i)return; s._i=i;
+        [].forEach.call(items,function(li,k){li.classList.toggle('on',k===i);li.classList.toggle('was',k<i)});
+        [].forEach.call(segs,function(el,k){el.classList.toggle('on',k<=i)});
+        var n=s.querySelector('.count .n'); if(n)n.textContent=i+1;
+      }
+    });
   }
   var tick=false;
-  function onScroll(){ if(tick)return; tick=true; requestAnimationFrame(function(){tick=false;paintBar();zoom()}) }
-  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); paintBar(); zoom();
+  function onScroll(){ if(tick)return; tick=true; requestAnimationFrame(function(){tick=false;paintBar();playScenes()}) }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',function(){planScenes();scenes.forEach(function(s){s._i=-1});onScroll()});
+  planScenes(); paintBar(); playScenes();
+
+  /* films: sources load as a film nears the screen; it plays while visible and pauses when it leaves */
+  var films=[].slice.call(document.querySelectorAll('video.lazy'));
+  function arm(v){
+    if(v._armed)return; v._armed=true;
+    [].forEach.call(v.querySelectorAll('source[data-src]'),function(s){s.src=s.getAttribute('data-src')});
+    v.load();
+  }
+  if(reduce||!('IntersectionObserver' in window)){
+    films.forEach(function(v){v.controls=true;v.preload='metadata';arm(v)});
+  }else{
+    var fio=new IntersectionObserver(function(es){es.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){arm(v);var pr=v.play();if(pr&&pr.catch)pr.catch(function(){v.controls=true})}
+      else if(v._armed)v.pause();
+    })},{rootMargin:'160px 0px',threshold:0.01});
+    films.forEach(function(v){fio.observe(v)});
+  }
+
+  /* frames that load something live only when asked */
+  [].forEach.call(document.querySelectorAll('.embed'),function(box){
+    var btn=box.querySelector('button'); if(!btn)return;
+    btn.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=box.getAttribute('data-src'); f.title=box.getAttribute('data-title')||'Live demo';
+      f.allow='fullscreen; gamepad; autoplay'; f.setAttribute('allowfullscreen','');
+      var frame=box.querySelector('.frame'); frame.innerHTML=''; frame.appendChild(f); f.focus();
+    });
+  });
+
+  /* string art: a real plan from the solver, drawn one turn at a time */
+  (function(){
+    var cv=document.getElementById('st-canvas'), src=document.getElementById('st-data'); if(!cv||!src)return;
+    var data; try{data=JSON.parse(src.textContent)}catch(e){return}
+    var pins=data.pins, seq=data.sequence, total=seq.length-1;
+    var ctx=cv.getContext('2d'), S=cv.width, drawn=0, playing=false, raf=0;
+    var seek=document.getElementById('st-seek'), btn=document.getElementById('st-play');
+    var nEl=document.getElementById('st-n'), pinEl=document.getElementById('st-pin');
+    var fmt=function(n){return n.toLocaleString('en-US')};
+    document.getElementById('st-total').textContent=fmt(total); seek.max=total;
+    if(data.thread_m)document.getElementById('st-m').textContent=fmt(data.thread_m);
+    /* the thread is far thinner than a pixel at this size, so its width becomes opacity */
+    var w=data.thread_mm/data.board_mm*S, alpha=Math.min(1,Math.max(0.12,w*1.15)), lw=Math.max(1,w);
+    function base(){
+      ctx.setTransform(1,0,0,1,0,0); ctx.globalAlpha=1; ctx.clearRect(0,0,S,S);
+      ctx.fillStyle='#f3f3f3'; ctx.beginPath(); ctx.arc(S/2,S/2,S/2-2,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#0a0a0a';
+      for(var i=0;i<pins.length;i++){ctx.beginPath();ctx.arc(pins[i][0]*S,pins[i][1]*S,S/560,0,Math.PI*2);ctx.fill()}
+      ctx.strokeStyle='#0a0a0a'; ctx.lineWidth=lw; ctx.globalAlpha=alpha;
+    }
+    function lines(from,to){
+      ctx.beginPath();
+      for(var i=from;i<to;i++){var a=pins[seq[i]],b=pins[seq[i+1]];ctx.moveTo(a[0]*S,a[1]*S);ctx.lineTo(b[0]*S,b[1]*S)}
+      ctx.stroke();
+    }
+    function show(){nEl.textContent=fmt(drawn);pinEl.textContent=seq[Math.min(drawn+1,total)];seek.value=drawn}
+    function to(n){n=Math.max(0,Math.min(total,n)); if(n<drawn){base();drawn=0} lines(drawn,n); drawn=n; show()}
+    function label(){btn.textContent=playing?'Pause':(drawn>=total?'Replay':'Play');btn.setAttribute('aria-pressed',playing?'true':'false')}
+    function step(){
+      if(!playing)return;
+      /* slow enough at first to see single turns, then quicker as the picture fills in */
+      to(drawn+(drawn<120?1:drawn<600?3:6));
+      if(drawn>=total){playing=false;label();return}
+      raf=requestAnimationFrame(step);
+    }
+    function play(){if(playing)return; if(drawn>=total)to(0); playing=true;label();raf=requestAnimationFrame(step)}
+    function pause(){playing=false;cancelAnimationFrame(raf);label()}
+    btn.addEventListener('click',function(){cv._user=true; playing?pause():play()});
+    seek.addEventListener('input',function(){cv._user=true;pause();to(+seek.value)});
+    base(); show(); label();
+    if(reduce||!('IntersectionObserver' in window)){to(total);label();return}
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){if(!cv._user&&drawn<total)play()}else if(playing){pause()}
+    })},{threshold:0.35}).observe(cv);
+  })();
 
   /* entrances */
   var rvs=[].slice.call(document.querySelectorAll('.rv'));
