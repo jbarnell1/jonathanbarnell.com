@@ -97,6 +97,13 @@ MORE = {
  ],
 }
 
+# a 3D model shown over one of the MORE pictures: image name -> (GLB in media/, spoken label, caption once it is live)
+MODELS = {
+ "listener-board": ("listener-board.glb",
+                    "The Listener circuit board in 3D. Drag, or use the left and right arrow keys, to turn it.",
+                    "The board in 3D, exported from the layout. Drag to turn it."),
+}
+
 # a film in a panel's picture slot: key -> (media stem, width, height, spoken label, caption)
 FILMS = {
  "scripture": ("scripture", 540, 960, "A Scripture Solace short: a psalm narrated over footage, with subtitles that follow each word",
@@ -119,6 +126,17 @@ def spines():
     return "\n".join(out)
 
 
+def more_figure(img, alt, cap):
+    """One picture under a panel. A picture with a 3D model keeps the still as the fallback."""
+    if img in MODELS:
+        glb, say, cap3d = MODELS[img]
+        return (f'<figure class="model" data-model="media/{glb}"><div class="frame3d">'
+                f'<img src="img/{img}.webp" loading="lazy" alt="{e(alt)}">'
+                f'<canvas tabindex="0" role="img" aria-label="{e(say)}"></canvas></div>'
+                f'<figcaption><span class="still">{e(cap)}</span><span class="turn">{e(cap3d)}</span></figcaption></figure>')
+    return f'<figure><img src="img/{img}.webp" loading="lazy" alt="{e(alt)}"><figcaption>{e(cap)}</figcaption></figure>'
+
+
 def panels():
     out = []
     for k, name, label, group, years, blurb, facts, links, img, alt in PROJECTS:
@@ -135,9 +153,7 @@ def panels():
                    f'<source data-src="media/{stem}.webm" type="video/webm"><source data-src="media/{stem}.mp4" type="video/mp4">'
                    f'</video><figcaption>{e(cap)}</figcaption></figure>')
         more = MORE.get(k, [])
-        grid = ('<div class="more">' + "".join(
-            f'<figure><img src="img/{i}.webp" loading="lazy" alt="{e(a)}"><figcaption>{e(c)}</figcaption></figure>'
-            for i, a, c in more) + '</div>') if more else ""
+        grid = ('<div class="more">' + "".join(more_figure(i, a, c) for i, a, c in more) + '</div>') if more else ""
         if k in EMBEDS:
             url, poster, title, button, cap = EMBEDS[k]
             grid += (f'<div class="more one"><figure class="embed" data-src="{e(url)}" data-title="{e(title)}">'
@@ -215,7 +231,7 @@ def main():
         shutil.copyfile(HERE / "img" / name, docs / "img" / name)
     # films and their posters
     (docs / "media").mkdir(exist_ok=True)
-    clips = sorted(set(re.findall(r'"media/([\w.-]+\.(?:webm|mp4|webp))"', page)))
+    clips = sorted(set(re.findall(r'"media/([\w.-]+\.(?:webm|mp4|webp|glb))"', page)))
     for old in (docs / "media").iterdir():
         if old.name not in clips:
             old.unlink()

@@ -24,8 +24,11 @@ out = {
 (HERE / "strings.json").write_text(json.dumps(out, separators=(",", ":")), encoding="utf-8")
 
 im = Image.open(sys.argv[2]).convert("RGB")
-side = min(im.size)
-left, top = (im.width - side) // 2, (im.height - side) // 2
+# the same square the plan was framed on (centre and side as fractions, see PrepSettings)
+prep = plan.get("prep", {})
+side = int(min(im.size) * prep.get("crop_size", 1.0))
+left = int(min(max(im.width * prep.get("crop_cx", 0.5) - side / 2, 0), im.width - side))
+top = int(min(max(im.height * prep.get("crop_cy", 0.5) - side / 2, 0), im.height - side))
 im.crop((left, top, left + side, top + side)).resize((336, 336), Image.LANCZOS).save(
     HERE.parent / "img" / "strings-source.webp", "WEBP", quality=82)
 print(len(pins), "pins,", len(out["sequence"]), "turns,", out["thread_m"], "m of thread;",
