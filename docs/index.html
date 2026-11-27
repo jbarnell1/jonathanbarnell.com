@@ -4,27 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Senior software engineer in Topeka, Kansas. From a state public health lab to AI agent systems, a live budgeting app and a shelf of self-hosted projects.">
+<meta name="theme-color" content="#2436ff">
 <link rel="canonical" href="https://jonathanbarnell.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232436ff'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='17' text-anchor='middle' fill='white'%3EJB%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/red-hat-display-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/red-hat-text.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jonathanbarnell.com/">
 <meta property="og:title" content="Jonathan Barnell">
 <meta property="og:description" content="Senior software engineer in Topeka, Kansas. From a state public health lab to AI agent systems, a live budgeting app and a shelf of self-hosted projects.">
 <meta property="og:image" content="https://jonathanbarnell.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jonathan Barnell, senior software engineer in Topeka, Kansas">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Jonathan Barnell","url":"https://jonathanbarnell.com/","image":"https://jonathanbarnell.com/img/headshot.webp","jobTitle":"Senior software engineer","worksFor":{"@type":"Organization","name":"Alarm.com"},"address":{"@type":"PostalAddress","addressLocality":"Topeka","addressRegion":"KS","addressCountry":"US"},"sameAs":["https://www.linkedin.com/in/jonathanbarnell","https://github.com/jbarnell1"]}</script>
 <title>Jonathan Barnell</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@900&family=Red+Hat+Text:wght@400;500&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"Red Hat Display";font-style:normal;font-weight:900;font-display:swap;src:url(fonts/red-hat-display-900.woff2) format("woff2")}
+@font-face{font-family:"Red Hat Text";font-style:normal;font-weight:400 500;font-display:swap;src:url(fonts/red-hat-text.woff2) format("woff2")}
 /* Layout: poster colour fields, one per chapter. A giant two-ink name, then typographic set pieces; pictures arrive large and few. */
 :root{
   --white:#ffffff; --surface:#f3f3f3; --ink:#0a0a0a; --muted:#5e5e5e;
   --blue:#2436ff; --red:#ff3b1f; --navy:#050a5c; --black:#0a0a0a;
   --display:"Red Hat Display","Arial Black","Segoe UI Black",system-ui,sans-serif;
   --text:"Red Hat Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --step-small:clamp(0.8125rem,0.79rem + 0.1vw,0.875rem);
+  --step-small:clamp(0.875rem,0.85rem + 0.1vw,0.9375rem);
   --step-body:clamp(1.0625rem,1rem + 0.25vw,1.1875rem);
   --step-lead:clamp(1.25rem,1.1rem + 0.7vw,1.625rem);
   --step-head:clamp(2.125rem,1rem + 5vw,5.5rem);
@@ -36,7 +43,7 @@
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:var(--bar)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--bar) + env(safe-area-inset-top,0px))}
 body{margin:0;background:var(--white);color:var(--ink);font-family:var(--text);font-size:var(--step-body);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%;height:auto}
 [hidden]{display:none!important}
@@ -46,13 +53,18 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:900;text-transform:uppe
 h2{font-size:var(--step-head)}
 :focus-visible{outline:3px solid currentColor;outline-offset:3px}
 ::selection{background:var(--ink);color:var(--white)}
+main:focus{outline:none}
+html:not(.js) #st-canvas,html:not(.js) .strings .ctl{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:8px;top:8px;z-index:30;padding:10px 14px;background:var(--ink);color:var(--white);transform:translateY(-300%)}
+.skip:focus{transform:none}
 
 /* fields */
 .band{background:var(--g);color:var(--i);--g:var(--white);--i:var(--ink);--soft:var(--muted);--tone:var(--surface)}
 .f-blue{--g:var(--blue);--i:var(--white);--soft:#e3e6ff;--tone:#1c2bd6}
 .f-red{--g:var(--red);--i:var(--ink);--soft:#2a0d06;--tone:#e8351b}
 .f-navy{--g:var(--navy);--i:var(--white);--soft:#cdd1f7;--tone:#0b1278}
-.f-black{--g:var(--black);--i:var(--white);--soft:#bdbdbd;--tone:#1c1c1c}
+.f-black{--g:var(--black);--i:var(--white);--soft:#d0d0d0;--tone:#1c1c1c}
 .f-surface{--g:var(--surface);--i:var(--ink);--soft:#555555;--tone:#e4e4e4}
 .wrap{padding-left:max(var(--m),env(safe-area-inset-left,0px));padding-right:max(var(--m),env(safe-area-inset-right,0px));padding-block:clamp(72px,11vw,168px)}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
@@ -70,10 +82,13 @@ figcaption{font-size:var(--step-small);margin-top:10px;color:var(--soft)}
 .btn:active{transform:translateY(1px) scale(.98)}
 .link{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;font-weight:500;transition:text-underline-offset .18s var(--ease)}
 .link:hover{text-underline-offset:7px}
+.f-navy .btn,.f-black .btn{background:var(--white);color:var(--ink)}
+.f-navy .btn:hover,.f-black .btn:hover{background:var(--surface)}
+.links .link,.foot .meta .link,td .link,.hero-row .link{display:inline-block;padding-block:10px}
 
 /* bar: takes the ground and ink of the chapter beneath it */
 .bar{position:fixed;inset:0 0 auto 0;z-index:20;height:calc(var(--bar) + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);background:var(--hg,var(--blue));color:var(--hi,var(--white));transition:background-color .3s,color .3s;display:flex;align-items:center;justify-content:space-between;padding-left:max(var(--m),env(safe-area-inset-left,0px));padding-right:max(var(--m),env(safe-area-inset-right,0px));font-size:0.9375rem;font-weight:500}
-.bar a{text-decoration:none;padding:8px 0}
+.bar a{text-decoration:none;padding:12px 0}
 .bar a:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
 .bar nav{display:flex;gap:clamp(14px,2.2vw,32px)}
 
@@ -82,20 +97,21 @@ figcaption{font-size:var(--step-small);margin-top:10px;color:var(--soft)}
 .hero h1{font-size:var(--step-display);line-height:0.84;letter-spacing:-0.035em}
 .hero h1 span{display:block}
 .hero h1 .l2{color:var(--ink)}
-.hero-foot{justify-self:end;width:min(100%,25rem);display:grid;gap:20px;justify-items:start;margin-top:40px}
+.hero-foot{justify-self:end;width:min(100%,27rem);display:grid;gap:20px;justify-items:start;margin-top:40px}
+.hero-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px}
+.hero-links{display:flex;gap:22px}
 
 /* about */
 .about .facts{grid-column:1/5}
 .about .say{grid-column:5/13}
 .about h2{margin-bottom:clamp(24px,3vw,44px)}
-.headshot{width:clamp(120px,14vw,200px);aspect-ratio:1;object-fit:cover;margin-bottom:28px}
+.headshot{width:clamp(140px,22vw,320px);aspect-ratio:1;object-fit:cover;margin-bottom:28px}
 dl{margin:0}
 .kv{display:grid;gap:18px}
 .kv dt{font-size:var(--step-small);color:var(--soft)}
 .kv dd{margin:2px 0 0;font-size:var(--step-body);font-weight:500;line-height:1.35}
-.about .rec-word{grid-column:1/5;margin-top:clamp(64px,8vw,120px);font-weight:500}
-.about .recs{grid-column:5/13;margin-top:clamp(64px,8vw,120px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap) clamp(32px,5vw,64px)}
-.rec h3{font-family:var(--text);font-weight:500;text-transform:none;letter-spacing:0;line-height:1.4;font-size:var(--step-body);margin-bottom:10px}
+.recs{grid-column:1/13;margin-top:clamp(40px,5vw,72px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap) clamp(32px,5vw,64px)}
+.rec h3{font-family:var(--text);font-weight:500;text-transform:none;letter-spacing:0;line-height:1.4;font-size:var(--step-small);color:var(--soft);margin-bottom:10px}
 .rec ul{list-style:none;margin:0;padding:0}
 .rec li{display:flex;justify-content:space-between;gap:16px;padding:7px 0}
 .rec li span:last-child{color:var(--soft);white-space:nowrap}
@@ -107,22 +123,22 @@ dl{margin:0}
 .poster li{display:flex;align-items:baseline;justify-content:space-between;gap:20px}
 .poster .w{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-0.035em;line-height:0.92;font-size:clamp(3rem,10vw,9.5rem);white-space:nowrap;transition:color .2s}
 .poster li:hover .w{color:var(--white)}
-.poster .d{font-size:var(--step-body);font-weight:500;text-align:right;white-space:nowrap}
+.poster .d{flex:0 1 19rem;font-size:var(--step-body);font-weight:500;text-align:right}
 
 /* pipeline */
 .pipe h2{grid-column:1/13}
 .pipe .tell{grid-column:1/8}
-.pipe .schema{grid-column:10/13;grid-row:2/4}
+.pipe .schema{grid-column:10/13;grid-row:2}
 .pipe h2{margin-bottom:clamp(24px,3vw,44px)}
-.schema img{width:100%;max-width:300px}
-.nums{grid-column:1/10;align-self:end;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin-top:clamp(48px,6vw,88px)}
+.schema img{width:100%;max-width:300px;aspect-ratio:4/5;object-fit:cover;object-position:top}
+.nums{grid-column:1/13;align-self:end;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin-top:clamp(48px,6vw,88px)}
 .nums dt{font-family:var(--display);font-weight:900;font-size:var(--step-head);letter-spacing:-0.03em;line-height:0.92}
 .nums dd{margin:10px 0 0;color:var(--soft);max-width:18rem}
 
 /* shelf */
 .shelf-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--gap);flex-wrap:wrap;margin-bottom:clamp(28px,3vw,44px)}
 .shelf-head p{max-width:30rem}
-.shelf{display:flex;gap:6px;height:420px}
+.shelf{display:flex;gap:6px;height:320px}
 .spine{flex:1 1 0;min-width:0;writing-mode:vertical-rl;display:flex;align-items:center;gap:12px;padding:14px 0;text-decoration:none;background:var(--surface);color:var(--ink);font-size:1.125rem;font-weight:500;line-height:1;white-space:nowrap;overflow:hidden;transition:background-color .2s,color .2s,transform .25s var(--ease)}
 .spine .dc{font-size:var(--step-small);padding:8px 3px;background:var(--c);color:var(--ci)}
 .spine[data-g="product"]{--c:var(--blue);--ci:#fff}
@@ -136,52 +152,61 @@ dl{margin:0}
 .panels{margin-top:clamp(40px,5vw,72px)}
 .panel{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:28px;align-items:start;padding-block:28px}
 .panel h3{grid-column:1/13;font-size:var(--step-head)}
-.panel .blurb{grid-column:1/6}
-.panel .pf{grid-column:6/9}
-.panel .pic{grid-column:9/13}
-.panel.nopic .blurb{grid-column:1/8}
-.panel.nopic .pf{grid-column:8/13}
+.panel{scroll-margin-top:16px}
+.panel .blurb{grid-column:1/8}
+.panel .pf{grid-column:8/13}
+.panel .pic{grid-column:1/11}
+.panel .pic img{width:100%;max-height:86svh;object-fit:cover;object-position:top}
+.panel.tallpic .pic{grid-column:1/4;grid-row:2/4;max-width:290px}
+.panel.tallpic .blurb{grid-column:5/10}
+.panel.tallpic .pf{grid-column:10/13}
 .panel .links{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:20px}
 .panel .more{grid-column:1/13;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,40px) var(--gap);margin-top:12px}
 .panel .more img{width:100%;aspect-ratio:141/100;object-fit:cover;object-position:left top}
 .panel .more.one{grid-template-columns:minmax(0,1fr)}
-.panel .pic.tall{max-width:290px}
 .panel.swap{animation:swap .35s var(--ease)}
 @keyframes swap{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* moving pictures */
 video{display:block;width:100%;height:auto}
+.vhost{position:relative}
+.vp{position:absolute;top:12px;right:12px;z-index:2;min-height:44px;padding:0 14px;border:0;cursor:pointer;background:var(--ink);color:var(--white);font:inherit;font-weight:500;font-size:0.9375rem}
+.vp:hover{background:#2b2b2b}
 
 /* scenes: a tall section whose stage holds still while the page scrolls past it.
    Without script, on reduced motion, and where a scene rests on phones, it is an ordinary block. */
-.scene .stage{padding-left:max(var(--m),env(safe-area-inset-left,0px));padding-right:max(var(--m),env(safe-area-inset-right,0px))}
+.scene .stage{position:relative;padding-left:max(var(--m),env(safe-area-inset-left,0px));padding-right:max(var(--m),env(safe-area-inset-right,0px))}
+.scene .stage > .vp{right:calc(max(var(--m),env(safe-area-inset-right,0px)) + 12px)}
 .scene.live{height:calc((var(--hold,1) + 1) * 100svh)}
 .scene.live .stage{position:sticky;top:0;height:100svh;overflow:hidden}
 
 /* film: a window that grows to the whole screen */
 .film .cap{margin-top:10px;color:var(--soft)}
 .film.live .stage{display:grid;place-items:center;padding-inline:0}
-.film.live .win{width:min(100%,calc(100svh * 16 / 9));aspect-ratio:16/9;transform:scale(calc(.58 + var(--q,0) * .42));will-change:transform}
+.film.live{--w:min(100vw,calc(100svh * 16 / 9));--h:calc(var(--w) * 9 / 16);--k:calc(.58 + var(--q,0) * .42)}
+.film.live .win{width:min(100%,calc(100svh * 16 / 9));aspect-ratio:16/9;transform-origin:50% 0;transform:scale(var(--k));will-change:transform}
 .film.live video{height:100%;object-fit:cover}
-.film.live .cap{position:absolute;left:max(var(--m),env(safe-area-inset-left,0px));bottom:16px;margin:0;opacity:calc(1 - var(--q,0) * 1.6)}
+.film.live .cap{position:absolute;left:calc(50% - var(--w) * var(--k) / 2);top:calc((100svh - var(--h)) / 2 + var(--h) * var(--k) + 10px);margin:0;opacity:calc(1 - var(--q,0) * 1.6)}
+.scene.live .stage > .vp{top:calc(var(--bar) + 12px)}
 
 /* steps: the whole daily run on one screen; each step takes ink as it scrolls into place */
 .steps{padding-left:max(var(--m),env(safe-area-inset-left,0px));padding-right:max(var(--m),env(safe-area-inset-right,0px));padding-bottom:clamp(72px,11vw,168px)}
 .steps .k{margin-bottom:clamp(24px,3vw,40px)}
 .steps .list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(36px,4.5vw,64px) var(--gap)}
-.steps .list b{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;line-height:.95;font-size:clamp(1.5rem,2.4vw,2.375rem)}
+.steps .list b{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;line-height:.95;font-size:clamp(1.375rem,1.9vw,2rem)}
 .steps .list span{display:block;margin-top:12px;max-width:22rem}
-.steps.fill .list li{opacity:.26;transition:opacity .45s var(--ease)}
+.steps.fill .list li{opacity:.45;transition:opacity .45s var(--ease)}
 .steps.fill .list li.on{opacity:1}
+@media (max-width:1199px){.steps .list{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 /* string art: a real plan, drawn turn by turn */
 .strings .tell{grid-column:1/6}
 .strings .board{grid-column:7/13}
 .strings h2{margin-bottom:clamp(24px,3vw,44px)}
-.strings canvas{display:block;width:100%;height:auto;aspect-ratio:1}
+.strings canvas,.strings .board img{display:block;width:100%;height:auto;aspect-ratio:1}
 .strings .ctl{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:32px}
 .strings .ctl .btn{min-width:6.5rem;justify-content:center;border:0;cursor:pointer;font-family:inherit}
-.strings input[type=range]{flex:1 1 180px;min-height:44px;margin:0;accent-color:var(--ink)}
+.strings input[type=range]{flex:1 1 180px;min-height:44px;margin:0;accent-color:var(--i)}
 .strings .now{flex-basis:100%;font-weight:500}
 .strings .src{display:flex;gap:16px;align-items:end;margin-top:40px}
 .strings .src img{width:112px;aspect-ratio:1;object-fit:cover}
@@ -204,9 +229,9 @@ video{display:block;width:100%;height:auto}
 .model.ready .turn{display:inline}
 
 /* buoy */
-.buoy .h{grid-column:1/7}
-.buoy .l{grid-column:7/13;align-self:end}
-.buoy .top{padding-bottom:clamp(40px,5vw,72px)}
+.buoy .h{grid-column:1/8}
+.buoy .l{grid-column:8/13;align-self:end}
+.buoy .top{padding-bottom:clamp(24px,3vw,40px)}
 .buoy .rest{padding-top:clamp(48px,6vw,88px)}
 .buoy .ph{grid-column:1/4;grid-row:1/3}
 .buoy .body{grid-column:5/11}
@@ -236,16 +261,17 @@ video{display:block;width:100%;height:auto}
 .house .tell{grid-column:1/6;grid-row:1}
 .house .phones{grid-column:6/13;grid-row:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);align-items:start}
 .house h2{margin-bottom:clamp(24px,3vw,44px)}
-.house .list{grid-column:1/13;margin-top:clamp(48px,6vw,88px)}
-.house ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px var(--gap)}
-.house li b{display:block}
-.house li b{font-weight:500}
+.house .tell p + p{margin-top:1.1em}
+.phones img{border:5px solid var(--ink)}
+.phones figcaption a{display:inline-block;padding-block:10px}
 .phones figure{transition:transform .3s var(--ease)}
 .phones figure:hover{transform:translateY(-8px)}
 
 /* day job */
-.job .figs{grid-column:1/7;display:grid;gap:clamp(32px,4vw,56px);align-content:start}
-.job .say{grid-column:8/13}
+.job .f1{grid-column:1/8}
+.job .f2{grid-column:8/13}
+.job .s1{grid-column:1/8;margin-top:clamp(40px,5vw,72px)}
+.job .s2{grid-column:8/13;margin-top:clamp(40px,5vw,72px)}
 .job h2{grid-column:1/13;margin-bottom:clamp(32px,4vw,64px)}
 .fig b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(4rem,11vw,10.5rem);letter-spacing:-0.04em;line-height:0.86}
 .fig span{display:block;margin-top:10px;max-width:24rem}
@@ -269,16 +295,17 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
 .foot .wrap{min-height:90svh;display:grid;grid-template-rows:auto 1fr auto auto;padding-block:clamp(48px,6vw,80px) clamp(24px,3vw,40px)}
 .foot .top{display:flex;justify-content:space-between;gap:var(--gap);flex-wrap:wrap}
 .foot .top p{max-width:22rem}
-.foot h2{font-size:clamp(1.5rem,8.5vw,9.5rem);line-height:1.02;align-self:end;margin-block:clamp(72px,12vw,200px) clamp(24px,3vw,40px)}
+.foot h2{font-size:clamp(1.25rem,6.6vw,7.5rem);line-height:1.02;align-self:end;margin-block:clamp(72px,12vw,200px) clamp(24px,3vw,40px)}
 .foot h2 a{text-decoration:none;display:inline-block;transition:color .2s}
 .foot h2 a:hover{color:var(--white)}
 .foot h2 span{display:block}
-.foot .meta{display:flex;justify-content:space-between;gap:12px var(--gap);flex-wrap:wrap}
-.foot .meta nav{display:flex;gap:20px}
+.foot .meta{display:flex;justify-content:space-between;align-items:center;gap:12px var(--gap);flex-wrap:wrap}
+.foot .meta nav{display:flex;flex-wrap:wrap;gap:0 20px}
 
 /* entrances: parts rise once, staggered */
 .js .rv{opacity:0;transform:translateY(26px)}
 .js .rv.in{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--d,0) * 80ms)}
+.js .rv:focus,.js .rv:focus-within{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1;transform:none}
@@ -288,12 +315,15 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
 }
 
 @media (max-width:900px){
-  .about .facts,.about .say,.about .rec-word,.about .recs,.pipe .tell,.pipe .schema,.buoy .h,.buoy .l,.buoy .body,.buoy .bf,.buoy .ph,.strings .tell,.strings .board,.house .tell,.house .phones,.job .figs,.job .say,.record .h,.record .ph{grid-column:1/13}
+  .about .facts,.about .say,.pipe .tell,.pipe .schema,.buoy .h,.buoy .l,.buoy .body,.buoy .bf,.buoy .ph,.strings .tell,.strings .board,.house .tell,.house .phones,.job .f1,.job .f2,.job .s1,.job .s2,.record .h,.record .ph{grid-column:1/13}
+  .hero .wrap{min-height:min(100svh,44rem)}
+  .hero h1{align-self:end}
+  .hero-foot{justify-self:start;margin-top:28px}
+  .poster li{display:block}
+  .poster .d{display:block;text-align:left;margin:6px 0 22px}
   .about .say{grid-row:1}
   .about .facts{margin-top:40px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
-  .headshot{margin:0}
-  .about .rec-word{margin-top:56px}
-  .about .recs{margin-top:16px}
+  .headshot{margin:0;width:clamp(120px,24vw,180px)}
   .pipe .schema{margin-top:44px}
   .strings .board{margin-top:48px}
   .buoy .ph{grid-row:auto;max-width:300px}
@@ -307,31 +337,35 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   .buoy .bf{margin-top:40px}
   .house .tell,.house .phones{grid-row:auto}
   .house .phones{margin-top:48px}
-  .house ul{grid-template-columns:1fr}
-  .job .say{margin-top:48px}
+  .job .f2{margin-top:40px}
+  .job .s2{margin-top:1.1em}
   .record .ph{margin-top:36px;max-width:420px}
   .record .h .in{padding-left:0}
-  .panel .blurb,.panel.nopic .blurb{grid-column:1/13}
-  .panel .pf,.panel.nopic .pf{grid-column:1/13}
-  .panel .pic{grid-column:1/13}
-  /* shelf drops rotation: one dense paragraph of links */
-  .shelf{height:auto;flex-wrap:wrap;gap:10px 10px}
-  .spine{writing-mode:horizontal-tb;flex:0 1 auto;padding:8px 10px;gap:8px;font-size:1.0625rem;min-height:44px}
-  .spine .dc{padding:3px 7px}
+  .panel .blurb,.panel .pf,.panel .pic,.panel.tallpic .blurb,.panel.tallpic .pf,.panel.tallpic .pic{grid-column:1/13;grid-row:auto}
+  /* shelf drops rotation: a list in columns, the kind of work as a coloured edge */
+  .shelf{height:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .spine{writing-mode:horizontal-tb;justify-content:space-between;padding:10px 12px;gap:10px;font-size:1.0625rem;min-height:48px;border-left:6px solid var(--c);white-space:normal;line-height:1.2}
+  .spine .dc{padding:0;background:none;color:var(--muted)}
+  .shelf .spine[aria-current="true"] .dc{color:#d0d0d0}
   .shelf .spine:hover,.shelf .spine:focus-visible{transform:none}
 }
 @media (max-width:640px){
   .bar nav a.opt{display:none}
   .hero .wrap{padding-block:calc(var(--bar) + 12svh) 24px}
-  .hero-foot{justify-self:start;width:86%}
-  .about .recs{grid-template-columns:1fr;row-gap:40px}
-  .poster li{display:block}
+  .hero h1{font-size:17vw}
+  .hero-foot{justify-self:start;width:100%}
+  .hero-foot p{max-width:21rem}
+  .recs{grid-template-columns:1fr;row-gap:40px}
   .poster .w{font-size:12vw;display:block}
-  .poster .d{display:block;text-align:left;white-space:normal;margin:6px 0 22px;font-size:1rem}
+  .poster .d{font-size:1rem}
+  .shelf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spine .dc{display:none}
+  .foot .wrap{min-height:0}
+  .foot h2{margin-top:64px}
   .panel .more{grid-template-columns:1fr}
   .steps .list{grid-template-columns:minmax(0,1fr);row-gap:28px}
   .buoy .bf.kv2{grid-template-columns:1fr 1fr}
-  .buoy .ph{max-width:62%}
+  .buoy .ph{max-width:70%;margin-inline:auto}
   .house .phones{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
   .kv2{grid-template-columns:1fr 1fr}
   /* record table becomes two-line blocks */
@@ -342,7 +376,7 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   th[scope=row]{font-size:var(--step-small);color:var(--soft)}
   td:nth-child(3),td:last-child{display:inline;color:var(--soft);text-align:left}
   td:nth-child(3)::after{content:" · "}
-  .foot .meta{flex-direction:column}
+  .foot .meta{flex-direction:column;align-items:flex-start}
 }
 </style>
 <script>if('IntersectionObserver' in window)document.documentElement.classList.add('js')</script>
@@ -350,6 +384,7 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
 </head>
 <body>
 <header class="bar">
+  <a class="skip" href="#main">Skip to content</a>
   <a href="#top">Jonathan Barnell</a>
   <nav aria-label="Sections">
     <a class="opt" href="#story">Story</a>
@@ -359,13 +394,20 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="band f-blue hero" id="top">
   <div class="wrap">
     <h1><span class="l1 rv">Jonathan</span><span class="l2 rv" style="--d:1">Barnell</span></h1>
     <div class="hero-foot">
-      <p class="rv" style="--d:3">Software engineer in Topeka, Kansas. I taught myself to code in a state public health lab during COVID, and I have been shipping software ever since.</p>
-      <a class="btn rv" style="--d:4" href="#work">See the work</a>
+      <p class="rv" style="--d:3">Senior software engineer in Topeka, Kansas. I taught myself to code in a state public health lab during COVID. Now I build AI agent systems at Alarm.com, and my own products at night.</p>
+      <div class="hero-row rv" style="--d:4">
+        <a class="btn" href="#work">See the work</a>
+        <span class="hero-links">
+          <a class="link" href="mailto:hello@jonathanbarnell.com">Email</a>
+          <a class="link" href="https://www.linkedin.com/in/jonathanbarnell">LinkedIn</a>
+          <a class="link" href="https://github.com/jbarnell1">GitHub</a>
+        </span>
+      </div>
     </div>
   </div>
 </section>
@@ -378,34 +420,15 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
         <div><dt>Based in</dt><dd>Topeka, Kansas</dd></div>
         <div><dt>Day job</dt><dd>Senior software engineer, Alarm.com</dd></div>
         <div><dt>Nights</dt><dd>Founder and engineer, Buoy Money</dd></div>
+        <div><dt>Works in</dt><dd>C#, Python, Flutter, PostgreSQL, Kubernetes</dd></div>
         <div><dt>Also</dt><dd>Pilot, licensed in high school</dd></div>
       </dl>
     </div>
     <div class="say">
       <h2 class="rv">Lab bench to production</h2>
       <div class="lead stack">
-        <p class="rv" style="--d:1">I trained as a molecular biologist. In March 2020 I started at the Kansas state public health lab as a microbiologist, running COVID tests. The sequencing team was tracking samples in spreadsheets, so I taught myself Python and built the pipeline that replaced them.</p>
-        <p class="rv" style="--d:2">Most of that pipeline was written before my first computer science class. I went on to complete the six core courses of Penn's master's in computer and information technology and stopped there, because by then the job was teaching me more. I joined Alarm.com in 2022 and work on AI agent systems today. At night I build my own products: a budgeting app that is live on the web and Google Play, a wearable on a circuit board I designed, and the self-hosted software my household runs on.</p>
-      </div>
-    </div>
-    <p class="rec-word rv">Where I have been</p>
-    <div class="recs">
-      <div class="rec rv">
-        <h3>Work</h3>
-        <ul>
-          <li><span>Alarm.com, senior software engineer</span><span class="tnum">2022 to now</span></li>
-          <li><span>Kansas Dept. of Health and Environment, data analyst</span><span class="tnum">2021</span></li>
-          <li><span>Kansas Dept. of Health and Environment, microbiologist</span><span class="tnum">2020</span></li>
-          <li><span>Washburn University, research assistant</span><span class="tnum">2019</span></li>
-          <li><span>Kansas Dept. of Health and Environment, lab intern</span><span class="tnum">2017, 2018</span></li>
-        </ul>
-      </div>
-      <div class="rec rv" style="--d:1">
-        <h3>School</h3>
-        <ul>
-          <li><span>University of Pennsylvania, MCIT core courses</span><span class="tnum">6 of 10 courses</span></li>
-          <li><span>Washburn University, B.S. Molecular Biology and Biotechnology</span><span class="tnum">2019</span></li>
-        </ul>
+        <p class="rv" style="--d:1">I trained as a molecular biologist. In March 2020 I started at the Kansas state public health lab as a microbiologist, running COVID tests. The sequencing team was tracking samples in spreadsheets, so I learned Python and built the pipeline that replaced them.</p>
+        <p class="rv" style="--d:2">I went on to complete the six core courses of Penn's master's in computer and information technology and stopped there, because by then the job was teaching me more. I joined Alarm.com in 2022 and work on AI agent systems today. At night I build my own products: a budgeting app that is live on the web and Google Play, a wearable on a circuit board I designed, and the self-hosted software my household runs on.</p>
       </div>
     </div>
   </div>
@@ -419,123 +442,38 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
       <li class="rv" style="--d:1"><span class="w">Fruit flies</span><span class="d"><span class="tnum">2019.</span> Research on muscle development</span></li>
       <li class="rv" style="--d:2"><span class="w">A virus</span><span class="d"><span class="tnum">2020.</span> COVID testing for Kansas</span></li>
       <li class="rv" style="--d:3"><span class="w">Pipelines</span><span class="d"><span class="tnum">2021.</span> Sequencing data for the state lab</span></li>
-      <li class="rv" style="--d:4"><span class="w">Software</span><span class="d"><span class="tnum">2022.</span> The day job, at Alarm.com</span></li>
-      <li class="rv" style="--d:5"><span class="w">My own</span><span class="d">Most nights since <span class="tnum">2025</span></span></li>
+      <li class="rv" style="--d:4"><span class="w">Software</span><span class="d"><span class="tnum">2022.</span> Alarm.com, now AI agent systems</span></li>
+      <li class="rv" style="--d:5"><span class="w">My own</span><span class="d"><span class="tnum">2025.</span> Buoy Money and the projects at home</span></li>
     </ol>
-  </div>
-</section>
-
-<section class="band f-black pipe" id="pipeline">
-  <div class="wrap grid">
-    <h2 class="rv">It started with a virus</h2>
-    <div class="tell">
-      <div class="stack">
-        <p class="lead rv" style="--d:1">When the Kansas state lab began sequencing SARS-CoV-2, every sample was tracked by hand across spreadsheets and the lab's records system. I was a microbiologist, not a programmer. I taught myself Python and wrote the package that did the tracking instead, most of it before my first computer science class.</p>
-        <p class="rv" style="--d:2">It pulls patient demographics from the Oracle records system, loads run statistics from the sequencers, gathers the sequence files, reads the lineage calls from Nextclade and Pangolin, builds the report the state epidemiologists need and sends it over SFTP. Separate scripts prepare uploads for GISAID and Nextstrain.</p>
-        <p class="rv" style="--d:3">I had been one of the analysts doing that work by hand. Each run saved three hours or more of it, and 20 analysts were each doing several runs a day. The code is still public.</p>
-        <p class="rv" style="--d:4"><a class="link" href="https://github.com/jbarnell1/KHEL_WGS_SARS_CoV_2">Read the code on GitHub</a></p>
-      </div>
-    </div>
-    <figure class="schema rv" style="--d:3">
-      <img src="img/khel-schema.webp" width="298" height="758" loading="lazy" alt="Column list of the pipeline's results table in SQL Server, from sample number and lineage to coverage and run dates">
-      <figcaption>The results table, from the repository's own documentation.</figcaption>
-    </figure>
-    <dl class="nums">
-      <div class="rv"><dt class="tnum">8</dt><dd>workflows behind one runner script</dd></div>
-      <div class="rv" style="--d:1"><dt class="tnum">186</dt><dd>commits, August 2021 to February 2022</dd></div>
-      <div class="rv" style="--d:2"><dt class="tnum">3+</dt><dd>hours of hand work saved on every run</dd></div>
-      <div class="rv" style="--d:3"><dt>MIT</dt><dd>licence, open to any state lab</dd></div>
-    </dl>
-  </div>
-  <div class="steps">
-      <p class="k soft">The daily run, start to finish</p>
-      <ol class="list">
-        <li><b>Import demographics</b><span>Patient details for each sample come out of the lab's Oracle records system.</span></li>
-        <li><b>Parse run statistics</b><span>Quality figures are read from each sequencer run.</span></li>
-        <li><b>Compile the FASTA files</b><span>The sequences from a run are gathered into one file.</span></li>
-        <li><b>Parse Nextclade results</b><span>Clade calls are read from Nextclade.</span></li>
-        <li><b>Parse Pangolin results</b><span>Lineage calls are read from Pangolin.</span></li>
-        <li><b>Build the epidemiology report</b><span>Everything is joined into the report the state epidemiologists need.</span></li>
-        <li><b>Send the report</b><span>The report goes to the epidemiologists over SFTP.</span></li>
-        <li><b>Build the Nextstrain report</b><span>A second file is prepared for the state's Nextstrain build.</span></li>
-      </ol>
   </div>
 </section>
 
 <section class="band f-blue job" id="alarm">
   <div class="wrap grid">
     <h2 class="rv">Senior in four years</h2>
-    <div class="figs">
-      <div class="fig rv"><b class="tnum">100x</b><span>and more: the cut in cost for a typical conversational agent request, compared with the same work over MCP.</span></div>
-      <div class="fig rv" style="--d:1"><b class="tnum">3</b><span>titles in four years. Software engineer in April 2022, engineer II in 2024, senior in April 2026, ahead of the usual schedule.</span></div>
-    </div>
-    <div class="say stack">
+    <div class="fig f1 rv"><b class="tnum">100x</b><span>and more: the cost cut for a typical request to our chat agent.</span></div>
+    <div class="fig f2 rv" style="--d:1"><b class="tnum">3</b><span>titles in four years. Software engineer in April 2022, engineer II in 2024, senior in April 2026, ahead of the usual schedule.</span></div>
+    <div class="s1">
       <p class="lead rv">I joined Alarm.com as a software engineer in April 2022. Today I work on AI agent systems there, in C#, Python and Kubernetes.</p>
+    </div>
+    <div class="s2 stack">
       <p class="rv" style="--d:1">The part I can describe is a graph-based architecture I developed for conversational agents. It cut the cost of a typical help request from our chat agent by more than two orders of magnitude compared with doing the same thing over MCP.</p>
       <p class="rv" style="--d:2">The rest of that work belongs to my employer, so most of this page is what I build on my own time.</p>
     </div>
   </div>
 </section>
 
-<section class="band f-surface house" id="house">
-  <div class="wrap grid">
-    <div class="tell">
-      <h2 class="rv">My house runs on it</h2>
-      <p class="lead rv" style="--d:1">Photos, documents, health records, the budget and the media library live on two machines at home. They are reachable only over Tailscale, with no ports open to the internet.</p>
-    </div>
-    <div class="list">
-      <ul class="rv">
-        <li><b>Listener.</b> A wearable that turns a day of speech into transcripts and tasks, on my own GPU.</li>
-        <li><b>SelfKept.</b> A household health record that compares each person with their own usual range.</li>
-        <li><b>Highlights.</b> Trip videos cut from a self-hosted photo library.</li>
-        <li><b>String Art Studio.</b> A photo becomes a pin-and-thread build plan, read aloud step by step.</li>
-        <li><b>Watchman.</b> Accountability and image protection, open source, because internet safety should not cost $18 a month.</li>
-        <li><b>Doc Keeper.</b> The household's documents and inventory, searchable and backed up.</li>
-      </ul>
-      <p class="rv soft" style="--d:1;margin-top:28px">About 48 containers, a 12 GB GPU for local models, and backups every hour.</p>
-    </div>
-    <div class="phones">
-      <figure class="rv"><img src="img/listener-phone.webp" width="440" height="952" loading="lazy" alt="Listener on a phone: tasks it heard today, each with the sentence it came from"><figcaption>Listener</figcaption></figure>
-      <figure class="rv" style="--d:1"><img src="img/selfkept-phone.webp" width="440" height="952" loading="lazy" alt="SelfKept on a phone: what changed since yesterday in sleep, heart rate and HRV"><figcaption>SelfKept</figcaption></figure>
-      <figure class="rv" style="--d:2"><img src="img/highlights-phone.webp" width="440" height="952" loading="lazy" alt="Highlights on a phone: clips and photos picked for a Colorado trip video"><figcaption>Highlights</figcaption></figure>
-      <figure class="rv" style="--d:3"><img src="img/stringart-phone.webp" width="440" height="952" loading="lazy" alt="String Art Studio build mode on a phone: wrap to pin 180 next"><figcaption>String Art Studio</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section class="band strings" id="strings">
-  <div class="wrap grid">
-    <div class="tell">
-      <h2 class="rv">One long thread</h2>
-      <p class="lead rv" style="--d:1">String Art Studio turns a photo into a build plan: one continuous thread wound between 240 pins. This is a real plan from its solver, drawn here turn by turn.</p>
-      <div class="ctl rv" style="--d:2">
-        <button class="btn" type="button" id="st-play" aria-pressed="false">Play</button>
-        <input type="range" id="st-seek" min="0" max="5086" value="0" step="1" aria-label="Turns drawn">
-        <p class="now tnum"><span id="st-n">0</span> of <span id="st-total">5,086</span> turns. Next pin: <span id="st-pin">0</span></p>
-      </div>
-      <figure class="src rv" style="--d:3">
-        <img src="img/strings-source.webp" width="336" height="336" loading="lazy" alt="The sample portrait the plan was made from">
-        <figcaption>The photo it started from, a sample that ships with the project. The face is AI-generated, not a real person. The finished piece would take <span id="st-m">2,256</span> metres of thread.</figcaption>
-      </figure>
-    </div>
-    <div class="board rv" style="--d:1">
-      <canvas id="st-canvas" width="1400" height="1400" role="img" aria-label="A round board of 240 pins with a portrait building up from straight lines of thread"></canvas>
-    </div>
-  </div>
-</section>
-<script type="application/json" id="st-data">{"pins":[[0.5008,0.0164],[0.5108,0.0165],[0.5218,0.0169],[0.5353,0.0177],[0.5469,0.0187],[0.5647,0.0207],[0.5754,0.0223],[0.5895,0.0248],[0.6012,0.0271],[0.6123,0.0296],[0.6272,0.0334],[0.6406,0.0373],[0.6484,0.0397],[0.6622,0.0444],[0.6751,0.0492],[0.6883,0.0545],[0.6966,0.0582],[0.7053,0.0621],[0.7208,0.0697],[0.7307,0.075],[0.7443,0.0826],[0.753,0.0879],[0.7602,0.0924],[0.777,0.1036],[0.7852,0.1095],[0.7969,0.1183],[0.8042,0.124],[0.8165,0.1344],[0.8246,0.1415],[0.8352,0.1514],[0.8412,0.1572],[0.8519,0.1683],[0.8619,0.1792],[0.8653,0.1831],[0.8772,0.1973],[0.8826,0.2041],[0.8914,0.2159],[0.8977,0.2249],[0.9053,0.2362],[0.9143,0.2505],[0.9183,0.2572],[0.9243,0.268],[0.9292,0.2772],[0.9376,0.2941],[0.9416,0.3029],[0.9477,0.3171],[0.9524,0.3291],[0.9557,0.3382],[0.9596,0.3496],[0.9632,0.3611],[0.9662,0.3715],[0.9701,0.3864],[0.9737,0.4026],[0.975,0.4093],[0.9782,0.428],[0.9794,0.4364],[0.9806,0.446],[0.9821,0.4621],[0.9831,0.4779],[0.9834,0.4871],[0.9836,0.4964],[0.9834,0.5135],[0.983,0.5237],[0.9822,0.5362],[0.9807,0.5532],[0.9791,0.5657],[0.9779,0.5738],[0.9749,0.5911],[0.9732,0.6],[0.9694,0.6163],[0.9678,0.6228],[0.9629,0.6399],[0.9589,0.6527],[0.9554,0.6628],[0.9517,0.6727],[0.9459,0.6873],[0.9412,0.6979],[0.9378,0.7054],[0.9315,0.7183],[0.924,0.7327],[0.9189,0.7416],[0.9142,0.7497],[0.9068,0.7615],[0.8987,0.7737],[0.8924,0.7826],[0.8845,0.7934],[0.8774,0.8024],[0.8667,0.8153],[0.8602,0.8227],[0.8529,0.8306],[0.8427,0.8412],[0.8336,0.8501],[0.8234,0.8596],[0.8151,0.8669],[0.8072,0.8735],[0.796,0.8824],[0.7817,0.8931],[0.7757,0.8973],[0.7642,0.9051],[0.7512,0.9132],[0.7409,0.9193],[0.7331,0.9237],[0.7206,0.9304],[0.7072,0.937],[0.6967,0.9418],[0.6827,0.9478],[0.6732,0.9515],[0.6597,0.9565],[0.6505,0.9596],[0.6369,0.9638],[0.6223,0.9679],[0.6092,0.9711],[0.6014,0.9729],[0.5854,0.976],[0.5776,0.9773],[0.561,0.9797],[0.5483,0.9812],[0.5409,0.9819],[0.5269,0.9829],[0.5099,0.9835],[0.4997,0.9836],[0.4879,0.9835],[0.4777,0.9831],[0.4607,0.982],[0.4491,0.9809],[0.4357,0.9793],[0.4274,0.9781],[0.4142,0.9759],[0.3961,0.9723],[0.3869,0.9702],[0.3721,0.9664],[0.3609,0.9632],[0.3493,0.9595],[0.3397,0.9563],[0.3257,0.9511],[0.3178,0.948],[0.3065,0.9432],[0.2891,0.9352],[0.2814,0.9314],[0.271,0.926],[0.259,0.9193],[0.249,0.9134],[0.2358,0.9051],[0.224,0.8971],[0.2152,0.8908],[0.2066,0.8844],[0.1982,0.8779],[0.1875,0.8691],[0.174,0.8572],[0.1683,0.8519],[0.1558,0.8397],[0.1474,0.831],[0.1428,0.826],[0.1309,0.8124],[0.1245,0.8047],[0.115,0.7926],[0.1068,0.7815],[0.103,0.7761],[0.0942,0.763],[0.0886,0.7542],[0.0798,0.7395],[0.0743,0.7295],[0.0697,0.7208],[0.0635,0.7082],[0.0578,0.6959],[0.0537,0.6862],[0.0495,0.6759],[0.0448,0.6634],[0.0394,0.6473],[0.0371,0.64],[0.0335,0.6273],[0.0298,0.6132],[0.0268,0.5998],[0.0252,0.5916],[0.0223,0.5755],[0.0206,0.5639],[0.0187,0.5471],[0.0178,0.5372],[0.017,0.5241],[0.0165,0.51],[0.0164,0.5002],[0.0167,0.4839],[0.0172,0.4713],[0.0177,0.4641],[0.019,0.4494],[0.0203,0.439],[0.0219,0.4276],[0.0249,0.4098],[0.027,0.3995],[0.0294,0.3888],[0.0331,0.3741],[0.0358,0.3645],[0.0407,0.3485],[0.0452,0.3355],[0.0488,0.3259],[0.0522,0.3173],[0.0589,0.3017],[0.0646,0.2895],[0.0696,0.2796],[0.0735,0.2721],[0.0818,0.2572],[0.0877,0.2472],[0.0936,0.2379],[0.1019,0.2254],[0.1091,0.2152],[0.1168,0.205],[0.1236,0.1963],[0.1328,0.1853],[0.1427,0.1741],[0.1471,0.1693],[0.1599,0.1562],[0.168,0.1484],[0.1791,0.1382],[0.1872,0.1312],[0.1962,0.1237],[0.2074,0.115],[0.2155,0.1089],[0.2273,0.1006],[0.2346,0.0957],[0.2476,0.0875],[0.2577,0.0815],[0.2666,0.0765],[0.2777,0.0705],[0.2904,0.0642],[0.3036,0.0581],[0.3125,0.0542],[0.3248,0.0492],[0.3386,0.0441],[0.351,0.0399],[0.3607,0.0369],[0.3713,0.0338],[0.3889,0.0293],[0.3985,0.0272],[0.4092,0.025],[0.4233,0.0225],[0.4348,0.0208],[0.4526,0.0187],[0.4627,0.0178],[0.4774,0.0169],[0.4883,0.0165]],"sequence":[0,105,5,111,13,117,32,228,16,118,18,117,20,121,18,122,22,118,19,116,20,118,15,119,18,123,24,118,17,117,35,116,24,121,15,120,18,124,22,115,19,119,13,118,21,117,24,115,25,116,18,125,24,119,16,31,120,13,121,22,123,15,122,24,120,19,122,13,114,25,118,27,116,26,230,114,22,119,20,117,25,119,17,121,16,122,20,121,25,113,25,115,20,125,22,120,24,123,13,115,26,113,28,115,21,116,9,113,22,127,18,141,126,24,124,15,117,23,118,26,5,111,27,114,24,105,142,127,235,125,15,126,20,124,19,114,8,135,6,133,4,110,27,119,21,121,14,139,118,11,121,27,112,26,117,27,4,109,4,135,5,133,7,111,28,116,17,120,25,123,16,124,232,125,236,128,24,136,113,227,114,21,123,99,19,126,238,130,1,104,23,237,40,121,12,117,10,121,26,119,23,115,29,113,225,114,28,129,109,26,120,23,123,235,129,2,135,7,108,6,111,25,122,23,129,4,136,1,129,20,114,23,134,116,8,133,1,102,216,100,145,214,86,208,81,207,66,205,64,196,60,194,58,192,60,191,55,189,53,188,51,187,52,189,51,186,48,194,49,184,48,195,58,200,57,199,54,187,55,198,53,187,47,192,59,191,61,203,63,205,79,204,81,203,60,190,51,191,47,193,58,196,51,195,47,184,44,182,48,183,44,191,62,192,55,188,52,191,48,192,61,202,77,173,65,194,47,109,186,38,232,185,43,158,42,156,38,154,37,155,38,153,35,154,15,127,20,128,18,115,33,232,17,123,237,102,238,98,237,129,5,106,127,25,112,24,106,7,137,5,110,9,118,12,115,16,95,21,116,11,122,21,102,239,129,234,126,21,104,24,139,108,26,109,125,28,119,11,227,27,123,238,127,234,130,236,124,23,125,1,101,5,136,9,135,1,106,0,101,6,98,7,93,216,99,13,116,29,119,14,122,17,231,114,18,129,3,85,101,21,113,134,23,127,236,121,230,125,13,141,216,103,129,24,110,25,128,25,125,239,105,145,24,111,22,112,28,227,108,5,132,236,129,15,116,12,141,215,100,15,213,86,212,83,178,82,207,87,198,64,203,62,205,76,173,66,199,64,204,62,202,63,170,74,55,198,88,2,101,239,123,26,108,9,137,4,101,9,95,7,136,0,104,2,85,195,68,165,35,152,33,151,31,119,12,152,14,117,226,113,133,19,127,237,124,21,120,27,122,27,223,12,98,15,235,114,16,125,231,127,233,124,24,109,25,109,5,110,22,161,230,114,12,120,27,118,237,101,8,92,16,112,132,23,103,11,137,212,138,6,108,129,233,97,13,110,7,197,229,32,117,228,113,20,130,23,133,26,124,234,96,21,213,138,3,132,9,92,15,155,17,113,32,174,67,196,50,193,48,181,44,180,42,181,239,104,213,139,214,141,217,143,218,145,217,99,11,117,28,4,107,137,24,109,17,111,31,114,223,152,15,93,217,142,218,97,1,32,123,27,124,100,11,141,10,135,3,95,12,91,16,95,5,134,7,101,238,129,232,130,20,235,121,28,123,233,94,8,97,2,187,4,95,15,115,100,14,124,17,127,1,188,3,103,222,143,216,86,2,108,227,29,149,220,147,217,146,221,104,237,130,231,163,230,127,21,106,125,237,101,120,14,155,225,157,226,114,14,127,25,126,2,84,238,15,97,15,91,17,110,23,128,21,123,29,120,31,121,38,122,237,117,29,123,230,160,228,127,232,97,14,116,30,116,30,149,11,155,13,140,12,93,17,113,18,155,226,127,103,11,120,22,103,136,9,141,218,95,6,193,57,191,58,202,60,165,67,172,77,175,67,202,6,64,173,68,164,230,81,176,239,179,237,181,1,137,103,8,87,196,68,172,237,99,14,98,3,106,2,188,0,103,5,141,212,139,7,131,23,133,237,171,74,169,72,201,68,209,69,172,235,122,28,124,20,127,239,188,50,195,6,104,238,82,5,98,19,112,20,155,16,90,17,112,24,228,177,159,230,20,130,25,128,28,125,26,107,23,136,111,21,154,223,150,31,118,29,121,238,29,172,236,102,2,99,3,187,5,20,131,2,80,176,40,179,48,178,40,154,18,95,11,114,9,108,127,3,136,209,67,173,233,125,27,126,22,101,11,157,223,150,217,144,221,147,219,96,15,94,69,6,196,89,12,111,21,116,30,119,32,115,225,24,127,229,162,231,80,178,237,188,238,132,1,103,4,82,190,61,194,7,29,222,23,129,21,95,14,154,33,150,217,152,18,91,17,154,8,193,51,197,64,206,75,222,158,13,98,62,8,110,9,77,97,12,79,113,232,13,101,210,141,4,196,5,139,12,71,86,198,70,167,71,169,228,170,237,182,236,188,79,234,123,31,122,37,118,34,229,7,193,55,199,58,165,230,168,63,173,70,178,84,0,132,6,194,50,178,42,121,39,122,29,124,24,109,7,187,56,191,45,175,66,174,237,180,2,95,13,85,3,130,24,129,19,151,220,145,215,140,13,218,26,126,17,92,10,114,7,102,21,6,136,239,24,118,32,123,38,178,239,174,232,123,37,153,217,148,12,99,1,107,2,22,109,23,132,20,211,19,125,29,151,217,86,9,193,85,12,155,223,143,212,17,93,14,113,22,116,30,232,10,137,213,141,6,108,130,18,158,58,203,111,14,91,18,212,147,218,99,7,111,127,26,128,6,199,4,79,175,230,129,228,163,24,132,235,180,236,99,239,173,230,74,229,76,201,141,11,115,27,124,32,122,41,121,32,114,218,144,222,157,15,99,76,8,89,16,94,12,112,10,95,232,126,28,127,4,131,236,189,44,176,237,175,239,132,2,136,207,134,23,108,12,82,3,139,1,173,30,124,36,122,205,67,170,26,219,144,210,20,151,215,147,26,217,100,11,79,178,235,183,236,190,58,160,61,193,10,118,190,237,52,192,57,165,70,166,224,165,24,131,6,197,55,200,94,14,110,12,96,14,89,17,87,190,235,116,30,7,196,49,125,31,126,47,183,74,224,71,168,73,6,137,13,152,215,149,31,130,28,129,25,107,14,92,19,109,7,112,5,143,210,64,209,232,18,117,20,93,8,195,7,109,24,125,32,120,42,179,238,133,234,180,41,123,39,158,11,98,216,140,213,17,94,230,162,228,165,63,158,10,92,113,9,139,4,197,5,195,84,3,109,14,101,236,181,232,162,24,133,3,177,82,207,9,112,187,6,108,127,27,129,0,174,69,202,112,11,97,10,192,45,123,30,125,28,9,100,238,78,12,87,195,4,198,97,114,16,85,118,17,157,220,26,216,145,210,158,142,212,145,223,166,226,169,67,176,42,122,34,115,189,59,201,70,172,228,175,229,28,125,50,191,10,62,204,11,103,2,105,6,134,236,178,41,155,24,164,231,161,24,167,69,6,192,218,32,155,39,124,35,121,30,128,29,126,39,126,20,119,190,55,208,229,186,20,94,13,112,24,127,18,213,16,88,3,141,211,83,8,194,89,18,210,147,27,132,25,220,155,63,157,24,158,220,143,224,167,23,136,97,11,94,9,98,2,127,29,150,165,215,139,6,109,21,133,206,10,187,8,104,22,102,5,198,2,178,232,182,10,79,5,106,138,12,92,18,96,4,132,22,108,25,131,28,171,239,177,46,237,189,235,191,46,126,30,120,22,37,121,40,180,71,165,229,24,131,237,128,27,130,26,129,29,220,150,222,70,175,80,12,75,10,98,235,185,232,79,179,236,184,57,158,14,86,6,142,11,113,187,12,109,5,99,235,48,181,2,174,44,124,37,119,34,125,48,124,23,123,203,63,11,150,214,140,213,20,157,19,90,12,77,9,234,39,126,32,127,30,150,212,153,22,135,0,189,117,145,216,67,210,152,214,16,96,76,11,110,202,113,8,196,70,164,222,25,220,149,27,220,163,26,131,44,239,24,121,36,237,123,43,230,118,233,198,225,181,228,171,75,93,8,182,12,84,17,95,8,26,108,13,139,2,199,136,8,192,54,155,7,103,238,178,71,5,106,143,216,149,212,155,34,126,48,177,36,125,33,124,41,120,190,237,97,7,197,3,104,14,90,129,110,15,112,206,134,25,237,133,20,154,36,197,2,176,228,179,8,80,3,64,168,224,163,229,185,14,78,173,75,183,56,189,41,126,193,46,124,50,186,113,25,235,188,232,43,229,80,236,136,109,94,20,110,94,18,94,113,10,74,12,79,177,42,123,204,63,169,235,184,12,88,19,155,61,169,223,147,216,150,210,55,4,196,12,158,65,1,128,31,127,227,32,2,128,4,105,7,138,214,17,236,209,156,219,29,130,21,126,103,22,129,31,219,98,14,86,207,123,47,180,109,26,1,187,0,99,6,68,174,228,183,166,222,24,135,100,238,175,108,9,91,10,205,11,107,19,92,7,111,26,221,188,142,5,104,9,74,201,141,175,66,206,9,79,13,91,122,19,102,85,8,185,11,191,234,49,124,38,232,16,119,228,93,3,26,108,177,81,12,76,8,197,133,2,186,109,202,111,9,66,99,234,192,46,234,117,190,234,125,50,2,35,122,230,30,151,215,144,223,163,61,196,52,203,119,27,230,42,124,45,231,48,176,82,8,219,26,112,6,201,7,100,22,106,4,134,1,199,137,158,210,153,220,28,132,35,159,220,162,22,113,96,14,113,8,191,54,128,34,230,19,127,193,28,168,72,9,84,7,198,3,65,4,19,99,238,189,118,20,131,24,116,29,148,219,28,192,7,104,19,109,89,191,82,14,187,235,45,126,40,124,47,185,236,191,233,33,6,97,22,163,225,156,32,130,103,147,210,140,5,87,15,113,226,189,234,50,231,160,220,164,61,162,68,7,64,6,213,94,7,82,10,78,186,8,139,200,57,2,107,175,227,115,202,5,65,172,107,21,110,15,119,101,235,186,37,1,22,125,41,179,235,95,196,86,7,88,9,134,205,41,231,189,121,233,180,40,156,224,172,239,184,50,187,111,95,18,108,171,68,4,107,166,220,163,24,221,98,118,22,105,23,103,223,24,154,212,156,18,214,149,218,146,30,237,129,53,130,45,236,47,125,39,127,24,126,36,227,158,17,86,1,186,228,178,108,174,238,181,43,122,20,121,142,13,77,92,17,81,13,101,73,170,224,175,223,25,202,235,57,195,63,6,106,21,108,169,66,239,23,133,31,228,185,10,208,229,160,211,145,222,172,226,31,131,3,54,199,40,120,36,153,215,146,210,155,22,121,21,95,233,50,238,89,4,130,196,3,58,4,201,112,96,14,214,20,229,43,84,4,69,176,109,10,77,52,3,186,234,190,43,124,192,98,17,79,15,87,108,1,201,91,229,170,27,134,198,6,64,159,62,6,191,232,77,18,118,17,96,18,117,13,182,238,136,46,236,98,1,55,3,70,10,86,4,104,15,214,147,207,111,185,113,183,228,187,51,238,62,235,43,209,156,32,129,45,125,51,127,19,236,36,166,108,173,228,168,108,129,19,213,146,168,150,31,4,194,59,1,105,3,176,157,34,228,161,26,193,59,6,65,207,83,17,82,2,201,142,168,214,164,108,180,87,188,234,48,123,44,123,39,234,184,237,83,12,73,17,103,219,146,27,131,239,100,15,111,11,187,227,31,225,70,155,217,160,210,151,32,219,27,167,72,175,226,37,126,38,171,76,239,49,195,239,86,191,4,184,228,177,1,60,234,47,239,135,25,123,20,121,22,118,14,109,6,61,153,34,121,206,83,2,195,234,193,128,33,197,87,216,166,106,161,108,170,223,172,76,14,79,52,91,196,10,71,8,110,92,19,119,24,122,19,186,17,71,174,40,231,165,223,167,108,176,223,31,229,124,24,224,25,119,189,8,71,9,69,93,196,14,84,198,136,206,68,10,84,1,202,0,102,46,4,58,7,186,213,67,10,80,6,54,192,232,186,227,72,180,238,77,52,131,32,4,196,223,161,20,101,19,118,13,109,164,224,154,171,227,159,108,165,216,16,99,19,99,75,17,215,148,30,149,105,130,2,202,144,225,29,152,216,167,106,239,103,19,96,235,62,4,193,65,2,50,128,53,141,200,5,56,128,40,123,46,188,228,158,214,66,133,236,187,16,215,18,120,22,103,4,80,238,47,134,115,29,222,205,34,195,3,201,140,76,10,87,7,60,3,63,162,108,172,220,170,222,167,66,3,60,4,57,7,191,231,93,19,95,189,232,163,222,26,157,108,179,234,185,12,64,157,16,111,8,138,51,129,48,235,39,236,100,0,68,163,76,11,106,169,224,158,208,89,197,234,63,198,41,159,106,173,44,235,42,125,27,119,18,98,200,140,10,223,25,110,203,0,181,41,236,194,5,90,13,75,91,18,121,21,119,22,221,158,18,212,19,102,14,87,19,90,73,138,24,118,35,193,5,29,224,199,56,8,205,123,24,1,49,126,192,11,78,9,187,237,183,8,76,11,33,152,105,13,82,235,60,4,187,227,201,145,214,13,117,14,73,8,54,4,56,234,194,232,190,228,30,145,224,23,221,170,66,1,131,58,6,153,105,19,115,229,30,227,34,59,112,186,7,107,3,62,170,219,175,160,222,165,106,85,16,88,68,175,33,153,206,5,52,1,88,5,107,159,223,26,119,23,122,21,160,106,170,215,167,187,220,165,225,184,238,45,234,187,110,51,126,44,94,40,236,206,8,54,79,94,18,122,27,121,25,219,155,108,53,190,227,159,109,9,85,68,7,189,233,185,237,39,153,14,181,225,23,223,29,153,223,164,106,151,16,84,18,120,22,104,148,221,190,210,158,26,127,24,116,25,120,14,78,174,220,23,222,160,108,163,230,161,16,216,24,4,52,109,16,118,21,100,165,69,14,213,163,147,203,239,48,93,37,2,177,109,157,18,121,17,93,67,217,15,184,11,197,233,187,229,34,230,92,6,207,10,74,15,119,20,222,33,229,17,121,24,125,40,89,13,80,14,98,75,231,114,62,192,58,8,204,149,105,147,30,230,185,13,106,163,74,175,220,161,212,155,16,100,237,186,10,102,52,237,43,236,193,231,195,60,6,82,169,107,54,131,41,237,62,92,10,138,200,8,91,191,227,188,233,177,219,24,218,145,104,22,187,239,183,43,190,4,51,97,75,9,69,17,121,203,226,25,1,180,110,156,106,148,213,15,214,167,107,10,73,32,228,15,85,10,90,0,204,61,3,54,8,105,24,120,19,97,46,94,229,189,228,32,229,28,119,66,94,18,115,25,132,25,218,196,4,207,4,108,158,219,172,28,125,23,117,15,97,13,215,166,59,8,198,17,99,54,9,197,53,4,50,232,37,228,180,233,190,46,176,71,118,24,122,15,159,72,155,110,6,206,1,48,233,96,48,104,145,105,150,170,155,213,15,219,156,108,60,159,66,14,216,12,68,135,70,8,201,5,130,43,239,44,98,234,41,235,37,227,189,226,168,24,107,162,210,166,63,4,55,129,46,239,202,59,110,186,238,203,145,102,130,104,200,7,77,99,121,15,118,23,115,22,223,173,107,145,218,152,131,108,64,86,17,184,14,215,140,216,18,101,54,6,209,149,28,227,192,30,226,25,126,23,106,24,123,27,120,21,224,174,235,36,168,225,183,234,44,88,42,239,79,194,14,119,69,11,114,169,220,176,219,178,223,27,124,19,214,22,222,29,229,186,225,21,116,72,170,107,148,221,166,69,177,232,195,227,43,99,140,101,57,8,65,11,89,47,2,193,232,199,138,9,81,32,226,191,2,105,157,214,139,168,102,126,105,142,105,47,23,235,30,236,42,1,56,3,189,226,10,71,7,70,90,38,237,191,228,28,119,19,150,103,8,62,105,144,215,20,120,23,106,18,117,11,186,233,198,232,167,109,24,114,16,219,161,109,62,86,44,237,48,232,187,51,94,49,183,112,52,7,58,30,4,59,13,88,15,216,154,110,25,225,27,118,70,12,197,232,35,231,187,224,28,120,26,116,18,159,209,143,218,14,120,30,191,225,22,104,147,201,149,103,51,91,49,4,43,237,36,231,177,225,185,1,43,0,207,84,125,46,190,237,203,148,108,143,107,174,75,10,230,32,232,202,27,227,181,219,14,198,0,134,7,74,11,65,90,196,28,222,171,214,166,25,234,22,127,50,104,138,102,21,102,123,18,113,15,215,165,107,66,9,56,97,17,119,25,228,23,108,142,200,20,123,95,44,232,196,2,107,174,147,217,146,211,159,110,66,12,215,13,158,34,197,229,35,80,38,232,200,56,94,18,221,20,225,26,224,173,238,193,227,185,239,41,238,192,48,86,40,95,134,101,138,99,123,20,126,233,194,225,28,120,23,226,28,161,211,16,233,27,230,188,225,24,121,24,106,162,110,131,105,152,33,232,201,231,43,4,26,238,51,89,52,3,40,62,100,19,118,22,103,142,107,176,225,156,17,118,78,39,234,26,3,54,103,148,170,226,24,116,11,216,24,119,18,118,24,118,27,121,31,150,201,51,1,39,97,13,83,5,106,154,221,29,224,189,223,179,219,13,64,101,121,136,104,134,5,67,9,214,140,108,129,107,171,213,173,221,164,212,149,10,82,13,217,11,81,100,15,121,26,109,89,14,84,61,101,52,9,73,113,22,121,18,237,187,217,183,227,25,230,31,231,199,54,94,47,192,237,42,0,186,219,187,109,140,98,62,5,50,125,18,120,31,233,30,232,203,231,33,228,199,227,23,104,143,105,146,103,0,41,1,47,107,168,146,213,233,176,233,28,234,26,226,29,218,142,109,163,214,8,110,74,52,239,34,227,193,225,204,147,210,6,211,14,122,24,105,24,129,236,36,232,42,80,236,16,122,21,119,19,92,57,5,189,230,23,194,224,27,119,20,123,100,76,8,216,159,221,19,103,135,106,136,102,239,52,86,51,187,233,35,232,25,224,185,219,188,49,0,45,191,238,182,237,45,80,43,123,90,17,93,41,231,25,4,182,225,179,141,105,24,121,21,226,27,235,202,231,197,227,26,119,28,116,24,120,23,106,138,105,155,105,138,108,70,174,226,19,223,182,44,1,28,2,104,133,106,49,87,15,221,21,223,188,222,158,10,92,49,232,28,235,26,232,180,225,196,217,22,233,24,112,10,75,42,234,30,224,182,229,29,115,25,229,26,237,40,236,173,224,191,211,152,106,134,103,144,105,125,24,114,24,126,90,57,94,52,85,123,25,120,24,218,17,221,193,222,184,224,20,118,22,219,148,29,228,193,220,11,141,159,106,132,102,19,122,38,67,48,124,46,4,39,80,48,101,66,99,19,153,217,22,237,31,235,24,116,187,217,151,32,231,20,223,191,56,99,128,96,18,224,190,60,9,136,103,139,214,12,79,48,3,192,222,21,220,194,219,183,226,20,123,92,16,224,169,219,162,24,124,19,127,100,136,172,225,30,231,25,119,24,232,29,227,197,228,26,236,28,221,192,238,53,84,14,96,66,98,131,102,134,23,108,26,133,105,24,223,185,226,199,229,33,230,161,219,156,42,123,45,62,94,18,125,24,155,39,122,27,236,31,234,33,231,14,227,24,236,29,234,203,229,176,142,185,221,194,235,29,230,198,227,31,150,107,164,99,50,195,225,23,237,24,234,40,5,51,80,52,87,57,192,220,18,121,20,119,19,118,24,224,181,226,200,225,27,237,25,110,139,102,128,103,131,106,130,103,22,121,21,121,24,114,12,219,195,230,19,95,67,9,33,152,223,25,217,146,104,137,103,132,108,160,210,0,37,148,29,233,35,231,177,223,192,229,24,107,2,45,78,111,7,70,101,133,103,22,104,22,234,27,238,23,117,137,13,212,147,212,232,178,226,184,225,189,236,207,237,29,226,197,222,19,224,25,117,32,230,202,226,25,236,30,228,34,70,105,132,104,131,105,142,178,138,168,72,101,41,72,45,233,33,234,25,119,18,120,22,118,19,219,196,5,110,27,4,187,51,3,44,74,103,139,172,143,218,186,215,140,105,130,108,177,228,31,226,201,59,87,15,154,218,183,228,19,231,28,119,21,121,102,127,25,128,23,106,23,223,26,239,28,230,200,57,28,237,22,224,167,107,133,102,125,49,125,104,3,60,94,66,93,129,103,132,102,124,100,238,24,116,24,106,23,232,27,233,23,117,32,234,206,232,35,234,23,122,21,227,196,218,195,229,30,227,187,228,29,229,185,225,176,145,218,194,223,18,121,22,153,105,24,119,15,222,31,229,34,228,17,86,196,224,26,233,35,3,28,238,26,230,24,107,128,101,60,86,57,3,50,195,238,31,3,27,121,21,220,187,216,143,218,13,80,53,188,0,27,229,16,88,16,234,35,232,177,42,69,97,13,117,23,108,23,128,104,135,105,149,212,13,95,44,123,20,188,225,25,115,23,117,18,94,20,123,43,1,188,215,194,222,22,118,18,222,200,229,28,52,189,224,165,141,214,170,144,105,129,106,23,120,27,239,44,92,126,100,131,24,124,101,129,104,130,107,24,129,102,131,104,126,101,123,20,217,28,193,58,192,216,196,220,18,233,21,119,25,0,24,122,19,232,25,233,204,234,18,120,30,238,36,237,30,120,17,120,28,228,184,224,169,144,173,44,224,175,223,22,226,27,123,29,225,179,225,190,224,167,23,0,49,74,94,47,239,25,238,16,119,26,109,24,105,2,105,126,21,102,124,20,99,119,25,227,188,222,201,224,27,121,24,123,24,114,24,129,24,118,19,124,48,75,10,222,31,120,31,2,180,152,33,232,21,239,194,229,32,230,30,233,35,159,39,237,21,118,27,117,29,226,26,124,27,1,51,187,24,107,2,107,19,103,127,24,106,130,103,135,103,11,137,103,140,101,13,75,51,1,133,103,126,25,231,43,128,99,19,115,29,236,40,157,26,228,203,227,199,225,176,225,185,227,23,108,26,121,28,0,104,21,110,126,102,21,121,18,221,144,217,151,32,174,226,157,23,122,27,124,24,122,21,111,12,95,231,27,119,30,231,36,122,25,113,25,130,105,152,105,24,112,19,96,235,129,21,122,23,225,201,229,30,121,33,231,163,22,120,18,98,235,26,230,185,229,34,228,55,187,226,73,97,10,72,106,24,104,143,80,169,224,165,24,170,24,1,47,180,239,181,44,239,106,22,106,22,217,28,122,24,107,24,126,28,127,100,117,15,97,121,27,167,225,194,216,145,220,195,225,29,122,33,152,172,68,42,156,219,194,217,144,124,48,27,110,25,119,27,225,180,225,190,60,3,56,191,214,158,140,105,129,102,131,109,26,109,26,108,23,117,32,123,20,119,21,96,14,228,30,120,28,125,28,226,29,115,29,230,28,237,31,150,31,120,23,224,185,225,188,238,27,124,24,122,21,116,24,118,19,222,171,187,51,187,217,151,217,197,218,17,118,22,121,15,97],"thread_m":2256,"thread_mm":0.25,"board_mm":610.0}</script>
-
-<section class="band f-navy buoy" id="buoy">
+<section class="band buoy" id="buoy">
   <div class="wrap grid top">
     <h2 class="h rv">Buoy Money counts up</h2>
     <p class="l lead rv" style="--d:1">Most budgets start full and drain. In Buoy Money each category earns a daily allowance, so the number you see is what you have earned minus what you have spent.</p>
   </div>
-  <div class="scene film" data-scene="open" data-phone="rest" style="--hold:1.5" aria-label="Buoy Money on film">
+  <div class="scene film" data-scene="open" data-phone="rest" style="--hold:1.5" role="group" aria-label="Buoy Money on film">
     <div class="stage">
       <figure class="win">
-        <video class="lazy" muted loop playsinline preload="none" poster="media/buoy-film.webp" width="1280" height="720" aria-label="A short film of Buoy Money on a phone: transactions sorted in one tap, a budget that counts up, and a question asked about subscriptions">
-          <source data-src="media/buoy-film.webm" type="video/webm">
-          <source data-src="media/buoy-film.mp4" type="video/mp4">
+        <video class="lazy" controls muted loop playsinline preload="none" poster="media/buoy-film.webp" width="1280" height="720" aria-label="A short film of Buoy Money on a phone: transactions sorted in one tap, a budget that counts up, and a question asked about subscriptions">
+          <source src="media/buoy-film.webm" type="video/webm">
+          <source src="media/buoy-film.mp4" type="video/mp4">
         </video>
       </figure>
       <p class="cap small">Filmed in the app on a demo account.</p>
@@ -543,9 +481,9 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   </div>
   <div class="wrap grid rest">
     <figure class="ph rv">
-      <video class="lazy" muted loop playsinline preload="none" poster="media/buoy-phone.webp" width="540" height="960" aria-label="Buoy Money on a phone: the assistant lowers a dining budget and moves a savings goal's date forward">
-        <source data-src="media/buoy-phone.webm" type="video/webm">
-        <source data-src="media/buoy-phone.mp4" type="video/mp4">
+      <video class="lazy" controls muted loop playsinline preload="none" poster="media/buoy-phone.webp" width="540" height="960" aria-label="Buoy Money on a phone: the assistant lowers a dining budget and moves a savings goal's date forward">
+        <source src="media/buoy-phone.webm" type="video/webm">
+        <source src="media/buoy-phone.mp4" type="video/mp4">
       </video>
       <figcaption>Asking the assistant to change a budget.</figcaption>
     </figure>
@@ -565,111 +503,188 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   </div>
 </section>
 
+<section class="band f-black pipe" id="pipeline">
+  <div class="wrap grid">
+    <h2 class="rv">It started with a virus</h2>
+    <div class="tell">
+      <div class="stack">
+        <p class="lead rv" style="--d:1">When the Kansas state lab began sequencing SARS-CoV-2, every sample was tracked by hand across spreadsheets and the lab's records system. I was a microbiologist, not a programmer. I wrote the package that did the tracking instead, most of it before my first computer science class.</p>
+        <p class="rv" style="--d:2">It pulls patient demographics from the Oracle records system, loads run statistics from the sequencers, gathers the sequence files, reads the lineage calls from Nextclade and Pangolin, builds the report the state epidemiologists need and sends it over SFTP. Separate scripts prepare uploads for GISAID and Nextstrain.</p>
+        <p class="rv" style="--d:3">I had been one of the analysts doing that work by hand. Each run saved three hours or more of it, and 20 analysts were each doing several runs a day. The code is still public.</p>
+        <p class="rv" style="--d:4"><a class="link" href="https://github.com/jbarnell1/KHEL_WGS_SARS_CoV_2">Read the code on GitHub</a></p>
+      </div>
+    </div>
+    <figure class="schema rv" style="--d:3">
+      <img src="img/khel-schema.webp" width="298" height="758" loading="lazy" alt="The first columns of the pipeline's results table in SQL Server, starting with the sample number">
+      <figcaption>The top of the results table, from the repository's own documentation.</figcaption>
+    </figure>
+    <dl class="nums">
+      <div class="rv"><dt class="tnum">8</dt><dd>workflows behind one runner script</dd></div>
+      <div class="rv" style="--d:1"><dt class="tnum">186</dt><dd>commits, August 2021 to February 2022</dd></div>
+      <div class="rv" style="--d:2"><dt class="tnum">3+</dt><dd>hours of hand work saved on every run</dd></div>
+      <div class="rv" style="--d:3"><dt>MIT</dt><dd>licence, open to any state lab</dd></div>
+    </dl>
+  </div>
+  <div class="steps">
+      <p class="k soft">The daily run, start to finish</p>
+      <ol class="list">
+        <li><b>Import demographics</b><span>Patient details for each sample come out of the lab's Oracle records system.</span></li>
+        <li><b>Parse run statistics</b><span>Quality figures are read from each sequencer run.</span></li>
+        <li><b>Compile the FASTA files</b><span>The sequences from a run are gathered into one file.</span></li>
+        <li><b>Parse Nextclade results</b><span>Clade calls are read from Nextclade.</span></li>
+        <li><b>Parse Pangolin results</b><span>Lineage calls are read from Pangolin.</span></li>
+        <li><b>Build the state report</b><span>Everything is joined into the report the state epidemiologists need.</span></li>
+        <li><b>Send the report</b><span>The report goes to the epidemiologists over SFTP.</span></li>
+        <li><b>Build the Nextstrain report</b><span>A second file is prepared for the state's Nextstrain build.</span></li>
+      </ol>
+  </div>
+</section>
+
+<section class="band f-surface house" id="house">
+  <div class="wrap grid">
+    <div class="tell">
+      <h2 class="rv">Kept at home</h2>
+      <p class="lead rv" style="--d:1">Photos, documents, health records, the budget and the media library live on two machines at home. They stay on hardware I own, reachable only over Tailscale, with no ports open to the internet.</p>
+      <p class="rv" style="--d:2">These four are apps I wrote for it. Each one, and the rest of what runs there, is on <a class="link" href="#work">the shelf below</a>.</p>
+    </div>
+    <div class="phones">
+      <figure class="rv"><img src="img/listener-phone.webp" width="440" height="952" loading="lazy" alt="Listener on a phone: tasks it heard today, each with the sentence it came from"><figcaption><a class="link" href="#p-listener">Listener</a></figcaption></figure>
+      <figure class="rv" style="--d:1"><img src="img/selfkept-phone.webp" width="440" height="952" loading="lazy" alt="SelfKept on a phone: what changed since yesterday in sleep, heart rate and HRV"><figcaption><a class="link" href="#p-selfkept">SelfKept</a></figcaption></figure>
+      <figure class="rv" style="--d:2"><img src="img/highlights-phone.webp" width="440" height="952" loading="lazy" alt="Highlights on a phone: clips and photos picked for a Colorado trip video"><figcaption><a class="link" href="#p-highlights">Highlights</a></figcaption></figure>
+      <figure class="rv" style="--d:3"><img src="img/stringart-phone.webp" width="440" height="952" loading="lazy" alt="String Art Studio build mode on a phone: wrap to pin 180 next"><figcaption><a class="link" href="#p-stringart">String Art Studio</a></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band f-navy strings" id="strings">
+  <div class="wrap grid">
+    <div class="tell">
+      <h2 class="rv">One long thread</h2>
+      <p class="lead rv" style="--d:1">String Art Studio turns a photo into a build plan: one continuous thread wound between 240 pins. This is a real plan from its solver, drawn here turn by turn.</p>
+      <div class="ctl rv" style="--d:2">
+        <button class="btn" type="button" id="st-play">Play</button>
+        <input type="range" id="st-seek" min="0" max="5086" value="0" step="1" aria-label="Turns drawn">
+        <p class="now tnum"><span id="st-n">0</span> of <span id="st-total">5,086</span> turns. Next pin: <span id="st-pin">0</span></p>
+      </div>
+      <figure class="src rv" style="--d:3">
+        <img src="img/strings-source.webp" width="336" height="336" loading="lazy" alt="The sample portrait the plan was made from">
+        <figcaption>The photo it started from, a sample that ships with the project. The face is AI-generated, not a real person. The finished piece would take <span id="st-m">2,256</span> metres of thread.</figcaption>
+      </figure>
+    </div>
+    <div class="board rv" style="--d:1">
+      <canvas id="st-canvas" width="1400" height="1400" role="img" aria-label="A round board of 240 pins with a portrait building up from straight lines of thread"></canvas>
+      <noscript><img src="img/strings-final.webp" width="900" height="900" alt="The finished plan: a portrait made of straight lines of thread on a round board of 240 pins"></noscript>
+    </div>
+  </div>
+</section>
+<script type="application/json" id="st-data">{"pins":[[0.5008,0.0164],[0.5108,0.0165],[0.5218,0.0169],[0.5353,0.0177],[0.5469,0.0187],[0.5647,0.0207],[0.5754,0.0223],[0.5895,0.0248],[0.6012,0.0271],[0.6123,0.0296],[0.6272,0.0334],[0.6406,0.0373],[0.6484,0.0397],[0.6622,0.0444],[0.6751,0.0492],[0.6883,0.0545],[0.6966,0.0582],[0.7053,0.0621],[0.7208,0.0697],[0.7307,0.075],[0.7443,0.0826],[0.753,0.0879],[0.7602,0.0924],[0.777,0.1036],[0.7852,0.1095],[0.7969,0.1183],[0.8042,0.124],[0.8165,0.1344],[0.8246,0.1415],[0.8352,0.1514],[0.8412,0.1572],[0.8519,0.1683],[0.8619,0.1792],[0.8653,0.1831],[0.8772,0.1973],[0.8826,0.2041],[0.8914,0.2159],[0.8977,0.2249],[0.9053,0.2362],[0.9143,0.2505],[0.9183,0.2572],[0.9243,0.268],[0.9292,0.2772],[0.9376,0.2941],[0.9416,0.3029],[0.9477,0.3171],[0.9524,0.3291],[0.9557,0.3382],[0.9596,0.3496],[0.9632,0.3611],[0.9662,0.3715],[0.9701,0.3864],[0.9737,0.4026],[0.975,0.4093],[0.9782,0.428],[0.9794,0.4364],[0.9806,0.446],[0.9821,0.4621],[0.9831,0.4779],[0.9834,0.4871],[0.9836,0.4964],[0.9834,0.5135],[0.983,0.5237],[0.9822,0.5362],[0.9807,0.5532],[0.9791,0.5657],[0.9779,0.5738],[0.9749,0.5911],[0.9732,0.6],[0.9694,0.6163],[0.9678,0.6228],[0.9629,0.6399],[0.9589,0.6527],[0.9554,0.6628],[0.9517,0.6727],[0.9459,0.6873],[0.9412,0.6979],[0.9378,0.7054],[0.9315,0.7183],[0.924,0.7327],[0.9189,0.7416],[0.9142,0.7497],[0.9068,0.7615],[0.8987,0.7737],[0.8924,0.7826],[0.8845,0.7934],[0.8774,0.8024],[0.8667,0.8153],[0.8602,0.8227],[0.8529,0.8306],[0.8427,0.8412],[0.8336,0.8501],[0.8234,0.8596],[0.8151,0.8669],[0.8072,0.8735],[0.796,0.8824],[0.7817,0.8931],[0.7757,0.8973],[0.7642,0.9051],[0.7512,0.9132],[0.7409,0.9193],[0.7331,0.9237],[0.7206,0.9304],[0.7072,0.937],[0.6967,0.9418],[0.6827,0.9478],[0.6732,0.9515],[0.6597,0.9565],[0.6505,0.9596],[0.6369,0.9638],[0.6223,0.9679],[0.6092,0.9711],[0.6014,0.9729],[0.5854,0.976],[0.5776,0.9773],[0.561,0.9797],[0.5483,0.9812],[0.5409,0.9819],[0.5269,0.9829],[0.5099,0.9835],[0.4997,0.9836],[0.4879,0.9835],[0.4777,0.9831],[0.4607,0.982],[0.4491,0.9809],[0.4357,0.9793],[0.4274,0.9781],[0.4142,0.9759],[0.3961,0.9723],[0.3869,0.9702],[0.3721,0.9664],[0.3609,0.9632],[0.3493,0.9595],[0.3397,0.9563],[0.3257,0.9511],[0.3178,0.948],[0.3065,0.9432],[0.2891,0.9352],[0.2814,0.9314],[0.271,0.926],[0.259,0.9193],[0.249,0.9134],[0.2358,0.9051],[0.224,0.8971],[0.2152,0.8908],[0.2066,0.8844],[0.1982,0.8779],[0.1875,0.8691],[0.174,0.8572],[0.1683,0.8519],[0.1558,0.8397],[0.1474,0.831],[0.1428,0.826],[0.1309,0.8124],[0.1245,0.8047],[0.115,0.7926],[0.1068,0.7815],[0.103,0.7761],[0.0942,0.763],[0.0886,0.7542],[0.0798,0.7395],[0.0743,0.7295],[0.0697,0.7208],[0.0635,0.7082],[0.0578,0.6959],[0.0537,0.6862],[0.0495,0.6759],[0.0448,0.6634],[0.0394,0.6473],[0.0371,0.64],[0.0335,0.6273],[0.0298,0.6132],[0.0268,0.5998],[0.0252,0.5916],[0.0223,0.5755],[0.0206,0.5639],[0.0187,0.5471],[0.0178,0.5372],[0.017,0.5241],[0.0165,0.51],[0.0164,0.5002],[0.0167,0.4839],[0.0172,0.4713],[0.0177,0.4641],[0.019,0.4494],[0.0203,0.439],[0.0219,0.4276],[0.0249,0.4098],[0.027,0.3995],[0.0294,0.3888],[0.0331,0.3741],[0.0358,0.3645],[0.0407,0.3485],[0.0452,0.3355],[0.0488,0.3259],[0.0522,0.3173],[0.0589,0.3017],[0.0646,0.2895],[0.0696,0.2796],[0.0735,0.2721],[0.0818,0.2572],[0.0877,0.2472],[0.0936,0.2379],[0.1019,0.2254],[0.1091,0.2152],[0.1168,0.205],[0.1236,0.1963],[0.1328,0.1853],[0.1427,0.1741],[0.1471,0.1693],[0.1599,0.1562],[0.168,0.1484],[0.1791,0.1382],[0.1872,0.1312],[0.1962,0.1237],[0.2074,0.115],[0.2155,0.1089],[0.2273,0.1006],[0.2346,0.0957],[0.2476,0.0875],[0.2577,0.0815],[0.2666,0.0765],[0.2777,0.0705],[0.2904,0.0642],[0.3036,0.0581],[0.3125,0.0542],[0.3248,0.0492],[0.3386,0.0441],[0.351,0.0399],[0.3607,0.0369],[0.3713,0.0338],[0.3889,0.0293],[0.3985,0.0272],[0.4092,0.025],[0.4233,0.0225],[0.4348,0.0208],[0.4526,0.0187],[0.4627,0.0178],[0.4774,0.0169],[0.4883,0.0165]],"sequence":[0,105,5,111,13,117,32,228,16,118,18,117,20,121,18,122,22,118,19,116,20,118,15,119,18,123,24,118,17,117,35,116,24,121,15,120,18,124,22,115,19,119,13,118,21,117,24,115,25,116,18,125,24,119,16,31,120,13,121,22,123,15,122,24,120,19,122,13,114,25,118,27,116,26,230,114,22,119,20,117,25,119,17,121,16,122,20,121,25,113,25,115,20,125,22,120,24,123,13,115,26,113,28,115,21,116,9,113,22,127,18,141,126,24,124,15,117,23,118,26,5,111,27,114,24,105,142,127,235,125,15,126,20,124,19,114,8,135,6,133,4,110,27,119,21,121,14,139,118,11,121,27,112,26,117,27,4,109,4,135,5,133,7,111,28,116,17,120,25,123,16,124,232,125,236,128,24,136,113,227,114,21,123,99,19,126,238,130,1,104,23,237,40,121,12,117,10,121,26,119,23,115,29,113,225,114,28,129,109,26,120,23,123,235,129,2,135,7,108,6,111,25,122,23,129,4,136,1,129,20,114,23,134,116,8,133,1,102,216,100,145,214,86,208,81,207,66,205,64,196,60,194,58,192,60,191,55,189,53,188,51,187,52,189,51,186,48,194,49,184,48,195,58,200,57,199,54,187,55,198,53,187,47,192,59,191,61,203,63,205,79,204,81,203,60,190,51,191,47,193,58,196,51,195,47,184,44,182,48,183,44,191,62,192,55,188,52,191,48,192,61,202,77,173,65,194,47,109,186,38,232,185,43,158,42,156,38,154,37,155,38,153,35,154,15,127,20,128,18,115,33,232,17,123,237,102,238,98,237,129,5,106,127,25,112,24,106,7,137,5,110,9,118,12,115,16,95,21,116,11,122,21,102,239,129,234,126,21,104,24,139,108,26,109,125,28,119,11,227,27,123,238,127,234,130,236,124,23,125,1,101,5,136,9,135,1,106,0,101,6,98,7,93,216,99,13,116,29,119,14,122,17,231,114,18,129,3,85,101,21,113,134,23,127,236,121,230,125,13,141,216,103,129,24,110,25,128,25,125,239,105,145,24,111,22,112,28,227,108,5,132,236,129,15,116,12,141,215,100,15,213,86,212,83,178,82,207,87,198,64,203,62,205,76,173,66,199,64,204,62,202,63,170,74,55,198,88,2,101,239,123,26,108,9,137,4,101,9,95,7,136,0,104,2,85,195,68,165,35,152,33,151,31,119,12,152,14,117,226,113,133,19,127,237,124,21,120,27,122,27,223,12,98,15,235,114,16,125,231,127,233,124,24,109,25,109,5,110,22,161,230,114,12,120,27,118,237,101,8,92,16,112,132,23,103,11,137,212,138,6,108,129,233,97,13,110,7,197,229,32,117,228,113,20,130,23,133,26,124,234,96,21,213,138,3,132,9,92,15,155,17,113,32,174,67,196,50,193,48,181,44,180,42,181,239,104,213,139,214,141,217,143,218,145,217,99,11,117,28,4,107,137,24,109,17,111,31,114,223,152,15,93,217,142,218,97,1,32,123,27,124,100,11,141,10,135,3,95,12,91,16,95,5,134,7,101,238,129,232,130,20,235,121,28,123,233,94,8,97,2,187,4,95,15,115,100,14,124,17,127,1,188,3,103,222,143,216,86,2,108,227,29,149,220,147,217,146,221,104,237,130,231,163,230,127,21,106,125,237,101,120,14,155,225,157,226,114,14,127,25,126,2,84,238,15,97,15,91,17,110,23,128,21,123,29,120,31,121,38,122,237,117,29,123,230,160,228,127,232,97,14,116,30,116,30,149,11,155,13,140,12,93,17,113,18,155,226,127,103,11,120,22,103,136,9,141,218,95,6,193,57,191,58,202,60,165,67,172,77,175,67,202,6,64,173,68,164,230,81,176,239,179,237,181,1,137,103,8,87,196,68,172,237,99,14,98,3,106,2,188,0,103,5,141,212,139,7,131,23,133,237,171,74,169,72,201,68,209,69,172,235,122,28,124,20,127,239,188,50,195,6,104,238,82,5,98,19,112,20,155,16,90,17,112,24,228,177,159,230,20,130,25,128,28,125,26,107,23,136,111,21,154,223,150,31,118,29,121,238,29,172,236,102,2,99,3,187,5,20,131,2,80,176,40,179,48,178,40,154,18,95,11,114,9,108,127,3,136,209,67,173,233,125,27,126,22,101,11,157,223,150,217,144,221,147,219,96,15,94,69,6,196,89,12,111,21,116,30,119,32,115,225,24,127,229,162,231,80,178,237,188,238,132,1,103,4,82,190,61,194,7,29,222,23,129,21,95,14,154,33,150,217,152,18,91,17,154,8,193,51,197,64,206,75,222,158,13,98,62,8,110,9,77,97,12,79,113,232,13,101,210,141,4,196,5,139,12,71,86,198,70,167,71,169,228,170,237,182,236,188,79,234,123,31,122,37,118,34,229,7,193,55,199,58,165,230,168,63,173,70,178,84,0,132,6,194,50,178,42,121,39,122,29,124,24,109,7,187,56,191,45,175,66,174,237,180,2,95,13,85,3,130,24,129,19,151,220,145,215,140,13,218,26,126,17,92,10,114,7,102,21,6,136,239,24,118,32,123,38,178,239,174,232,123,37,153,217,148,12,99,1,107,2,22,109,23,132,20,211,19,125,29,151,217,86,9,193,85,12,155,223,143,212,17,93,14,113,22,116,30,232,10,137,213,141,6,108,130,18,158,58,203,111,14,91,18,212,147,218,99,7,111,127,26,128,6,199,4,79,175,230,129,228,163,24,132,235,180,236,99,239,173,230,74,229,76,201,141,11,115,27,124,32,122,41,121,32,114,218,144,222,157,15,99,76,8,89,16,94,12,112,10,95,232,126,28,127,4,131,236,189,44,176,237,175,239,132,2,136,207,134,23,108,12,82,3,139,1,173,30,124,36,122,205,67,170,26,219,144,210,20,151,215,147,26,217,100,11,79,178,235,183,236,190,58,160,61,193,10,118,190,237,52,192,57,165,70,166,224,165,24,131,6,197,55,200,94,14,110,12,96,14,89,17,87,190,235,116,30,7,196,49,125,31,126,47,183,74,224,71,168,73,6,137,13,152,215,149,31,130,28,129,25,107,14,92,19,109,7,112,5,143,210,64,209,232,18,117,20,93,8,195,7,109,24,125,32,120,42,179,238,133,234,180,41,123,39,158,11,98,216,140,213,17,94,230,162,228,165,63,158,10,92,113,9,139,4,197,5,195,84,3,109,14,101,236,181,232,162,24,133,3,177,82,207,9,112,187,6,108,127,27,129,0,174,69,202,112,11,97,10,192,45,123,30,125,28,9,100,238,78,12,87,195,4,198,97,114,16,85,118,17,157,220,26,216,145,210,158,142,212,145,223,166,226,169,67,176,42,122,34,115,189,59,201,70,172,228,175,229,28,125,50,191,10,62,204,11,103,2,105,6,134,236,178,41,155,24,164,231,161,24,167,69,6,192,218,32,155,39,124,35,121,30,128,29,126,39,126,20,119,190,55,208,229,186,20,94,13,112,24,127,18,213,16,88,3,141,211,83,8,194,89,18,210,147,27,132,25,220,155,63,157,24,158,220,143,224,167,23,136,97,11,94,9,98,2,127,29,150,165,215,139,6,109,21,133,206,10,187,8,104,22,102,5,198,2,178,232,182,10,79,5,106,138,12,92,18,96,4,132,22,108,25,131,28,171,239,177,46,237,189,235,191,46,126,30,120,22,37,121,40,180,71,165,229,24,131,237,128,27,130,26,129,29,220,150,222,70,175,80,12,75,10,98,235,185,232,79,179,236,184,57,158,14,86,6,142,11,113,187,12,109,5,99,235,48,181,2,174,44,124,37,119,34,125,48,124,23,123,203,63,11,150,214,140,213,20,157,19,90,12,77,9,234,39,126,32,127,30,150,212,153,22,135,0,189,117,145,216,67,210,152,214,16,96,76,11,110,202,113,8,196,70,164,222,25,220,149,27,220,163,26,131,44,239,24,121,36,237,123,43,230,118,233,198,225,181,228,171,75,93,8,182,12,84,17,95,8,26,108,13,139,2,199,136,8,192,54,155,7,103,238,178,71,5,106,143,216,149,212,155,34,126,48,177,36,125,33,124,41,120,190,237,97,7,197,3,104,14,90,129,110,15,112,206,134,25,237,133,20,154,36,197,2,176,228,179,8,80,3,64,168,224,163,229,185,14,78,173,75,183,56,189,41,126,193,46,124,50,186,113,25,235,188,232,43,229,80,236,136,109,94,20,110,94,18,94,113,10,74,12,79,177,42,123,204,63,169,235,184,12,88,19,155,61,169,223,147,216,150,210,55,4,196,12,158,65,1,128,31,127,227,32,2,128,4,105,7,138,214,17,236,209,156,219,29,130,21,126,103,22,129,31,219,98,14,86,207,123,47,180,109,26,1,187,0,99,6,68,174,228,183,166,222,24,135,100,238,175,108,9,91,10,205,11,107,19,92,7,111,26,221,188,142,5,104,9,74,201,141,175,66,206,9,79,13,91,122,19,102,85,8,185,11,191,234,49,124,38,232,16,119,228,93,3,26,108,177,81,12,76,8,197,133,2,186,109,202,111,9,66,99,234,192,46,234,117,190,234,125,50,2,35,122,230,30,151,215,144,223,163,61,196,52,203,119,27,230,42,124,45,231,48,176,82,8,219,26,112,6,201,7,100,22,106,4,134,1,199,137,158,210,153,220,28,132,35,159,220,162,22,113,96,14,113,8,191,54,128,34,230,19,127,193,28,168,72,9,84,7,198,3,65,4,19,99,238,189,118,20,131,24,116,29,148,219,28,192,7,104,19,109,89,191,82,14,187,235,45,126,40,124,47,185,236,191,233,33,6,97,22,163,225,156,32,130,103,147,210,140,5,87,15,113,226,189,234,50,231,160,220,164,61,162,68,7,64,6,213,94,7,82,10,78,186,8,139,200,57,2,107,175,227,115,202,5,65,172,107,21,110,15,119,101,235,186,37,1,22,125,41,179,235,95,196,86,7,88,9,134,205,41,231,189,121,233,180,40,156,224,172,239,184,50,187,111,95,18,108,171,68,4,107,166,220,163,24,221,98,118,22,105,23,103,223,24,154,212,156,18,214,149,218,146,30,237,129,53,130,45,236,47,125,39,127,24,126,36,227,158,17,86,1,186,228,178,108,174,238,181,43,122,20,121,142,13,77,92,17,81,13,101,73,170,224,175,223,25,202,235,57,195,63,6,106,21,108,169,66,239,23,133,31,228,185,10,208,229,160,211,145,222,172,226,31,131,3,54,199,40,120,36,153,215,146,210,155,22,121,21,95,233,50,238,89,4,130,196,3,58,4,201,112,96,14,214,20,229,43,84,4,69,176,109,10,77,52,3,186,234,190,43,124,192,98,17,79,15,87,108,1,201,91,229,170,27,134,198,6,64,159,62,6,191,232,77,18,118,17,96,18,117,13,182,238,136,46,236,98,1,55,3,70,10,86,4,104,15,214,147,207,111,185,113,183,228,187,51,238,62,235,43,209,156,32,129,45,125,51,127,19,236,36,166,108,173,228,168,108,129,19,213,146,168,150,31,4,194,59,1,105,3,176,157,34,228,161,26,193,59,6,65,207,83,17,82,2,201,142,168,214,164,108,180,87,188,234,48,123,44,123,39,234,184,237,83,12,73,17,103,219,146,27,131,239,100,15,111,11,187,227,31,225,70,155,217,160,210,151,32,219,27,167,72,175,226,37,126,38,171,76,239,49,195,239,86,191,4,184,228,177,1,60,234,47,239,135,25,123,20,121,22,118,14,109,6,61,153,34,121,206,83,2,195,234,193,128,33,197,87,216,166,106,161,108,170,223,172,76,14,79,52,91,196,10,71,8,110,92,19,119,24,122,19,186,17,71,174,40,231,165,223,167,108,176,223,31,229,124,24,224,25,119,189,8,71,9,69,93,196,14,84,198,136,206,68,10,84,1,202,0,102,46,4,58,7,186,213,67,10,80,6,54,192,232,186,227,72,180,238,77,52,131,32,4,196,223,161,20,101,19,118,13,109,164,224,154,171,227,159,108,165,216,16,99,19,99,75,17,215,148,30,149,105,130,2,202,144,225,29,152,216,167,106,239,103,19,96,235,62,4,193,65,2,50,128,53,141,200,5,56,128,40,123,46,188,228,158,214,66,133,236,187,16,215,18,120,22,103,4,80,238,47,134,115,29,222,205,34,195,3,201,140,76,10,87,7,60,3,63,162,108,172,220,170,222,167,66,3,60,4,57,7,191,231,93,19,95,189,232,163,222,26,157,108,179,234,185,12,64,157,16,111,8,138,51,129,48,235,39,236,100,0,68,163,76,11,106,169,224,158,208,89,197,234,63,198,41,159,106,173,44,235,42,125,27,119,18,98,200,140,10,223,25,110,203,0,181,41,236,194,5,90,13,75,91,18,121,21,119,22,221,158,18,212,19,102,14,87,19,90,73,138,24,118,35,193,5,29,224,199,56,8,205,123,24,1,49,126,192,11,78,9,187,237,183,8,76,11,33,152,105,13,82,235,60,4,187,227,201,145,214,13,117,14,73,8,54,4,56,234,194,232,190,228,30,145,224,23,221,170,66,1,131,58,6,153,105,19,115,229,30,227,34,59,112,186,7,107,3,62,170,219,175,160,222,165,106,85,16,88,68,175,33,153,206,5,52,1,88,5,107,159,223,26,119,23,122,21,160,106,170,215,167,187,220,165,225,184,238,45,234,187,110,51,126,44,94,40,236,206,8,54,79,94,18,122,27,121,25,219,155,108,53,190,227,159,109,9,85,68,7,189,233,185,237,39,153,14,181,225,23,223,29,153,223,164,106,151,16,84,18,120,22,104,148,221,190,210,158,26,127,24,116,25,120,14,78,174,220,23,222,160,108,163,230,161,16,216,24,4,52,109,16,118,21,100,165,69,14,213,163,147,203,239,48,93,37,2,177,109,157,18,121,17,93,67,217,15,184,11,197,233,187,229,34,230,92,6,207,10,74,15,119,20,222,33,229,17,121,24,125,40,89,13,80,14,98,75,231,114,62,192,58,8,204,149,105,147,30,230,185,13,106,163,74,175,220,161,212,155,16,100,237,186,10,102,52,237,43,236,193,231,195,60,6,82,169,107,54,131,41,237,62,92,10,138,200,8,91,191,227,188,233,177,219,24,218,145,104,22,187,239,183,43,190,4,51,97,75,9,69,17,121,203,226,25,1,180,110,156,106,148,213,15,214,167,107,10,73,32,228,15,85,10,90,0,204,61,3,54,8,105,24,120,19,97,46,94,229,189,228,32,229,28,119,66,94,18,115,25,132,25,218,196,4,207,4,108,158,219,172,28,125,23,117,15,97,13,215,166,59,8,198,17,99,54,9,197,53,4,50,232,37,228,180,233,190,46,176,71,118,24,122,15,159,72,155,110,6,206,1,48,233,96,48,104,145,105,150,170,155,213,15,219,156,108,60,159,66,14,216,12,68,135,70,8,201,5,130,43,239,44,98,234,41,235,37,227,189,226,168,24,107,162,210,166,63,4,55,129,46,239,202,59,110,186,238,203,145,102,130,104,200,7,77,99,121,15,118,23,115,22,223,173,107,145,218,152,131,108,64,86,17,184,14,215,140,216,18,101,54,6,209,149,28,227,192,30,226,25,126,23,106,24,123,27,120,21,224,174,235,36,168,225,183,234,44,88,42,239,79,194,14,119,69,11,114,169,220,176,219,178,223,27,124,19,214,22,222,29,229,186,225,21,116,72,170,107,148,221,166,69,177,232,195,227,43,99,140,101,57,8,65,11,89,47,2,193,232,199,138,9,81,32,226,191,2,105,157,214,139,168,102,126,105,142,105,47,23,235,30,236,42,1,56,3,189,226,10,71,7,70,90,38,237,191,228,28,119,19,150,103,8,62,105,144,215,20,120,23,106,18,117,11,186,233,198,232,167,109,24,114,16,219,161,109,62,86,44,237,48,232,187,51,94,49,183,112,52,7,58,30,4,59,13,88,15,216,154,110,25,225,27,118,70,12,197,232,35,231,187,224,28,120,26,116,18,159,209,143,218,14,120,30,191,225,22,104,147,201,149,103,51,91,49,4,43,237,36,231,177,225,185,1,43,0,207,84,125,46,190,237,203,148,108,143,107,174,75,10,230,32,232,202,27,227,181,219,14,198,0,134,7,74,11,65,90,196,28,222,171,214,166,25,234,22,127,50,104,138,102,21,102,123,18,113,15,215,165,107,66,9,56,97,17,119,25,228,23,108,142,200,20,123,95,44,232,196,2,107,174,147,217,146,211,159,110,66,12,215,13,158,34,197,229,35,80,38,232,200,56,94,18,221,20,225,26,224,173,238,193,227,185,239,41,238,192,48,86,40,95,134,101,138,99,123,20,126,233,194,225,28,120,23,226,28,161,211,16,233,27,230,188,225,24,121,24,106,162,110,131,105,152,33,232,201,231,43,4,26,238,51,89,52,3,40,62,100,19,118,22,103,142,107,176,225,156,17,118,78,39,234,26,3,54,103,148,170,226,24,116,11,216,24,119,18,118,24,118,27,121,31,150,201,51,1,39,97,13,83,5,106,154,221,29,224,189,223,179,219,13,64,101,121,136,104,134,5,67,9,214,140,108,129,107,171,213,173,221,164,212,149,10,82,13,217,11,81,100,15,121,26,109,89,14,84,61,101,52,9,73,113,22,121,18,237,187,217,183,227,25,230,31,231,199,54,94,47,192,237,42,0,186,219,187,109,140,98,62,5,50,125,18,120,31,233,30,232,203,231,33,228,199,227,23,104,143,105,146,103,0,41,1,47,107,168,146,213,233,176,233,28,234,26,226,29,218,142,109,163,214,8,110,74,52,239,34,227,193,225,204,147,210,6,211,14,122,24,105,24,129,236,36,232,42,80,236,16,122,21,119,19,92,57,5,189,230,23,194,224,27,119,20,123,100,76,8,216,159,221,19,103,135,106,136,102,239,52,86,51,187,233,35,232,25,224,185,219,188,49,0,45,191,238,182,237,45,80,43,123,90,17,93,41,231,25,4,182,225,179,141,105,24,121,21,226,27,235,202,231,197,227,26,119,28,116,24,120,23,106,138,105,155,105,138,108,70,174,226,19,223,182,44,1,28,2,104,133,106,49,87,15,221,21,223,188,222,158,10,92,49,232,28,235,26,232,180,225,196,217,22,233,24,112,10,75,42,234,30,224,182,229,29,115,25,229,26,237,40,236,173,224,191,211,152,106,134,103,144,105,125,24,114,24,126,90,57,94,52,85,123,25,120,24,218,17,221,193,222,184,224,20,118,22,219,148,29,228,193,220,11,141,159,106,132,102,19,122,38,67,48,124,46,4,39,80,48,101,66,99,19,153,217,22,237,31,235,24,116,187,217,151,32,231,20,223,191,56,99,128,96,18,224,190,60,9,136,103,139,214,12,79,48,3,192,222,21,220,194,219,183,226,20,123,92,16,224,169,219,162,24,124,19,127,100,136,172,225,30,231,25,119,24,232,29,227,197,228,26,236,28,221,192,238,53,84,14,96,66,98,131,102,134,23,108,26,133,105,24,223,185,226,199,229,33,230,161,219,156,42,123,45,62,94,18,125,24,155,39,122,27,236,31,234,33,231,14,227,24,236,29,234,203,229,176,142,185,221,194,235,29,230,198,227,31,150,107,164,99,50,195,225,23,237,24,234,40,5,51,80,52,87,57,192,220,18,121,20,119,19,118,24,224,181,226,200,225,27,237,25,110,139,102,128,103,131,106,130,103,22,121,21,121,24,114,12,219,195,230,19,95,67,9,33,152,223,25,217,146,104,137,103,132,108,160,210,0,37,148,29,233,35,231,177,223,192,229,24,107,2,45,78,111,7,70,101,133,103,22,104,22,234,27,238,23,117,137,13,212,147,212,232,178,226,184,225,189,236,207,237,29,226,197,222,19,224,25,117,32,230,202,226,25,236,30,228,34,70,105,132,104,131,105,142,178,138,168,72,101,41,72,45,233,33,234,25,119,18,120,22,118,19,219,196,5,110,27,4,187,51,3,44,74,103,139,172,143,218,186,215,140,105,130,108,177,228,31,226,201,59,87,15,154,218,183,228,19,231,28,119,21,121,102,127,25,128,23,106,23,223,26,239,28,230,200,57,28,237,22,224,167,107,133,102,125,49,125,104,3,60,94,66,93,129,103,132,102,124,100,238,24,116,24,106,23,232,27,233,23,117,32,234,206,232,35,234,23,122,21,227,196,218,195,229,30,227,187,228,29,229,185,225,176,145,218,194,223,18,121,22,153,105,24,119,15,222,31,229,34,228,17,86,196,224,26,233,35,3,28,238,26,230,24,107,128,101,60,86,57,3,50,195,238,31,3,27,121,21,220,187,216,143,218,13,80,53,188,0,27,229,16,88,16,234,35,232,177,42,69,97,13,117,23,108,23,128,104,135,105,149,212,13,95,44,123,20,188,225,25,115,23,117,18,94,20,123,43,1,188,215,194,222,22,118,18,222,200,229,28,52,189,224,165,141,214,170,144,105,129,106,23,120,27,239,44,92,126,100,131,24,124,101,129,104,130,107,24,129,102,131,104,126,101,123,20,217,28,193,58,192,216,196,220,18,233,21,119,25,0,24,122,19,232,25,233,204,234,18,120,30,238,36,237,30,120,17,120,28,228,184,224,169,144,173,44,224,175,223,22,226,27,123,29,225,179,225,190,224,167,23,0,49,74,94,47,239,25,238,16,119,26,109,24,105,2,105,126,21,102,124,20,99,119,25,227,188,222,201,224,27,121,24,123,24,114,24,129,24,118,19,124,48,75,10,222,31,120,31,2,180,152,33,232,21,239,194,229,32,230,30,233,35,159,39,237,21,118,27,117,29,226,26,124,27,1,51,187,24,107,2,107,19,103,127,24,106,130,103,135,103,11,137,103,140,101,13,75,51,1,133,103,126,25,231,43,128,99,19,115,29,236,40,157,26,228,203,227,199,225,176,225,185,227,23,108,26,121,28,0,104,21,110,126,102,21,121,18,221,144,217,151,32,174,226,157,23,122,27,124,24,122,21,111,12,95,231,27,119,30,231,36,122,25,113,25,130,105,152,105,24,112,19,96,235,129,21,122,23,225,201,229,30,121,33,231,163,22,120,18,98,235,26,230,185,229,34,228,55,187,226,73,97,10,72,106,24,104,143,80,169,224,165,24,170,24,1,47,180,239,181,44,239,106,22,106,22,217,28,122,24,107,24,126,28,127,100,117,15,97,121,27,167,225,194,216,145,220,195,225,29,122,33,152,172,68,42,156,219,194,217,144,124,48,27,110,25,119,27,225,180,225,190,60,3,56,191,214,158,140,105,129,102,131,109,26,109,26,108,23,117,32,123,20,119,21,96,14,228,30,120,28,125,28,226,29,115,29,230,28,237,31,150,31,120,23,224,185,225,188,238,27,124,24,122,21,116,24,118,19,222,171,187,51,187,217,151,217,197,218,17,118,22,121,15,97],"thread_m":2256,"thread_mm":0.25,"board_mm":610.0}</script>
+
 <section class="band work" id="work">
   <div class="wrap">
     <div class="shelf-head">
       <h2 class="rv">Everything on the shelf</h2>
-      <p class="rv" style="--d:1">Fourteen projects, from a cricket startup to a live budgeting app. The colour is the kind of work.</p>
+      <p class="rv" style="--d:1">Fourteen projects, live ones first. The colour is the kind of work, and each one says what state it is in.</p>
     </div>
     <div class="shelf rv" style="--d:2" id="shelf">
-      <a class="spine" href="#p-buoy" data-g="product"><span class="nm">Buoy Money</span><span class="dc">Product</span></a>
-      <a class="spine" href="#p-listener" data-g="hard"><span class="nm">Listener</span><span class="dc">Hardware</span></a>
-      <a class="spine" href="#p-watchman" data-g="home"><span class="nm">Watchman</span><span class="dc">Home</span></a>
-      <a class="spine" href="#p-selfkept" data-g="home"><span class="nm">SelfKept</span><span class="dc">Home</span></a>
-      <a class="spine" href="#p-highlights" data-g="home"><span class="nm">Highlights</span><span class="dc">Home</span></a>
-      <a class="spine" href="#p-dockeeper" data-g="home"><span class="nm">Doc Keeper</span><span class="dc">Home</span></a>
-      <a class="spine" href="#p-stringart" data-g="hard"><span class="nm">String Art Studio</span><span class="dc">Making</span></a>
-      <a class="spine" href="#p-goingdown" data-g="play"><span class="nm">Going Down</span><span class="dc">Game</span></a>
-      <a class="spine" href="#p-scripture" data-g="play"><span class="nm">Scripture Solace</span><span class="dc">Media</span></a>
-      <a class="spine" href="#p-homelab" data-g="home"><span class="nm">The homelab</span><span class="dc">Home</span></a>
-      <a class="spine" href="#p-router" data-g="home"><span class="nm">Local model router</span><span class="dc">Home</span></a>
-      <a class="spine" href="#p-khel" data-g="early"><span class="nm">Kansas pipeline</span><span class="dc">Science</span></a>
-      <a class="spine" href="#p-kismet" data-g="early"><span class="nm">Kismet research</span><span class="dc">Science</span></a>
-      <a class="spine" href="#p-crickets" data-g="early"><span class="nm">Arbor</span><span class="dc">Business</span></a>
+      <a class="spine" href="#p-buoy" aria-controls="p-buoy" data-g="product"><span class="nm">Buoy Money</span><span class="dc">Product</span></a>
+      <a class="spine" href="#p-scripture" aria-controls="p-scripture" data-g="play"><span class="nm">Scripture Solace</span><span class="dc">Media</span></a>
+      <a class="spine" href="#p-highlights" aria-controls="p-highlights" data-g="home"><span class="nm">Highlights</span><span class="dc">Home</span></a>
+      <a class="spine" href="#p-selfkept" aria-controls="p-selfkept" data-g="home"><span class="nm">SelfKept</span><span class="dc">Home</span></a>
+      <a class="spine" href="#p-watchman" aria-controls="p-watchman" data-g="home"><span class="nm">Watchman</span><span class="dc">Home</span></a>
+      <a class="spine" href="#p-stringart" aria-controls="p-stringart" data-g="hard"><span class="nm">String Art Studio</span><span class="dc">Making</span></a>
+      <a class="spine" href="#p-listener" aria-controls="p-listener" data-g="hard"><span class="nm">Listener</span><span class="dc">Hardware</span></a>
+      <a class="spine" href="#p-goingdown" aria-controls="p-goingdown" data-g="play"><span class="nm">Going Down</span><span class="dc">Game</span></a>
+      <a class="spine" href="#p-dockeeper" aria-controls="p-dockeeper" data-g="home"><span class="nm">Doc Keeper</span><span class="dc">Home</span></a>
+      <a class="spine" href="#p-router" aria-controls="p-router" data-g="home"><span class="nm">Local model router</span><span class="dc">Home</span></a>
+      <a class="spine" href="#p-homelab" aria-controls="p-homelab" data-g="home"><span class="nm">The homelab</span><span class="dc">Home</span></a>
+      <a class="spine" href="#p-khel" aria-controls="p-khel" data-g="early"><span class="nm">Kansas pipeline</span><span class="dc">Science</span></a>
+      <a class="spine" href="#p-kismet" aria-controls="p-kismet" data-g="early"><span class="nm">Kismet research</span><span class="dc">Science</span></a>
+      <a class="spine" href="#p-crickets" aria-controls="p-crickets" data-g="early"><span class="nm">Arbor</span><span class="dc">Business</span></a>
     </div>
+    <p class="sr" aria-live="polite" id="shelf-say"></p>
     <div class="panels" id="panels">
       <article class="panel" id="p-buoy">
         <h3>Buoy Money</h3>
-        <div class="blurb"><p class="lead">A budgeting app where each category earns a daily allowance, so the budget counts up as the month goes on. Live on the web and Google Play, with a free self-hosted edition.</p><p class="links"><a class="link" href="https://buoymoney.com">buoymoney.com</a><a class="link" href="https://github.com/BuoyMoney/buoy-money">Source</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2025 to now</dd></div><div><dt>Built with</dt><dd>Flutter, .NET 10, PostgreSQL</dd></div><div><dt>Connects to</dt><dd>Plaid, Stripe, MCP</dd></div><div><dt>Releases</dt><dd>78, latest v1.5.37</dd></div></dl>
-        <figure class="pic"><img src="img/buoy-budgets.webp" loading="lazy" alt="Buoy Money budgets screen on desktop"></figure>
+        <div class="blurb"><p class="lead">A budgeting app where each category earns a daily allowance, so the budget counts up as the month goes on. There is a hosted edition and a free self-hosted one.</p><p class="links"><a class="link" href="https://buoymoney.com">buoymoney.com</a><a class="link" href="https://github.com/BuoyMoney/buoy-money">Source</a></p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2025 to now</dd></div><div><dt>State</dt><dd>Live on the web and Google Play</dd></div><div><dt>Built with</dt><dd>Flutter, .NET 10, PostgreSQL</dd></div><div><dt>Connects to</dt><dd>Plaid, Stripe, MCP</dd></div><div><dt>Releases</dt><dd>78, latest v1.5.37</dd></div></dl>
+        <figure class="pic"><img src="img/buoy-budgets.webp" width="1100" height="688" loading="lazy" alt="Buoy Money budgets screen on desktop"></figure>
       </article>
-      <article class="panel nopic" id="p-listener">
-        <h3>Listener</h3>
-        <div class="blurb"><p class="lead">An all-day audio wearable on a circuit board I designed around an ESP32-S3. It uploads to a GPU server at home that transcribes, works out who was speaking and pulls out tasks, so no company holds a recording of my day.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/listener">Source</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Board</dt><dd>Custom two-layer PCB, 87 by 65 mm</dd></div><div><dt>Server</dt><dd>WhisperX, pyannote, Ollama</dd></div><div><dt>Decision records</dt><dd>57</dd></div></dl>
-        <div class="more"><figure class="model" data-model="media/listener-board.glb"><div class="frame3d"><img src="img/listener-board.webp" loading="lazy" alt="3D render of the Listener circuit board: an ESP32-S3 module, USB-C port, battery connector, flash chip and five buttons"><canvas tabindex="0" role="img" aria-label="The Listener circuit board in 3D. Drag, or use the left and right arrow keys, to turn it."></canvas></div><figcaption><span class="still">The board, rendered from the layout.</span><span class="turn">The board in 3D, exported from the layout. Drag to turn it.</span></figcaption></figure><figure><img src="img/listener-dashboard.webp" loading="lazy" alt="Listener review queue on desktop"><figcaption>The review queue, with invented data.</figcaption></figure><figure><img src="img/listener-sch-power.webp" loading="lazy" alt="Listener power schematic: USB-C connector, ESD protection, charger, load sharing, regulator and battery sensing"><figcaption>Power: USB-C in, charger, load sharing, regulator, battery sense.</figcaption></figure><figure><img src="img/listener-sch-mcu.webp" loading="lazy" alt="Listener schematic of the ESP32-S3 module, its switches and the NAND flash chip"><figcaption>The ESP32-S3 and the flash chip that holds a day of audio.</figcaption></figure></div>
-      </article>
-      <article class="panel" id="p-watchman">
-        <h3>Watchman</h3>
-        <div class="blurb"><p class="lead">Self-hosted accountability and real-time image protection. Images are judged on the device, explicit ones are blurred, and chosen partners get a weekly digest. It is open source, because internet safety should not sit behind an $18 a month charge.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/watchman">Source</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Server</dt><dd>Python, FastAPI, ONNX Runtime</dd></div><div><dt>Clients</dt><dd>Android, Windows, browsers, iOS</dd></div><div><dt>Licence</dt><dd>AGPL-3.0</dd></div></dl>
-        <figure class="pic"><img src="img/watchman-timeline.webp" loading="lazy" alt="Watchman timeline showing hours protected across three devices"></figure>
-      </article>
-      <article class="panel" id="p-selfkept">
-        <h3>SelfKept</h3>
-        <div class="blurb"><p class="lead">A self-hosted health record for a household. Sleep, activity, heart rate and blood panels from everyone&#x27;s phones and watches, compared with each person&#x27;s own 28-day range and described in plain words.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/selfkept">Source</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Built with</dt><dd>.NET 10, Flutter, PostgreSQL</dd></div><div><dt>AI</dt><dd>Local models only, by default</dd></div><div><dt>Releases</dt><dd>10, latest v0.1.9</dd></div></dl>
-        <figure class="pic"><img src="img/selfkept-desktop.webp" loading="lazy" alt="SelfKept heart and fitness readings on desktop"></figure>
+      <article class="panel tallpic" id="p-scripture">
+        <h3>Scripture Solace</h3>
+        <div class="blurb"><p class="lead">A pipeline that picks a passage, narrates it, matches music and footage, burns in word-synced subtitles and uploads to YouTube three mornings a week. Passages come only from a hand-curated table, so a verse is never lifted out of its context.</p><p class="links"><a class="link" href="https://www.youtube.com/@scriptureSolace-13354">Watch the channel</a></p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2024 to now</dd></div><div><dt>State</dt><dd>Live on YouTube</dd></div><div><dt>Built with</dt><dd>Python, Gemini, ElevenLabs, ffmpeg</dd></div><div><dt>Uploads</dt><dd>417</dd></div><div><dt>Views</dt><dd>About 60,000</dd></div></dl>
+        <figure class="pic"><video class="lazy" controls muted loop playsinline preload="none" poster="media/scripture.webp" width="540" height="960" aria-label="A Scripture Solace short: a psalm narrated over footage, with subtitles that follow each word"><source src="media/scripture.webm" type="video/webm"><source src="media/scripture.mp4" type="video/mp4"></video><figcaption>One of the shorts, as uploaded. Muted here.</figcaption></figure>
       </article>
       <article class="panel" id="p-highlights">
         <h3>Highlights</h3>
         <div class="blurb"><p class="lead">Highlight videos from a self-hosted Immich photo library. Claude picks the moments from contact sheets, ffmpeg cuts them, and the finished video lands back in Immich.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/highlights">Source</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Built with</dt><dd>Python, FastAPI, ffmpeg</dd></div><div><dt>Finds trips by</dt><dd>Distance from the place you are most often</dd></div><div><dt>Release</dt><dd>v0.2.0</dd></div></dl>
-        <figure class="pic"><img src="img/highlights-sheets.webp" loading="lazy" alt="Contact sheets of trip photos that the model picks from"></figure>
+        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>State</dt><dd>Released, in maintenance</dd></div><div><dt>Built with</dt><dd>Python, FastAPI, ffmpeg</dd></div><div><dt>Finds trips by</dt><dd>Distance from the place you are most often</dd></div><div><dt>Release</dt><dd>v0.2.1</dd></div></dl>
+        <figure class="pic"><img src="img/highlights-sheets.webp" width="1100" height="1129" loading="lazy" alt="Contact sheets of trip photos that the model picks from"></figure>
       </article>
-      <article class="panel nopic" id="p-dockeeper">
-        <h3>Doc Keeper</h3>
-        <div class="blurb"><p class="lead">A private archive for a household&#x27;s important documents, plus a home inventory. A local vision model reads each scan, and search combines full text, trigrams and vectors.</p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Built with</dt><dd>Paperless-ngx, FastAPI, SQLite, Ollama</dd></div><div><dt>Reads</dt><dd>Licence barcodes and passport MRZ lines</dd></div><div><dt>Backups</dt><dd>Nightly, with a restore check</dd></div></dl>
-        
+      <article class="panel" id="p-selfkept">
+        <h3>SelfKept</h3>
+        <div class="blurb"><p class="lead">A self-hosted health record for a household. Sleep, activity, heart rate and blood panels from everyone&#x27;s phones and watches, compared with each person&#x27;s own 28-day range and described in plain words.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/selfkept">Source</a></p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>State</dt><dd>Released, still changing most weeks</dd></div><div><dt>Built with</dt><dd>.NET 10, Flutter, PostgreSQL</dd></div><div><dt>AI</dt><dd>Local models only, by default</dd></div></dl>
+        <figure class="pic"><img src="img/selfkept-desktop.webp" width="1100" height="688" loading="lazy" alt="SelfKept heart and fitness readings on desktop"></figure>
+      </article>
+      <article class="panel" id="p-watchman">
+        <h3>Watchman</h3>
+        <div class="blurb"><p class="lead">Self-hosted accountability and real-time image protection. Images are judged on the device, explicit ones are blurred, and chosen partners get a weekly digest. It is open source, because internet safety should not sit behind an $18 a month charge.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/watchman">Source</a></p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>State</dt><dd>Released, in daily use at home</dd></div><div><dt>Server</dt><dd>Python, FastAPI, ONNX Runtime</dd></div><div><dt>Clients</dt><dd>Android, Windows, browsers; iOS in testing</dd></div><div><dt>Licence</dt><dd>AGPL-3.0</dd></div></dl>
+        <figure class="pic"><img src="img/watchman-timeline.webp" width="1100" height="688" loading="lazy" alt="Watchman timeline showing hours protected across three devices"></figure>
       </article>
       <article class="panel" id="p-stringart">
         <h3>String Art Studio</h3>
-        <div class="blurb"><p class="lead">Turns a photo into a pin-and-thread build plan, then reads the steps aloud from a phone while you string. One engine solves the whole piece as a single continuous thread. The first physical build is still ahead of me.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/string-art-studio">Source</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Built with</dt><dd>Python, numpy, Numba</dd></div><div><dt>Exports</dt><dd>True-size templates, a printable drilling jig, DXF</dd></div><div><dt>Licence</dt><dd>MIT</dd></div></dl>
-        <figure class="pic"><img src="img/stringart-hero.webp" loading="lazy" alt="A portrait beside two string art renders and the phone build mode"></figure>
+        <div class="blurb"><p class="lead">Turns a photo into a pin-and-thread build plan, then reads the steps aloud from a phone while you string. One engine solves the whole piece as a single continuous thread.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/string-art-studio">Source</a></p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>State</dt><dd>In progress: the software works, no physical build yet</dd></div><div><dt>Built with</dt><dd>Python, numpy, Numba</dd></div><div><dt>Exports</dt><dd>True-size templates, a printable drilling jig, DXF</dd></div><div><dt>Licence</dt><dd>MIT</dd></div></dl>
+        <figure class="pic"><img src="img/stringart-hero.webp" width="1100" height="579" loading="lazy" alt="A portrait beside two string art renders and the phone build mode"></figure>
+      </article>
+      <article class="panel" id="p-listener">
+        <h3>Listener</h3>
+        <div class="blurb"><p class="lead">An all-day audio wearable on a circuit board I designed around an ESP32-S3. It uploads to a GPU server at home that transcribes, works out who was speaking and pulls out tasks, so no company holds a recording of my day.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/listener">Source</a></p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>State</dt><dd>In progress: board built and working, files not yet published</dd></div><div><dt>Board</dt><dd>Custom two-layer PCB, 87 by 65 mm</dd></div><div><dt>Server</dt><dd>WhisperX, pyannote, Ollama</dd></div><div><dt>Decision records</dt><dd>57</dd></div></dl>
+        <div class="more"><figure class="model" data-model="media/listener-board.glb"><div class="frame3d"><img src="img/listener-board.webp" width="1294" height="918" loading="lazy" alt="3D render of the Listener circuit board: an ESP32-S3 module, USB-C port, battery connector, flash chip and five buttons"><canvas role="img" aria-label="The Listener circuit board in 3D. Drag, or use the left and right arrow keys, to turn it."></canvas></div><figcaption><span class="still">The board, rendered from the layout.</span><span class="turn">The board in 3D, exported from the layout. Drag to turn it.</span></figcaption></figure><figure><img src="img/listener-dashboard.webp" width="1100" height="688" loading="lazy" alt="Listener review queue on desktop"><figcaption>The review queue, with invented data.</figcaption></figure><figure><img src="img/listener-sch-power.webp" width="967" height="691" loading="lazy" alt="Listener power schematic: USB-C connector, ESD protection, charger, load sharing, regulator and battery sensing"><figcaption>Power: USB-C in, charger, load sharing, regulator, battery sense.</figcaption></figure><figure><img src="img/listener-sch-mcu.webp" width="1437" height="1016" loading="lazy" alt="Listener schematic of the ESP32-S3 module, its switches and the NAND flash chip"><figcaption>The ESP32-S3 and the flash chip that holds a day of audio.</figcaption></figure></div>
       </article>
       <article class="panel" id="p-goingdown">
         <h3>Going Down</h3>
         <div class="blurb"><p class="lead">A co-op suspense game for up to eight players. Convicts ride a lift down through a buried city and are paid for instrument readings taken close to things that each obey one unbreakable rule. There are no weapons.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/going-down">Source</a><a class="link" href="https://jbarnell1.github.io/going-down/">Play the first browser version</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Built with</dt><dd>Godot 4, typed GDScript</dd></div><div><dt>Characters</dt><dd>Built and rigged by Blender scripts</dd></div><div><dt>First week</dt><dd>322 commits</dd></div></dl>
-        <figure class="pic"><img src="img/gd-tape.webp" loading="lazy" alt="In-game view with a tape filter: a gaunt figure in a clinic corridor"></figure><div class="more one"><figure class="embed" data-src="https://jbarnell1.github.io/going-down/" data-title="Going Down, the first browser version"><div class="frame"><img src="img/gd-lineup.webp" loading="lazy" alt=""><button class="btn" type="button">Play it here</button></div><figcaption>The first browser version. It loads from GitHub Pages when you press the button, and it is a large download.</figcaption></figure></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>State</dt><dd>In progress: playable in a browser, no ending yet</dd></div><div><dt>Built with</dt><dd>Godot 4, typed GDScript</dd></div><div><dt>Characters</dt><dd>Built and rigged by Blender scripts</dd></div></dl>
+        <figure class="pic"><img src="img/gd-tape.webp" width="1100" height="619" loading="lazy" alt="In-game view with a tape filter: a gaunt figure in a clinic corridor"></figure><div class="more one"><figure class="embed" data-src="https://jbarnell1.github.io/going-down/" data-title="Going Down, the first browser version"><div class="frame"><img src="img/gd-lineup.webp" width="1100" height="309" loading="lazy" alt=""><button class="btn" type="button">Play it here</button></div><figcaption>The first browser version. It loads from GitHub Pages when you press the button, and it is a large download.</figcaption></figure></div>
       </article>
-      <article class="panel" id="p-scripture">
-        <h3>Scripture Solace</h3>
-        <div class="blurb"><p class="lead">A pipeline that picks a passage, narrates it, matches music and footage, burns in word-synced subtitles and uploads to YouTube three mornings a week. Passages come only from a hand-curated table, so a verse is never lifted out of its context.</p><p class="links"><a class="link" href="https://www.youtube.com/@scriptureSolace-13354">Watch the channel</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2024 to now</dd></div><div><dt>Built with</dt><dd>Python, Gemini, ElevenLabs, ffmpeg</dd></div><div><dt>Uploads</dt><dd>417</dd></div><div><dt>Views</dt><dd>About 60,000</dd></div></dl>
-        <figure class="pic tall"><video class="lazy" muted loop playsinline preload="none" poster="media/scripture.webp" width="540" height="960" aria-label="A Scripture Solace short: a psalm narrated over footage, with subtitles that follow each word"><source data-src="media/scripture.webm" type="video/webm"><source data-src="media/scripture.mp4" type="video/mp4"></video><figcaption>One of the shorts, as uploaded. Muted here.</figcaption></figure>
-      </article>
-      <article class="panel nopic" id="p-homelab">
-        <h3>The homelab</h3>
-        <div class="blurb"><p class="lead">Two machines at home running about 48 containers: photos, media, documents, passwords and monitoring. Everything is reachable only over Tailscale, with no ports forwarded.</p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>Ongoing</dd></div><div><dt>Runs on</dt><dd>Docker, Tailscale, AdGuard Home</dd></div><div><dt>GPU</dt><dd>RTX 4070 Super, for local models</dd></div><div><dt>Backups</dt><dd>Hourly, with restic</dd></div></dl>
+      <article class="panel" id="p-dockeeper">
+        <h3>Doc Keeper</h3>
+        <div class="blurb"><p class="lead">A private archive for a household&#x27;s important documents, plus a home inventory. A local vision model reads each scan, and search combines full text, trigrams and vectors.</p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>State</dt><dd>Private, runs at home</dd></div><div><dt>Built with</dt><dd>Paperless-ngx, FastAPI, SQLite, Ollama</dd></div><div><dt>Reads</dt><dd>Licence barcodes and passport MRZ lines</dd></div><div><dt>Backups</dt><dd>Nightly, with a restore check</dd></div></dl>
         
       </article>
-      <article class="panel nopic" id="p-router">
+      <article class="panel" id="p-router">
         <h3>Local model router</h3>
         <div class="blurb"><p class="lead">A small model reads each chat message and sends it to a fast 9B model or a slower 35B one, so the household assistant answers quickly when it can. A guard strips household tools and memories before anything goes to a cloud model.</p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>Runs on</dt><dd>Ollama, Open WebUI</dd></div><div><dt>Hardware</dt><dd>One 12 GB GPU</dd></div></dl>
+        <dl class="pf kv"><div><dt>When</dt><dd>2026</dd></div><div><dt>State</dt><dd>Private, runs at home</dd></div><div><dt>Runs on</dt><dd>Ollama, Open WebUI</dd></div><div><dt>Hardware</dt><dd>One 12 GB GPU</dd></div></dl>
         
       </article>
-      <article class="panel nopic" id="p-khel">
+      <article class="panel" id="p-homelab">
+        <h3>The homelab</h3>
+        <div class="blurb"><p class="lead">Two machines at home running about 48 containers: photos, media, documents, passwords and monitoring. Everything is reachable only over Tailscale, with no ports forwarded.</p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>Ongoing</dd></div><div><dt>State</dt><dd>Private, runs at home</dd></div><div><dt>Runs on</dt><dd>Docker, Tailscale, AdGuard Home</dd></div><div><dt>GPU</dt><dd>RTX 4070 Super, for local models</dd></div><div><dt>Backups</dt><dd>Hourly, with restic</dd></div></dl>
+        
+      </article>
+      <article class="panel" id="p-khel">
         <h3>Kansas pipeline</h3>
-        <div class="blurb"><p class="lead">The Python package I wrote at the Kansas state lab to move SARS-CoV-2 sequencing data from the instruments to the epidemiologists. Most of it was written before my first computer science class.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/KHEL_WGS_SARS_CoV_2">Source</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2021</dd></div><div><dt>Built with</dt><dd>Python, pandas, Oracle, SQL Server</dd></div><div><dt>Size</dt><dd>8 workflows, 186 commits</dd></div><div><dt>Licence</dt><dd>MIT</dd></div></dl>
+        <div class="blurb"><p class="lead">The Python package I wrote at the Kansas state lab to move SARS-CoV-2 sequencing data from the instruments to the epidemiologists.</p><p class="links"><a class="link" href="https://github.com/jbarnell1/KHEL_WGS_SARS_CoV_2">Source</a></p></div>
+        <dl class="pf kv"><div><dt>When</dt><dd>2021</dd></div><div><dt>State</dt><dd>Finished, and the code is public</dd></div><div><dt>Built with</dt><dd>Python, pandas, Oracle, SQL Server</dd></div><div><dt>Size</dt><dd>8 workflows, 186 commits</dd></div><div><dt>Licence</dt><dd>MIT</dd></div></dl>
         
       </article>
-      <article class="panel nopic" id="p-kismet">
+      <article class="panel" id="p-kismet">
         <h3>Kismet research</h3>
         <div class="blurb"><p class="lead">Undergraduate research on kismet, the fruit fly counterpart of the human gene CHD7, and its part in muscle growth and development.</p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2019</dd></div><div><dt>Lab</dt><dd>Washburn University</dd></div><div><dt>Presented</dt><dd>ASCB annual meeting, Washington, D.C., 2019</dd></div></dl>
+        <dl class="pf kv"><div><dt>When</dt><dd>2019</dd></div><div><dt>State</dt><dd>Finished</dd></div><div><dt>Lab</dt><dd>Washburn University</dd></div><div><dt>Presented</dt><dd>ASCB annual meeting, Washington, D.C., 2019</dd></div></dl>
         
       </article>
-      <article class="panel nopic" id="p-crickets">
+      <article class="panel" id="p-crickets">
         <h3>Arbor</h3>
         <div class="blurb"><p class="lead">A startup that six Washburn students formed to farm crickets and sell protein powder. It began as Agrotech Enterprises and became Arbor. I directed research and development. We won the Washburn pitch competition, placed in the top five at regional, national and international contests, and the Associated Press carried the story.</p><p class="links"><a class="link" href="https://archive.salinapost.com/?p=340116">AP story</a><a class="link" href="https://web.archive.org/web/20190508221648/https://www.cjonline.com/news/20181126/overcoming-ick-factor-topeka-start-up-focuses-on-cricket-based-food">Capital-Journal feature</a><a class="link" href="https://washburnreview.org/648/features/foreman-the-cricket-guy/">Washburn Review on Arbor</a></p></div>
-        <dl class="pf kv"><div><dt>When</dt><dd>2018</dd></div><div><dt>My part</dt><dd>Research and development</dd></div><div><dt>Plan</dt><dd>A gravity-fed feeder in place of costly robotics</dd></div><div><dt>Covered by</dt><dd>Associated Press, Topeka Capital-Journal</dd></div></dl>
+        <dl class="pf kv"><div><dt>When</dt><dd>2018</dd></div><div><dt>State</dt><dd>Past venture</dd></div><div><dt>My part</dt><dd>Research and development</dd></div><div><dt>Plan</dt><dd>A gravity-fed feeder in place of costly robotics</dd></div><div><dt>Covered by</dt><dd>Associated Press, Topeka Capital-Journal</dd></div></dl>
         
       </article>
     </div>
@@ -683,6 +698,25 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
       <img src="img/kec.webp" width="628" height="417" loading="lazy" alt="Jonathan Barnell and three teammates holding a Kansas Entrepreneurship Challenge sign">
       <figcaption>The cricket team at the Kansas Entrepreneurship Challenge. We placed in the top five at regional, national and international competitions.</figcaption>
     </figure>
+    <div class="recs">
+      <div class="rec rv">
+        <h3>Work</h3>
+        <ul>
+          <li><span>Alarm.com, senior software engineer</span><span class="tnum">2022 to now</span></li>
+          <li><span>Kansas Dept. of Health and Environment, data analyst</span><span class="tnum">2021</span></li>
+          <li><span>Kansas Dept. of Health and Environment, microbiologist</span><span class="tnum">2020</span></li>
+          <li><span>Washburn University, research assistant</span><span class="tnum">2019</span></li>
+          <li><span>Kansas Dept. of Health and Environment, lab intern</span><span class="tnum">2017, 2018</span></li>
+        </ul>
+      </div>
+      <div class="rec rv" style="--d:1">
+        <h3>School</h3>
+        <ul>
+          <li><span>University of Pennsylvania, MCIT core courses</span><span class="tnum">6 of 10 courses</span></li>
+          <li><span>Washburn University, B.S. Molecular Biology and Biotechnology</span><span class="tnum">2019</span></li>
+        </ul>
+      </div>
+    </div>
     <div class="tb rv" style="--d:2">
       <table>
         <thead><tr><th>Year</th><th>What</th><th>Where</th><th>Result</th></tr></thead>
@@ -708,13 +742,12 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
 <footer class="band f-red foot" id="contact">
   <div class="wrap">
     <div class="top">
-      <p class="rv">Software engineer in Topeka, Kansas. Biology first, then pipelines, then products.</p>
-      <a class="link lead rv" style="--d:1" href="mailto:hello@jonathanbarnell.com">hello@jonathanbarnell.com</a>
+      <p class="rv">Senior software engineer in Topeka, Kansas. Biology first, then pipelines, then products.</p>
     </div>
     <span></span>
-    <h2 class="rv"><a href="https://www.linkedin.com/in/jonathanbarnell"><span>linkedin.com/in/</span><span>jonathanbarnell</span></a></h2>
+    <h2 class="rv"><a href="mailto:hello@jonathanbarnell.com"><span>hello@</span><span>jonathanbarnell.com</span></a></h2>
     <div class="meta small">
-      <nav aria-label="Elsewhere"><a class="link" href="https://github.com/jbarnell1">GitHub</a><a class="link" href="https://buoymoney.com">Buoy Money</a><a class="link" href="#top">Back to top</a></nav>
+      <nav aria-label="Elsewhere"><a class="link" href="https://www.linkedin.com/in/jonathanbarnell">LinkedIn</a><a class="link" href="https://github.com/jbarnell1">GitHub</a><a class="link" href="https://buoymoney.com">Buoy Money</a><a class="link" href="#top">Back to top</a></nav>
       <span>Screenshots show invented demo data.</span>
       <span>Topeka, Kansas. 2026.</span>
     </div>
@@ -775,22 +808,31 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
   addEventListener('resize',function(){planScenes();scenes.forEach(function(s){s._i=-1});onScroll()});
   planScenes(); paintBar(); playScenes();
 
-  /* films: sources load as a film nears the screen; it plays while visible and pauses when it leaves */
+  /* films: the markup has real sources and native controls, so they work without script. With
+     script and without reduced motion they play while on screen, pause when they leave or the tab
+     is hidden, and each gets a pause button. */
   var films=[].slice.call(document.querySelectorAll('video.lazy'));
-  function arm(v){
-    if(v._armed)return; v._armed=true;
-    [].forEach.call(v.querySelectorAll('source[data-src]'),function(s){s.src=s.getAttribute('data-src')});
-    v.load();
-  }
-  if(reduce||!('IntersectionObserver' in window)){
-    films.forEach(function(v){v.controls=true;v.preload='metadata';arm(v)});
-  }else{
+  if(!reduce&&'IntersectionObserver' in window){
+    var go=function(v){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){v.controls=true})};
+    films.forEach(function(v){
+      v.controls=false;
+      var stage=v.closest('.stage'), host=stage||v.parentNode, b=document.createElement('button');
+      if(!stage)host.classList.add('vhost');
+      b.type='button'; b.className='vp'; b.textContent='Pause';
+      b.addEventListener('click',function(){
+        v._held=!v._held; b.textContent=v._held?'Play':'Pause';
+        if(v._held)v.pause(); else go(v);
+      });
+      host.appendChild(b);
+    });
     var fio=new IntersectionObserver(function(es){es.forEach(function(e){
-      var v=e.target;
-      if(e.isIntersecting){arm(v);var pr=v.play();if(pr&&pr.catch)pr.catch(function(){v.controls=true})}
-      else if(v._armed)v.pause();
+      var v=e.target; v._seen=e.isIntersecting;
+      if(v._seen){if(!v._held)go(v)}else v.pause();
     })},{rootMargin:'160px 0px',threshold:0.01});
     films.forEach(function(v){fio.observe(v)});
+    document.addEventListener('visibilitychange',function(){
+      films.forEach(function(v){if(document.hidden)v.pause(); else if(v._seen&&!v._held)go(v)});
+    });
   }
 
   /* frames that load something live only when asked */
@@ -808,11 +850,11 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
      turns with the scroll and under the pointer, and is drawn only when something changes. */
   var turners=[];
   [].forEach.call(document.querySelectorAll('.model'),function(fig){
-    var frame=fig.querySelector('.frame3d'), cv=fig.querySelector('canvas'), begun=false;
+    var frame=fig.querySelector('.frame3d'), cv=fig.querySelector('canvas'), begun=false, seen=false, live=null;
     function begin(){
       if(begun)return; begun=true;
       Promise.all([
-        import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js'),
+        import(new URL('vendor/three.module.min.js',document.baseURI).href),
         fetch(fig.getAttribute('data-model')).then(function(r){if(!r.ok)throw new Error('model');return r.arrayBuffer()})
       ]).then(function(got){
         var T=got[0], buf=got[1], dv=new DataView(buf);
@@ -837,6 +879,7 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
         gl.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
         var held=-0.5, w=0, h=0;
         function draw(){
+          if(!seen)return;
           var cw=frame.clientWidth, ch=frame.clientHeight; if(!cw||!ch)return;
           if(cw!==w||ch!==h){w=cw;h=ch;gl.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
           var r=frame.getBoundingClientRect(), mid=(r.top+r.height/2)/window.innerHeight-0.5;
@@ -848,12 +891,13 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
         cv.addEventListener('pointermove',function(e){if(last===null)return;held+=(e.clientX-last)*0.012;last=e.clientX;draw()});
         ['pointerup','pointercancel'].forEach(function(n){cv.addEventListener(n,function(){last=null})});
         cv.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){held-=0.2;draw()}else if(e.key==='ArrowRight'){held+=0.2;draw()}});
-        turners.push(draw); draw(); fig.classList.add('ready');
+        live=draw; turners.push(draw); draw(); cv.tabIndex=0; fig.classList.add('ready');
       }).catch(function(){});
     }
     if('IntersectionObserver' in window){
       var mio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){begin();mio.disconnect()}})},{rootMargin:'300px 0px'});
       mio.observe(frame);
+      new IntersectionObserver(function(es){es.forEach(function(e){seen=e.isIntersecting; if(seen&&live)live()})},{threshold:0}).observe(frame);
     }
   });
   function turn(){for(var i=0;i<turners.length;i++)turners[i]()}
@@ -888,7 +932,7 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
     }
     function show(){nEl.textContent=fmt(drawn);pinEl.textContent=seq[Math.min(drawn+1,total)];seek.value=drawn}
     function to(n){n=Math.max(0,Math.min(total,n)); if(n<drawn){base();drawn=0} lines(drawn,n); drawn=n; show()}
-    function label(){btn.textContent=playing?'Pause':(drawn>=total?'Replay':'Play');btn.setAttribute('aria-pressed',playing?'true':'false')}
+    function label(){btn.textContent=playing?'Pause':(drawn>=total?'Replay':'Play')}
     function step(){
       if(!playing)return;
       /* slow enough at first to see single turns, then quicker as the picture fills in */
@@ -903,8 +947,9 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
     base(); show(); label();
     if(reduce||!('IntersectionObserver' in window)){to(total);label();return}
     new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){if(!cv._user&&drawn<total)play()}else if(playing){pause()}
+      if(e.isIntersecting){if(!cv._user&&drawn<total){if(!drawn)to(Math.min(total,1500));play()}}else if(playing){pause()}
     })},{threshold:0.35}).observe(cv);
+    document.addEventListener('visibilitychange',function(){if(document.hidden&&playing)pause()});
   })();
 
   /* entrances */
@@ -916,15 +961,41 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%
     setTimeout(function(){if(!fired)rvs.forEach(function(el){el.classList.add('in')})},1500);
   }
 
-  /* the shelf: pick a spine, read the project */
+  /* the shelf: pick a spine, read the project. Every project has an address (#p-name): a link to
+     one opens it, and picking a spine puts its address in the bar without adding to history. */
   var spines=[].slice.call(document.querySelectorAll('.spine'));
   var panels=[].slice.call(document.querySelectorAll('.panel'));
+  var say=document.getElementById('shelf-say');
   function show(id,animate){
     panels.forEach(function(p){var on=p.id===id; p.hidden=!on; p.classList.remove('swap'); if(on){p.querySelectorAll('.rv').forEach(function(x){x.classList.add('in')}); if(animate&&!reduce){void p.offsetWidth;p.classList.add('swap')}}});
     spines.forEach(function(s){ if(s.getAttribute('href')==='#'+id)s.setAttribute('aria-current','true'); else s.removeAttribute('aria-current') });
   }
-  spines.forEach(function(s){s.addEventListener('click',function(e){e.preventDefault();show(s.getAttribute('href').slice(1),true)})});
-  if(panels.length)show('p-listener',false);
+  function isPanel(id){return id.indexOf('p-')===0&&!!document.getElementById(id)}
+  function jump(id,smooth){var t=document.getElementById(id); if(t)t.scrollIntoView({behavior:smooth&&!reduce?'smooth':'instant',block:'start'})}
+  spines.forEach(function(s){s.addEventListener('click',function(e){
+    e.preventDefault();
+    var id=s.getAttribute('href').slice(1), t=document.getElementById(id);
+    show(id,true);
+    if(history.replaceState)history.replaceState(null,'','#'+id);
+    if(say)say.textContent='Showing '+s.querySelector('.nm').textContent;
+    /* on a narrow screen the project opens below the fold: bring it up */
+    if(t.getBoundingClientRect().top>window.innerHeight*0.55)jump(id,true);
+  })});
+  if(panels.length){
+    var first=location.hash.slice(1);
+    show(isPanel(first)?first:'p-listener',false);
+  }
+  addEventListener('hashchange',function(){var id=location.hash.slice(1); if(isPanel(id)){show(id,false);jump(id,false)}});
+  /* a link into the page lands where it points once the fonts and pictures above it have settled,
+     unless the reader has already started to move */
+  var moved=false;
+  ['wheel','touchstart','keydown','pointerdown'].forEach(function(n){addEventListener(n,function(){moved=true},{passive:true,once:true})});
+  function settle(){var id=location.hash.slice(1); if(id&&!moved)jump(id,false)}
+  if(location.hash){
+    settle();
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(settle);
+    addEventListener('load',function(){settle();setTimeout(settle,400);setTimeout(settle,1200)});
+  }
 })();
 </script>
 
